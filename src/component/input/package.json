@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "input component",
   "main": "input.tsx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clarkhao/totoro_react_components.git",
+    "directory": "src/component/input"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
