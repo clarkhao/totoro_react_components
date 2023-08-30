@@ -1,0 +1,23 @@
+{
+  "name": "@totoro/input",
+  "version": "1.0.0",
+  "description": "input component",
+  "main": "input.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ClarkTotoro",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.6",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "postcss": "8.4.29",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2",
+    "zod": "^3.22.2"
+  }
+}
