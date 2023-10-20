@@ -1,0 +1,27 @@
+/*transition animation for toast *********************************************************/
+.toast-enter {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.toast-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.toast-enter-done {
+  opacity: 1;
+  transform: translateY(0%) rotate3d(1, 0, 0, 360deg);
+}
+.toast-exit {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.toast-exit-active,
+.toast-exit-done {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.toast-enter-active,
+.toast-enter-done,
+.toast-exit-active {
+  transition: opacity 500ms, transform 500ms ease;
+}

@@ -1,0 +1,11 @@
+.inputFilled:not(:placeholder-shown) ~ span {
+  top: 30px;
+}
+.inputFilled:not(:placeholder-shown) ~ div,
+.inputFilled:focus ~ div {
+  width: 100%;
+}
+.inputOutlined:focus ~ label,
+.inputOutlined:not(:placeholder-shown) ~ label {
+  left: 6px;
+}

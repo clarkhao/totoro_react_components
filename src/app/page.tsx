@@ -1,10 +1,9 @@
-import Image from 'next/image'
-import Input from '@/component/input/Input'
-
+import React from "react";
+import {FilterServer} from "../component/fitler/filter";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Input labelText='Name' name='name' needVerified type='text'/>
-    </main>
-  )
+    <div className="w-full">
+      <FilterServer />
+    </div>
+  );
 }

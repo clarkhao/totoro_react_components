@@ -1,0 +1,5 @@
+.flyingBtn {
+  z-index: 1;
+  transform-origin: center bottom;
+  transform: scale(1);
+}

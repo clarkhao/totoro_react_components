@@ -1,0 +1,16 @@
+{/* Icons.mdx */}
+
+import { Meta, IconGallery, IconItem } from "@storybook/blocks";
+import * as Icons from "react-icons/fi";
+
+<Meta title="System/Icons" />
+
+<IconGallery>
+  {Object.entries(Icons)
+    .filter(([name]) => name !== "iconlist")
+    .map(([name, Icon]) => (
+      <IconItem name={name}>
+        <Icon />
+      </IconItem>
+    ))}
+</IconGallery>

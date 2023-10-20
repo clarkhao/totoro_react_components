@@ -1,0 +1,103 @@
+/*transition animation for pagination *********************************************************/
+
+.pagination-disappear-left-exit,
+.pagination-disappear-left-enter-done {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+.pagination-disappear-left-exit-active,
+.pagination-disappear-left-exit-done {
+  opacity: 0;
+  transform: translateX(-100%) scale(0.1);
+}
+.pagination-disappear-left-exit-active {
+  transition: opacity 500ms, transform 500ms ease;
+}
+
+.pagination-disappear-right-exit,
+.pagination-disappear-right-enter-done {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+.pagination-disappear-right-exit-active,
+.pagination-disappear-right-exit-done {
+  opacity: 0;
+  transform: translateX(100%) scale(0.1);
+}
+.pagination-disappear-right-exit-active {
+  transition: opacity 500ms, transform 500ms ease;
+}
+/****************************************************************************/
+
+.pagination-left-exit,
+.pagination-left-enter-done {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.pagination-left-exit-active,
+.pagination-left-exit-done
+ {
+  opacity: 1;
+  transform: translateX(-100%);
+}
+.pagination-left-exit-active {
+  transition: opacity 500ms, transform 500ms ease;
+}
+
+.pagination-right-exit,
+.pagination-right-enter-done {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.pagination-right-exit-active,
+.pagination-right-exit-done
+ {
+  opacity: 1;
+  transform: translateX(100%);
+}
+.pagination-right-exit-active {
+  transition: opacity 500ms, transform 500ms ease;
+}
+/*****************************************************************************/
+.pagination-appear-left-exit {
+  opacity: 1;
+  transform: translateX(0%) scale(0.1);
+}
+.pagination-appear-left-enter,
+.pagination-appear-left-enter-done {
+  opacity: 0;
+}
+.pagination-appear-left-exit-active,
+.pagination-appear-left-exit-done {
+  opacity: 1;
+  transform: translateX(-100%) scale(1);
+}
+
+.pagination-appear-left-exit-active,
+.pagination-appear-left-exit-done {
+  transition: opacity 500ms, transform 500ms ease;
+}
+
+.pagination-appear-right-exit {
+  opacity: 1;
+  transform: translateX(0%) scale(0.1);
+}
+.pagination-appear-right-enter,
+.pagination-appear-right-enter-done {
+  opacity: 0;
+}
+.pagination-appear-right-exit-active,
+.pagination-appear-right-exit-done {
+  opacity: 1;
+  transform: translateX(100%) scale(1);
+}
+.pagination-appear-right-exit-active {
+  transition: opacity 500ms, transform 500ms ease;
+}
+/*************************************************************************************/
+.pagination-stable-exit,
+.pagination-appear-exit-done,
+.pagination-appear-enter,
+.pagination-appear-enter-done {
+  opacity: 0;
+}

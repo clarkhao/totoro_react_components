@@ -1,0 +1,36 @@
+{
+  "name": "@clarktotoro/toast",
+  "version": "1.0.4",
+  "description": "",
+  "files": [
+    "/dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "toast"
+  ],
+  "author": "clarktotoro",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "postcss": "8.4.29",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "tailwindcss": "3.3.3",
+    "tslib": "^2.6.2",
+    "typescript": "5.2.2",
+    "@types/react-transition-group": "^4.4.6",
+    "react-transition-group": "^4.4.5",
+    "zustand": "^4.4.1"
+  }
+}

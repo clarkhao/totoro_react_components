@@ -1,0 +1,29 @@
+/*transition css for carousel*/
+.item-toleft-enter {
+  transform: translateX(150%);
+}
+.item-toleft-enter-active {
+  transform: translateX(50%);
+  transition: transform 500ms ease-in-out;
+}
+.item-toleft-exit {
+  transform: translate(-50%);
+}
+.item-toleft-exit-active {
+  transform: translateX(-150%);
+  transition: transform 500ms ease-in-out;
+}
+.item-toright-enter {
+  transform: translateX(-150%);
+}
+.item-toright-enter-active {
+  transform: translateX(-50%);
+  transition: transform 500ms ease-in-out;
+}
+.item-toright-exit {
+  transform: translate(50%);
+}
+.item-toright-exit-active {
+  transform: translateX(150%);
+  transition: transform 500ms ease-in-out;
+}

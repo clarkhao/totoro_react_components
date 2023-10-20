@@ -1,0 +1,32 @@
+/*transition animation for dynamic pagination***************************************/
+.dynamic-page-left-enter {
+  transform: translateX(300%);
+}
+.dynamic-page-left-enter-active {
+  transform: translateX(50%);
+  transition: transform 500ms ease-in-out;
+  
+}
+.dynamic-page-left-exit {
+  transform: translate(-50%);
+}
+.dynamic-page-left-exit-active {
+  transform: translateX(-300%);
+  transition: transform 500ms ease-in-out;
+}
+
+.dynamic-page-right-enter {
+  transform: translateX(-300%);
+}
+.dynamic-page-right-enter-active {
+  transform: translateX(-50%);
+  transition: transform 500ms ease-in-out;
+  
+}
+.dynamic-page-right-exit {
+  transform: translate(50%);
+}
+.dynamic-page-right-exit-active {
+  transform: translateX(300%);
+  transition: transform 500ms ease-in-out;
+}

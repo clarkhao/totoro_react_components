@@ -1,0 +1,43 @@
+/*transition animation for swipe***************************************/
+.swipe-left-exit,
+.swipe-left-exit-active,
+.swipe-left-exit-done {
+  transform: translateX(-52px);
+}
+.swipe-left-enter {
+  transform: translateX(0%);
+}
+.swipe-left-enter-active,
+.swipe-left-enter-done {
+  transform: translateX(-52px);
+  transition: transform 300ms ease-in-out;
+}
+.swipe-right-exit,
+.swipe-right-exit-active,
+.swipe-right-exit-done {
+  transform: translateX(0%);
+}
+.swipe-right-enter {
+  transform: translateX(-50px);
+}
+.swipe-right-enter-active,
+.swipe-right-enter-done {
+  transform: translateX(0%);
+  transition: transform 300ms ease-in-out;
+}
+/*transition css for button*******************************************************/
+.fade-left-exit .fade-left-exit-active,
+.fade-left-exit-done {
+  transform: scaleX(1);
+  transform-origin: right;
+}
+.fade-left-enter {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+.fade-left-enter-active,
+.fade-left-enter-done {
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 300ms ease-in-out;
+}

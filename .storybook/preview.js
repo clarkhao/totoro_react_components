@@ -1,42 +1,11 @@
 import "../src/app/globals.css";
-import { withThemeByClassName } from "@storybook/addon-styling";
-
-const globalDecorator = (StoryFn, context) => {
-  const theme = context.parameters.theme || context.globals.theme;
-  console.log(theme);
-  return (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        padding: "12px",
-        overflow: "auto",
-        backgroundColor:
-          theme == null || theme.length === 0 || theme === "light"
-            ? "#ffffff"
-            : "#222233",
-      }}
-    >
-      <StoryFn />
-    </div>
-  );
-};
-
-export const decorators = [
-  globalDecorator,
-  withThemeByClassName({
-    themes: {
-      light: "light",
-      dark: "dark",
-    },
-    defaultTheme: "light",
-  }),
-];
 
 const preview = {
+  globalTypes: {
+    darkMode: {
+      defaultValue: true, // Enable dark mode by default on all stories
+    },
+  },
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -45,7 +14,26 @@ const preview = {
         date: /Date$/,
       },
     },
+    backgrounds: {
+      default: "light",
+      values: [
+        {
+          name: "light",
+          value: "#ffffff",
+        },
+        {
+          name: "dark",
+          value: "#222233",
+        },
+        {
+          name: "grey",
+          value: "#999999",
+        },
+      ],
+    },
+    
   },
+  
 };
 
 export default preview;

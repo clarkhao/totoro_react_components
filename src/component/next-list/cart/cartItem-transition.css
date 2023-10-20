@@ -1,0 +1,14 @@
+.cart-item-enter {
+  opacity: 0;
+}
+.cart-item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.cart-item-exit {
+  opacity: 1;
+}
+.cart-item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}

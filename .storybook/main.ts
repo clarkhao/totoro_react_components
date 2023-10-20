@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "storybook-tailwind-dark-mode",
     {
       name: "@storybook/addon-styling",
       options: {
@@ -17,13 +18,14 @@ const config: StorybookConfig = {
         },
       },
     },
+    "@storybook/addon-mdx-gfm",
   ],
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
   docs: {
-    autodocs: "tag",
+    autodocs: "tag"    
   },
 };
 export default config;
