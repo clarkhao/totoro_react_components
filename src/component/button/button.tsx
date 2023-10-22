@@ -15,7 +15,7 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * primary or secondary
    */
-  variant?: "primary" | "secondary";
+  isPrimary?: boolean;
   /**
    * isOutlined
    */
@@ -43,7 +43,7 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 export const Button = function Button({
   children,
-  variant = "primary",
+  isPrimary = true,
   moreAnimated = false,
   addToCart,
   ...rest
@@ -108,14 +108,14 @@ export const Button = function Button({
   }, [rest.callbackState, children]);
   const sizeSelector = React.useCallback(() => {
     const sizeSmall = rest.callbackState
-      ? "text-sm font-medium"
-      : "px-3 py-2 text-sm font-medium";
+      ? "h-8 w-8 text-sm font-medium"
+      : "h-8 px-2 text-sm font-medium";
     const sizeBase = rest.callbackState
-      ? "text-sm font-medium"
-      : "px-5 py-2.5 text-sm font-medium";
+      ? "h-10 w-10 text-sm font-medium"
+      : "h-10 px-4 text-sm font-medium";
     const sizeLarge = rest.callbackState
-      ? "text-sm font-medium"
-      : "px-5 py-3 text-base font-medium";
+      ? "h-14 w-14 text-sm font-medium rounded-full"
+      : "h-14 px-6 text-base font-medium rounded-[30px] after:rounded-[30px]";
     switch (rest.size) {
       case "small":
         return sizeSmall;
@@ -132,15 +132,13 @@ export const Button = function Button({
       <button
         type="button"
         className={[
-          variant === "primary" ? primaryColors : secondaryColors,
-          sizeSelector(),
+          isPrimary ? primaryColors : secondaryColors,
           "relative block focus:ring-4 focus:outline-none rounded-[20px] transition-all duration-300 ease-in-out",
           rest.isOutlined && (!rest.callbackState || !moreAnimated)
             ? "after:content-[''] after:absolute hover:text-white after:top-0 after:left-0 after:rounded-[20px] after:w-0 after:h-full after:transition-all after:hover:w-full"
             : "",
-          !rest.callbackState || !moreAnimated
-            ? `h-10 ${rest.width}`
-            : "h-10 w-10 m-0 p-0",
+          sizeSelector(),
+          !rest.callbackState || !moreAnimated ? `${rest.width}` : "m-0 p-0",
           "flex justify-center items-center",
         ].join(" ")}
         data-testid="test-button"
@@ -165,4 +163,4 @@ export const Button = function Button({
       </button>
     </>
   );
-}
+};

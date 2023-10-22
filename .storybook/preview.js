@@ -1,9 +1,10 @@
 import "../src/app/globals.css";
+import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
 
 const preview = {
   globalTypes: {
     darkMode: {
-      defaultValue: true, // Enable dark mode by default on all stories
+      defaultValue: false, // Enable dark mode by default on all stories
     },
   },
   parameters: {
@@ -31,7 +32,6 @@ const preview = {
         },
       ],
     },
-    
   },
   
 };

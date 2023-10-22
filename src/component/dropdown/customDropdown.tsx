@@ -1,8 +1,9 @@
 /* position fixed default, isAbs turn to absolute position*/
-import React, { FC } from "react";
+import React, { FC, ReactElement } from "react";
 import { DefaultClickable } from "./defaultClickable";
 import { CSSTransition } from "react-transition-group";
 import "../avatar/avatar.css";
+import { searchParentNode } from "../../utils";
 
 interface TCustomDropdown extends Record<string, any> {
   /**
@@ -22,6 +23,10 @@ interface TCustomDropdown extends Record<string, any> {
    */
   className?: string;
   /**
+   * pos
+   */
+  pos?: {top: number, right: number}
+  /**
    * childHeight
    */
   childHeight?: number;
@@ -39,22 +44,33 @@ export function CustomDropdown({
 }: TCustomDropdown) {
   const [hidden, setHidden] = React.useState(true);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+  const childRef = React.useRef<HTMLDivElement>(null);
   const [style, setStyle] = React.useState({});
 
   React.useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
+      console.log(event.target);
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !(
+          (dropdownRef.current &&
+            dropdownRef.current.contains(event.target as Node)) ||
+          searchParentNode(event.target as Element, {
+            attr: "data-click",
+            value: "abs",
+          })
+        )
       ) {
         setHidden(true);
-      } 
+      }
     };
     document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
+  React.useEffect(() => {
+    console.log(`hidden status: ${hidden}`);
+  }, [hidden]);
   const handler = () => {
     const calculateFixedPos = async () => {
       const position = dropdownRef.current?.getBoundingClientRect();
@@ -100,20 +116,20 @@ export function CustomDropdown({
       const calendarHeight = props.childHeight ?? 0;
       if (spaceBelow >= calendarHeight || spaceBelow >= spaceAbove!) {
         setStyle({
-          top: `40px`,
-          right: `0px`,
+          top: `${props.pos?.top ?? 40}px`,
+          right: `${props.pos?.right ?? 0}px`,
         });
       } else {
         setStyle({
-          bottom: `40px`,
-          right: `0px`,
+          top: `${props.pos?.top ?? 40}px`,
+          right: `${props.pos?.right ?? 0}px`,
         });
       }
     };
     if (props.isAbs) calculateAbsPos();
     else if (props.isAbs === false) calculateFixedPos();
     else calculateAbsPos();
-    setHidden(!hidden);
+    setHidden(false);
   };
   return (
     <>
@@ -136,6 +152,7 @@ export function CustomDropdown({
         >
           <div
             id="dropdownBgHover"
+            ref={childRef}
             className={[
               "z-20 bg-white rounded-lg shadow dark:bg-gray-700 w-fit",
               hidden ? "hidden" : "block",

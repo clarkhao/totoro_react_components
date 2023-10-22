@@ -4,7 +4,7 @@ import { CartItem } from "../../component/items/cartItem";
 import React from "react";
 
 const meta: Meta<typeof CartItem> = {
-  title: "UI/CartItem",
+  title: "UI/Item/CartItem",
   component: CartItem,
   tags: ["autodocs"],
   parameters: {

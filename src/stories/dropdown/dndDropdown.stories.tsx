@@ -84,7 +84,6 @@ function DragableItem({ ...props }: TDragableItem) {
 const meta: Meta<typeof DragableItem> = {
   title: "UI/dropdown/dndDropdown",
   component: DragableItem,
-  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },

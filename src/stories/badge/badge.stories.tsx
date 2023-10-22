@@ -19,9 +19,24 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const IconBtnDefault: Story = {
+export const BadgeDefault: Story = {
+  args: {
+    actual: "Daily",
+    isRemoved: false,
+    color: "blue",
+  },
+};
+export const BadgeDeleteDefault: Story = {
   args: {
     actual: "Daily",
     isRemoved: true,
+    color: "pink",
+  },
+};
+export const BadgeExtraTextDefault: Story = {
+  args: {
+    actual: "EnjoyDailyLif",
+    isRemoved: true,
+    color: "green",
   },
 };

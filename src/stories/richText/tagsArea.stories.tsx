@@ -31,7 +31,7 @@ function StoryTagsArea({ ...props }: TStoryTagsArea) {
 }
 
 const meta: Meta<typeof StoryTagsArea> = {
-  title: "UI/RichText/tagsArea",
+  title: "UI/Input/tagsArea",
   component: StoryTagsArea,
   tags: ["autodocs"],
   parameters: {

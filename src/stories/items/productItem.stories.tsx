@@ -4,7 +4,7 @@ import Product from "../../component/items/productItem";
 import React from "react";
 
 const meta: Meta<typeof Product> = {
-  title: "UI/ProductItem",
+  title: "UI/Item/ProductItem",
   component: Product,
   tags: ["autodocs"],
   parameters: {

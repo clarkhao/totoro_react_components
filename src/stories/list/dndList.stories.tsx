@@ -10,7 +10,7 @@ import {
 import { DndListContext, useDndList } from "../../component/next-dnd-list/dndListHook";
 
 const meta: Meta<typeof DndList> = {
-  title: "UI/List/DndList",
+  title: "Scenary/DndAndTodoList",
   component: DndList,
   tags: ["autodocs"],
   parameters: {

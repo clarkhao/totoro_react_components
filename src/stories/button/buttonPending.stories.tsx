@@ -17,7 +17,7 @@ const ButtonWrapper = (props: IButton) => {
     }
   };
   return (
-    <Button {...props} callbackState={state} onClick={handleClick}>
+    <Button {...props} callbackState={state} onClick={handleClick} size="large">
       Button
     </Button>
   );
@@ -46,10 +46,10 @@ function sleep(ms: number) {
 export const PendingAnimated: Story = {
   args: {
     children: "Button",
-    variant: "primary",
+    isPrimary: true,
     width: "w-48",
     moreAnimated: true,
-    isOutlined: false
+    isOutlined: true
   },
 
   play: async ({ canvasElement, args }) => {

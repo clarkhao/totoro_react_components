@@ -30,7 +30,20 @@ function sleep(ms: number) {
 
 export const CustomDropdownDefault: Story = {
   args: {
-    clickable: () => FaCalendarCheck({style: {color: "red"}}),
-    children: <p>Hello</p>
+    clickable: () =>
+      FaCalendarCheck({
+        style: { color: "red", width: "24px", height: "auto" },
+      }),
+    children: <p>Hello</p>,
+    className: "left-4",
   },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="w-10">
+          <Story />
+        </div>
+      );
+    },
+  ],
 };

@@ -61,7 +61,7 @@ export function SortTable({ ...props }: TSortTable) {
       });
     console.log(sorted);
     return props.isPagination
-      ? sorted.slice(listState.currentIndex * 9, listState.currentIndex * 9 + 9)
+      ? sorted.slice((listState.currentIndex - 1) * 9, (listState.currentIndex - 1) * 9 + 9)
       : sorted;
   }, [forestArea, sort, listState.currentIndex, props.isPagination]);
   React.useEffect(() => {

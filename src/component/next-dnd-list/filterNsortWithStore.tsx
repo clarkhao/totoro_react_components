@@ -24,6 +24,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
     state.sort,
     state.setSortGroup,
   ]);
+  console.log("rerender filter")
   //tag inside the textinput
   const [tag, setTag] = React.useState<string>("");
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
