@@ -23,17 +23,10 @@ export function FilterClient({ ...props }: TFilter) {
                 title="Choose Category"
                 id="category"
                 onChange={(e) => {
-                  let index = 0;
-                  if (props.items) {
-                    index =
-                      props.items?.findIndex((el) => el.id === e.target.value) <
-                      0
-                        ? 0
-                        : props.items?.findIndex(
-                            (el) => el.id === e.target.value
-                          );
-                  }
-
+                  console.log(e.target.value);
+                  const index = Number.isNaN(+e.target.value)
+                    ? 0
+                    : +e.target.value;
                   filter?.filterDispatch({
                     type: "set-selected",
                     payload: index,

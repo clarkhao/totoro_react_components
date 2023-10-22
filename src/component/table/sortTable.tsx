@@ -2,7 +2,6 @@ import * as d3 from "d3";
 import React from "react";
 import { ListContext, useFetch } from "../next-pagination/hook";
 import Pagination from "../next-pagination/pagination";
-import { FaGripVertical } from "react-icons/fa6";
 
 type TSortTable = {
   /**
@@ -61,11 +60,14 @@ export function SortTable({ ...props }: TSortTable) {
       });
     console.log(sorted);
     return props.isPagination
-      ? sorted.slice((listState.currentIndex - 1) * 9, (listState.currentIndex - 1) * 9 + 9)
+      ? sorted.slice(
+          (listState.currentIndex - 1) * 9,
+          (listState.currentIndex - 1) * 9 + 9
+        )
       : sorted;
   }, [forestArea, sort, listState.currentIndex, props.isPagination]);
   React.useEffect(() => {
-    d3.csv("/forest-area-km.csv", (d) => {
+    d3.csv("./forest-area-km.csv", (d) => {
       return {
         code: d.Code,
         entity: d.Entity,

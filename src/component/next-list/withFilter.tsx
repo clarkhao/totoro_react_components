@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { graphqlFetch } from "../../utils";
 import { FilterContext, useFilter } from "../fitler/hook";
 import { FilterClient } from "../fitler/filterClient";

@@ -3,7 +3,7 @@ import { addons } from '@storybook/manager-api';
 import totoro from './totoro';
 
 addons.setConfig({
-  isFullscreen: true,
+  isFullscreen: false,
   showNav: true,
   showPanel: true,
   panelPosition: 'right',
