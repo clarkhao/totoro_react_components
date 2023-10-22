@@ -67,7 +67,7 @@ export function SortTable({ ...props }: TSortTable) {
       : sorted;
   }, [forestArea, sort, listState.currentIndex, props.isPagination]);
   React.useEffect(() => {
-    d3.csv("./forest-area-km.csv", (d) => {
+    d3.csv("https://doggycatty.s3.amazonaws.com/app/forest-area-km.csv", (d) => {
       return {
         code: d.Code,
         entity: d.Entity,
