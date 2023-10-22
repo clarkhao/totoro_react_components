@@ -11,11 +11,12 @@ const meta: Meta<typeof Avatar> = {
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
+    controls: { expanded: true },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Avatar>;
 // Function to emulate pausing between interactions
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -23,28 +24,7 @@ function sleep(ms: number) {
 
 export const AvatarDefault: Story = {
   args: {
-    handler: console.log,
-    children: (data: Record<string, any>) => <div className="w-full px-6 p-2">{data.name}</div>,
-    userInfo: {
-      avatarUrl: "https://avatar-api.clarkhao.repl.co/6.x/pixel-art/svg?seed",
-      name: "Clark"
-    },
-    menu: {
-      menu: [
-        {
-          title: "Subject",
-          icon: {
-            title: <FiCamera />,
-          },
-        },
-        {
-          title: "Play",
-        },
-      ],
-      user: [{ title: "Signout" }],
-    },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+    size: "md",
+    avatarUrl: "https://avatar-api.clarkhao.repl.co/6.x/pixel-art/svg?seed",
   },
 };

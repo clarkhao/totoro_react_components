@@ -6,7 +6,6 @@ import React from "react";
 const meta: Meta<typeof RichText> = {
   title: "UI/RichText",
   component: RichText,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },

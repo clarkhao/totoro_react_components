@@ -3,7 +3,7 @@ import { Cart } from "../../component/next-list/cart/index";
 import React from "react";
 
 const meta: Meta<typeof Cart> = {
-  title: "UI/List/Cart",
+  title: "Scenary/Shopping Cart",
   component: Cart,
   tags: ["autodocs"],
   parameters: {

@@ -3,7 +3,7 @@ import { userEvent, within } from "@storybook/testing-library";
 import {InputField} from "../../component/next-input/inputField";
 
 const meta: Meta<typeof InputField> = {
-  title: "UI/InputField",
+  title: "UI/Input/InputField",
   component: InputField,
   tags: ["autodocs"],
   parameters: {

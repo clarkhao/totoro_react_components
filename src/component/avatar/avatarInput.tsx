@@ -26,32 +26,52 @@ type TAvatarTest = {
    */
   children: FC;
   /**
+   * size
+   */
+  size: "xs" | "sm" | "md" | "lg" | "xl";
+  /**
    * position
    */
   position?: string;
 };
 
-export function AvatarTest(props: TAvatarTest) {
+export function AvatarDefault(props: TAvatarTest) {
+  const size = () => {
+    switch (props.size) {
+      case "xs":
+        return "w-6 h-6";
+      case "sm":
+        return "w-8 h-8";
+      case "md":
+        return "w-10 h-10";
+      case "lg":
+        return "w-20 h-20";
+      case "xl":
+        return "w-36 h-36";
+    }
+  };
   if (!props.userInfo.avatarUrl) {
     return (
       <IconButton size="base">
-        <FiHelpCircle className="w-10 h-10 text-brand-secondary-light" />
+        <FiHelpCircle
+          className={["text-brand-secondary-light", size()].join(" ")}
+        />
       </IconButton>
     );
   }
   return (
     <>
       <div
-        className={[
-          "flex flex-col justify-end items-end",
-          "relative",
-        ].join(" ")}
+        className={["flex flex-col justify-end items-end", "relative"].join(
+          " "
+        )}
       >
         <input
           className={[
             "peer",
             "w-12 h-12 border-2 rounded-full cursor-pointer",
             "bg-transparent hover:bg-gray-200 active:bg-gray-100 dark:bg-gray-400 dark:hover:bg-gray-200 dark:active:bg-gray-400",
+            size(),
           ].join(" ")}
           id="hidden-one"
           type="button"

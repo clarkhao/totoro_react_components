@@ -3,7 +3,7 @@ import { getByRole, userEvent, within } from "@storybook/testing-library";
 import Check from "../../component/group-rive/check";
 
 const meta: Meta<typeof Check> = {
-  title: "UI/Rive/Check",
+  title: "Rive/Check",
   component: Check,
   tags: ["autodocs"],
   parameters: {

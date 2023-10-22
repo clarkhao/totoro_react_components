@@ -83,7 +83,6 @@ function DragableItem({ ...props }: TDragableItem) {
 const meta: Meta<typeof DragableItem> = {
   title: "UI/Item/TodoListSwipeItem",
   component: DragableItem,
-  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },

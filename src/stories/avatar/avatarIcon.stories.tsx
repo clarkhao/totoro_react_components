@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import { AvatarTest } from "../../component/avatar/avatarTest";
+import { AvatarIcon } from "../../component/avatar/avatarIcon";
 import React from "react";
 import { FaApple } from "react-icons/fa6";
 import { FiCamera } from "react-icons/fi";
 
-const meta: Meta<typeof AvatarTest> = {
-  title: "UI/Avatar",
-  component: AvatarTest,
+const meta: Meta<typeof AvatarIcon> = {
+  title: "UI/Avatar/Dropdown",
+  component: AvatarIcon,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
@@ -15,13 +15,13 @@ const meta: Meta<typeof AvatarTest> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof AvatarTest>;
+type Story = StoryObj<typeof meta>;
 // Function to emulate pausing between interactions
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const AvatarTestDefault: Story = {
+export const AvatarIconWithDropdown: Story = {
   args: {
     handler: console.log,
     children: (data: Record<string, any>) => <div className="w-full px-6 p-2">{data.name}</div>,
@@ -43,8 +43,5 @@ export const AvatarTestDefault: Story = {
       ],
       user: [{ title: "Signout" }],
     },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
   },
 };

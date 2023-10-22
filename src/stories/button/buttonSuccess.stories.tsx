@@ -48,7 +48,7 @@ function sleep(ms: number) {
 export const SuccessAnimated: Story = {
   args: {
     children: "Button",
-    variant: "primary",
+    isPrimary: false,
     width: "w-48",
     moreAnimated: true,
     isOutlined: true,

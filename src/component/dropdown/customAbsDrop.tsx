@@ -42,9 +42,7 @@ export function CustomAbsDrop({ children, ...props }: ICustomAbsDrop) {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
-  React.useEffect(() => {
-    console.log(checked);
-  }, [checked]);
+
   return (
     <>
       <label

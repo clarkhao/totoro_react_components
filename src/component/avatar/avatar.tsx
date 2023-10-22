@@ -1,93 +1,48 @@
-import React, { FC } from "react";
-import { CSSTransition } from "react-transition-group";
-
-import { IconButton } from "./iconButton";
-import { MenuList, TMenuData } from "../next-navigation/menuList";
 import { FiHelpCircle } from "react-icons/fi";
 
-import "./avatar.css";
-
-type TAvatar = {
+export type TAvatar = {
   /**
-   * handler
+   * size
    */
-  handler: (router: string) => void;
+  size: "xs" | "sm" | "md" | "lg" | "xl";
   /**
    * user
    */
-  userInfo: Record<string, any>;
-  /**
-   * menu
-   */
-  menu: Record<string, Array<TMenuData>>;
-  /**
-   * children
-   */
-  children: FC;
-  /**
-   * position
-   */
-  position?: string;
+  avatarUrl: string;
 };
 
-export function Avatar(props: TAvatar) {
-  const [hidden, setHidden] = React.useState(true);
-  const avatarHandler = () => {
-    setHidden(!hidden);
+export function Avatar({ ...props }: TAvatar) {
+  const size = () => {
+    switch (props.size) {
+      case "xs":
+        return "w-6 h-6";
+      case "sm":
+        return "w-8 h-8";
+      case "md":
+        return "w-10 h-10";
+      case "lg":
+        return "w-20 h-20";
+      case "xl":
+        return "w-36 h-36";
+    }
   };
-  const avatarRef = React.useRef<HTMLImageElement>(null);
-
-  React.useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        avatarRef.current &&
-        !avatarRef.current.contains(event.target as Node)
-      ) {
-        setHidden(true);
-      }
-    };
-
-    document.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
-
-  if (!props.userInfo.avatarUrl) {
-    return (
-      <IconButton size="base">
-        <FiHelpCircle className="w-10 h-10 text-brand-secondary-light" />
-      </IconButton>
-    );
-  }
   return (
-    <div
-      className={[
-        "flex flex-col justify-end items-end ",
-        props.position ?? ""
-      ].join(" ")}
-    >
-      <IconButton onClick={avatarHandler} size="base">
-        <img
-          className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-          src={props.userInfo.avatarUrl}
-          alt="Bordered avatar"
-          ref={avatarRef}
+    <>
+      {!props.avatarUrl ? (
+        <FiHelpCircle
+          className={["text-brand-secondary-light", size()].join(" ")}
         />
-      </IconButton>
-      <CSSTransition
-        in={!hidden}
-        timeout={300}
-        classNames="avatar"
-        unmountOnExit
-      >
-        <div className="w-[200px]">
-          <MenuList data={props.menu} isCompact handleRoute={props.handler}>
-            {props.children(props.userInfo)}
-          </MenuList>
-        </div>
-      </CSSTransition>
-    </div>
+      ) : (
+        <img
+          className={[
+            "p-0.5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500",
+            "hover:bg-gray-100 cursor-pointer hover:dark:bg-gray-700",
+            size(),
+          ].join(" ")}
+          src={props.avatarUrl}
+          alt="Bordered avatar"
+        />
+      )}
+    </>
   );
 }

@@ -37,7 +37,7 @@ function StoryTagSelect({ ...props }: TStoryTagSelect) {
 }
 
 const meta: Meta<typeof StoryTagSelect> = {
-  title: "UI/RichText/TagSelect",
+  title: "UI/Input/TagSelect",
   component: StoryTagSelect,
   tags: ["autodocs"],
   parameters: {
