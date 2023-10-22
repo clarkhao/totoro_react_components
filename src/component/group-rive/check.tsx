@@ -9,7 +9,7 @@ type TCheck = {
 
 function Check({ bingo = false, ...props }: TCheck) {
   const { rive, RiveComponent } = useRive({
-    src: "./small.riv",
+    src: "https://doggycatty.s3.amazonaws.com/app/small.riv",
     stateMachines: "bingo",
     artboard: "Check",
   });
