@@ -4,7 +4,6 @@ import { FiCircle } from "react-icons/fi";
 import Image from "next/image";
 //style
 import "./carouselTransition.css";
-import useProgressiveImg from "./hook";
 
 type TCarousel = {
   /**
@@ -20,10 +19,6 @@ type TCarousel = {
 export function Carousel({ imageUrls, ...props }: TCarousel) {
   const [availableIndex, setAvailableIndex] = React.useState(0);
   const [isAscending, setAscending] = React.useState(true);
-  const [src, blurred] = useProgressiveImg(
-    imageUrls[availableIndex].blur,
-    imageUrls[availableIndex].image
-  );
   const handleAsyncStateUpdate = async (next: boolean) => {
     return new Promise((resolve) => {
       setAscending(next);
@@ -44,15 +39,14 @@ export function Carousel({ imageUrls, ...props }: TCarousel) {
           timeout={{ exit: 500, enter: 500 }}
           classNames={isAscending ? "item-toleft" : "item-toright"}
         >
-          <img
-            src={src as string}
+          <Image
+            src={imageUrls[availableIndex].image}
             alt="image"
             width={props.imageSize?.width}
             height={props.imageSize?.height}
+            placeholder="blur"
+            blurDataURL={imageUrls[availableIndex].blur}
             loading="lazy"
-            style={{
-              filter: blurred ? "blur(20px)" : "none",
-            }}
           />
         </CSSTransition>
       </TransitionGroup>
