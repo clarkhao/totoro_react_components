@@ -9,7 +9,7 @@ type TCarousel = {
   /**
    * imageUrls
    */
-  imageUrls: string[];
+  imageUrls: Array<{ image: string; blur: string }>;
   /**
    * imageSize
    */
@@ -30,7 +30,7 @@ export function Carousel({ imageUrls, ...props }: TCarousel) {
     <div className="relative min-w-min min-h-min">
       <TransitionGroup
         className={[
-          "flex gap-0 overflow-hidden items-center justify-center",
+          "flex gap-0 overflow-hidden items-center justify-center min-h-[200px] max-h-[400px]",
           isAscending ? "flex-row" : "flex-row-reverse",
         ].join(" ")}
       >
@@ -40,12 +40,12 @@ export function Carousel({ imageUrls, ...props }: TCarousel) {
           classNames={isAscending ? "item-toleft" : "item-toright"}
         >
           <Image
-            src={imageUrls[availableIndex]}
+            src={imageUrls[availableIndex].image}
             alt="image"
             width={props.imageSize?.width}
             height={props.imageSize?.height}
             placeholder="blur"
-            blurDataURL="/placeholder.png"
+            blurDataURL={imageUrls[availableIndex].blur}
             loading="lazy"
           />
         </CSSTransition>
@@ -70,7 +70,7 @@ export function Carousel({ imageUrls, ...props }: TCarousel) {
                   setAvailableIndex((prev) => {
                     temp = prev;
                     return prev;
-                  })
+                  });
                   await handleAsyncStateUpdate(index >= (temp ?? 1));
                   setAvailableIndex(index);
                 }}

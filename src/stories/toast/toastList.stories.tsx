@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import {ToastList} from "../../component/next-toast/toastList";
+import { ToastList } from "../../component/next-toast/toastList";
 import { useToastStore } from "../../component/next-toast/store";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -74,7 +74,13 @@ function sleep(ms: number) {
 
 export const Default: Story = {
   args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="overflow-clip">
+          <Story />
+        </div>
+      );
+    },
+  ],
 };
