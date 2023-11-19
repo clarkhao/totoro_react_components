@@ -133,7 +133,7 @@ export function InputField({ variant, value, ...props }: IInput) {
                 "absolute left-0 bottom-0 w-0 h-[1px] border-t-2 transition-all z-10",
                 inputState.error || props.pwd2Error
                   ? "border-ele-error dark:border-ele-error text-ele-error"
-                  : "border-brand-secondary-light dark:border-blue-500",
+                  : "border-[#45f3ff] dark:border-blue-500",
               ].join(" ")}
             ></div>
             {props.isLeftIcon || type === "search" ? (
@@ -179,7 +179,7 @@ export function InputField({ variant, value, ...props }: IInput) {
               ].join(" ")}
               placeholder=" "
               value={value ?? inputState.inputValue}
-              onInput={handleInputChange}
+              onChange={handleInputChange}
               onBlur={() => inputDispatch({ type: "is-blured", payload: true })}
               onFocus={handleFocus}
             />

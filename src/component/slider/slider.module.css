@@ -1,0 +1,17 @@
+.slider {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.image {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  scroll-snap-align: start;
+  height: 200px;
+}
+.slider * + * {
+  margin-left: 40px;
+}

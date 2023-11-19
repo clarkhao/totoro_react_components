@@ -140,6 +140,7 @@ export const Button = function Button({
           sizeSelector(),
           !rest.callbackState || !moreAnimated ? `${rest.width}` : "m-0 p-0",
           "flex justify-center items-center",
+          rest.disabled ? "" : ""
         ].join(" ")}
         data-testid="test-button"
         data-addtocart={addToCart}
@@ -156,9 +157,9 @@ export const Button = function Button({
             </CSSTransition>
           </SwitchTransition>
         ) : (
-          <span className="z-[2] relative text-center inline-flex flex-row justify-center items-center gap-2">
+          <div className="z-[2] relative text-center inline-flex flex-row justify-center items-center gap-2">
             {children}
-          </span>
+          </div>
         )}
       </button>
     </>

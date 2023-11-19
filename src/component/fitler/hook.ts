@@ -17,7 +17,7 @@ export interface IFilterAction {
 }
 
 export function useFilter() {
-  const inputReducer = (state: TFilterState, action: IFilterAction) => {
+  const filterReducer = (state: TFilterState, action: IFilterAction) => {
     switch (action.type) {
       case "set-selected":
         return {
@@ -38,7 +38,7 @@ export function useFilter() {
     search: "",
   };
   const [filterState, filterDispatch] = React.useReducer(
-    inputReducer,
+    filterReducer,
     initFilterState
   );
   React.useEffect(() => {

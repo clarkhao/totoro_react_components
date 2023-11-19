@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { inputCheck, getErrMsg } from "./verify";
+import { ErrorContext } from "../intro/contactHook";
 
 export type TInputState = {
   isBlured: boolean;
@@ -55,8 +56,8 @@ function useInput(
       case "toggle-visible":
         return {
           ...state,
-          visible: (!state.visible)
-        }
+          visible: !state.visible,
+        };
       default:
         return state;
     }
@@ -71,6 +72,7 @@ function useInput(
     inputReducer,
     initInputState
   );
+  const err = React.useContext(ErrorContext);
   React.useEffect(() => {
     inputDispatch({
       type: "set-error",
@@ -84,6 +86,27 @@ function useInput(
       if (!check.success) {
         const msg = getErrMsg(check.error.message);
         inputDispatch({ type: "set-error", payload: msg });
+        if (name === "name") {
+          err?.setErrors((prev) => {
+            return {
+              ...prev,
+              name: {
+                isErr: true,
+                errMsg: msg,
+              },
+            };
+          });
+        } else if (name === "email") {
+          err?.setErrors((prev) => {
+            return {
+              ...prev,
+              email: {
+                isErr: true,
+                errMsg: msg,
+              },
+            };
+          });
+        }
       }
     };
     if (

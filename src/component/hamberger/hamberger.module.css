@@ -1,0 +1,44 @@
+.hamberger {
+  --hamberger-color: var(--hamberger-btn-color, #262626);
+  --hamberger-c-color: whitesmoke;
+}
+.hamberger::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 4px;
+  background-color: var(--hamberger-color);
+  transition: .5s;
+}
+.hamberger.active:before {
+  width: 100%;
+  height: 100%;
+}
+.hamberger > span {
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  background-color: var(--hamberger-color);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: .5s;
+}
+span:nth-child(1) {
+  top: calc(30% - 2px);
+}
+span:nth-child(2) {
+  top: calc(70% - 2px);
+}
+.hamberger.active span {
+  background-color: var(--hamberger-c-color);
+  z-index: 1;
+}
+.hamberger.active span:nth-child(1) {
+  transform: translate(-20px, 16px) rotate(135deg);
+}
+.hamberger.active span:nth-child(2) {
+  transform: translate(-20px, -16px) rotate(225deg);
+}

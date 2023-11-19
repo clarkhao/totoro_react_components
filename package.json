@@ -9,10 +9,14 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006 -s ../public",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_bdda7e326144537",
+    "chromatic": "npx chromatic --project-token=chpt_4be44e574173f0a",
     "test": "jest --watch"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@rive-app/react-canvas": "^4.3.3",
     "@tailwindcss/forms": "^0.5.6",
     "@types/node": "20.5.7",
@@ -68,5 +72,6 @@
   },
   "readme": "ERROR: No README data found!",
   "_id": "next-components@1.0.9",
-  "component-url": "https://650fa9a064a11c5877fbaf97-iidnlpayzc.chromatic.com"
+  "component-url-v0": "https://650fa9a064a11c5877fbaf97-iidnlpayzc.chromatic.com",
+  "component-url-v1": "https://653674eaf255578b09d67c2b-dkllfslhbc.chromatic.com"
 }

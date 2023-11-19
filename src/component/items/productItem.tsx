@@ -1,6 +1,6 @@
 //components
 import { Button } from "../button/button";
-import { Carousel } from "../carousel/carousel";
+import { Carousel } from "../carousel/carouselWithNext";
 import Rating from "../rating/rating";
 //hooks
 import { useCartStore } from "../next-list/cart/cartStore";

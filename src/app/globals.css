@@ -8,6 +8,8 @@
   --background-end-rgb: 255, 255, 255;
   --font-inter: "Inter", sans-serif;
   --font-roboto-mono: "Roboto Mono", monospace;
+  --from-x-position: 0;
+  --from-y-position: 0;
 }
 
 @media (prefers-color-scheme: dark) {
