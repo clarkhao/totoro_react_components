@@ -25,6 +25,6 @@ function sleep(ms: number) {
 export const AvatarDefault: Story = {
   args: {
     size: "md",
-    avatarUrl: "https://avatar-api.clarkhao.repl.co/6.x/pixel-art/svg?seed",
+    avatarUrl: "https://api.dicebear.com/7.x/pixel-art/svg?seed",
   },
 };

@@ -20,7 +20,8 @@ function sleep(ms: number) {
 
 export const WithHamberger: Story = {
   args: {
-    className: "fixed right-10 top-10"
+    className: "fixed right-10 top-10",
+    color: 'blue'
   },
   
 };

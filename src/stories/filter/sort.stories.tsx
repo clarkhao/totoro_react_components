@@ -25,7 +25,6 @@ function SortWrapper(props: TFilterNSortWrapper) {
 const meta: Meta<typeof SortWrapper> = {
   title: "UI/Filter/Sort",
   component: SortWrapper,
-  tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },
@@ -38,7 +37,7 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const SelectDefault: Story = {
+export const SelectBy: Story = {
   args: {
     
   },

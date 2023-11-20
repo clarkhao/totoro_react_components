@@ -62,13 +62,13 @@ export function Intro({ ...props }: TIntro) {
   //
   React.useEffect(() => {
     const validateText = () => {
-      if (data.content.trim().length < 10) {
+      if (data.content.trim().length < 5) {
         setErrors((prev) => {
           return {
             ...prev,
             content: {
               isErr: true,
-              errMsg: "Please write at least 10 chars",
+              errMsg: "Please write at least 5 chars",
             },
           };
         });
@@ -115,7 +115,6 @@ export function Intro({ ...props }: TIntro) {
           return await res.json();
         })
         .then((res) => {
-          console.log(res);
           setData({
             name: "",
             email: "",
@@ -125,10 +124,8 @@ export function Intro({ ...props }: TIntro) {
         })
         .catch((err) => {
           if ((err as Error).name === "AbortError") {
-            console.log("Request aborted");
             setState(undefined);
           } else {
-            console.error(err);
             setState("fail");
           }
         })
@@ -415,7 +412,7 @@ export function Intro({ ...props }: TIntro) {
             imageList={[
               {
                 from: "https://doggycatty.s3.amazonaws.com/app/works/storybook.webp",
-                to: "https://653674eaf255578b09d67c2b-dkllfslhbc.chromatic.com/?path=/docs/stories-intro--docs",
+                to: "https://clarkhao.github.io/?path=/docs/stories-intro--docs",
               },
               {
                 from: "https://doggycatty.s3.amazonaws.com/app/works/codepen.png",
@@ -488,7 +485,6 @@ export function Intro({ ...props }: TIntro) {
                   value={data.content}
                   onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                     setData({ ...data, content: e.target.value });
-                    console.log(e.target.value);
                   }}
                   onBlur={() => setIsBlur(true)}
                   onFocus={() => setIsBlur(false)}
@@ -496,6 +492,7 @@ export function Intro({ ...props }: TIntro) {
                     "w-full border-none bg-gray-50 min-h-[110px] rounded-tl-lg rounded-tr-lg",
                     "outline-0 focus:ring-0 placeholder:text-sm",
                     style.textarea,
+                    errors["content"]?.isErr ? "text-ele-error" : ""
                   ].join(" ")}
                 />
                 <label

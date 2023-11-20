@@ -25,7 +25,6 @@ function FilterNSortWrapper(props: TFilterNSortWrapper) {
 const meta: Meta<typeof FilterNSortWrapper> = {
   title: "UI/Filter/filterAndSortWithStore",
   component: FilterNSortWrapper,
-  tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },

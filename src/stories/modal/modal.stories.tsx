@@ -8,7 +8,6 @@ import { ModalContext, useModal } from "../../component/modal/hook";
 const meta: Meta<typeof Modal> = {
   title: "UI/Modal",
   component: Modal,
-  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
     

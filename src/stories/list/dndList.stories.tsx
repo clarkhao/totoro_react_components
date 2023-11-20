@@ -12,7 +12,6 @@ import { DndListContext, useDndList } from "../../component/next-dnd-list/dndLis
 const meta: Meta<typeof DndList> = {
   title: "Scenary/DndAndTodoList",
   component: DndList,
-  tags: ["autodocs"],
   parameters: {
     layout: ["padded"],
   },

@@ -5,7 +5,6 @@ import React from "react";
 const meta: Meta<typeof Cart> = {
   title: "Scenary/Shopping Cart",
   component: Cart,
-  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen"
   },

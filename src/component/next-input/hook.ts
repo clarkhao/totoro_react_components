@@ -107,6 +107,16 @@ function useInput(
             };
           });
         }
+      } else {
+        err?.setErrors((prev) => {
+          return {
+            ...prev,
+            email: {
+              isErr: false,
+              errMsg: undefined,
+            },
+          };
+        });
       }
     };
     if (

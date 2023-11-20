@@ -7,7 +7,6 @@ import React from "react";
 const meta: Meta<typeof MenuList> = {
   title: "UI/Menu/MenuList",
   component: MenuList,
-  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },

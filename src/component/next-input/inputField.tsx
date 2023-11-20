@@ -7,6 +7,7 @@ import { useInput } from "./hook";
 //style
 import "./inputField.css";
 
+
 export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * variant
@@ -175,7 +176,7 @@ export function InputField({ variant, value, ...props }: IInput) {
                 inputState.error || props.pwd2Error
                   ? "border-ele-error dark:border-ele-error text-ele-error focus:border-ele-error dark:text-ele-error"
                   : "text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-brand-secondary-light",
-                  props.name === "password" ? "px-9" : "px-2.5",
+                props.name === "password" ? "px-9" : "px-2.5",
               ].join(" ")}
               placeholder=" "
               value={value ?? inputState.inputValue}

@@ -5,7 +5,6 @@ import React from "react";
 const meta: Meta<typeof CartList> = {
   title: "UI/List/CartList",
   component: CartList,
-  tags: ["autodocs"],
   parameters: {},
 };
 

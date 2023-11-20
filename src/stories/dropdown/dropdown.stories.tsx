@@ -6,7 +6,6 @@ import React from "react";
 const meta: Meta<typeof Dropdown> = {
   title: "UI/dropdown",
   component: Dropdown,
-  tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },
@@ -19,9 +18,9 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const DropdownDefault: Story = {
+export const Dropdown_V0: Story = {
   args: {
-    title: "Select Collections",
+    title: "Select",
     children: (
       <ul
         className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
@@ -56,7 +55,7 @@ export const DropdownDefault: Story = {
   },
   decorators: [
     (Story) => (
-      <div>
+      <div className="w-[77px] fixed left-1/2 -translate-x-1/2">
         <Story />
       </div>
     ),

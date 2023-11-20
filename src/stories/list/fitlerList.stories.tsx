@@ -5,7 +5,6 @@ import React from "react";
 const meta: Meta<typeof WithFilterList> = {
   title: "UI/List/FilterList",
   component: WithFilterList,
-  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },

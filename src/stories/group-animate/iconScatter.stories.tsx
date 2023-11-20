@@ -9,7 +9,6 @@ import { faCss3Alt } from "@fortawesome/free-brands-svg-icons";
 const meta: Meta<typeof IconScatter> = {
   title: "UI/Animate/IconScatter",
   component: IconScatter,
-  tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },

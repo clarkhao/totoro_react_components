@@ -4,8 +4,14 @@ import { MenuList } from "../../component/next-navigation/menuList";
 import { FiCamera } from "react-icons/fi";
 import React from "react";
 import { Avatar } from "../../component/avatar/avatar";
+import {
+  DropContext,
+  useDropdown,
+} from "../../component/dropdown/nextDropHook";
+import { NextDropdown } from "../../component/dropdown/nextDropdown";
 
 function Sidebar() {
+  const { dropState, dropDispatch } = useDropdown();
   return (
     <header className="bg-white">
       <div className="relative mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
@@ -45,33 +51,19 @@ function Sidebar() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4">
-              <Avatar
-                handler={console.log}
-                userInfo={{
-                  avatarUrl:
-                    "https://avatar-api.clarkhao.repl.co/6.x/pixel-art/svg?seed",
-                  name: "Clark",
-                }}
-                menu={{
-                  menu: [
-                    {
-                      title: "Subject",
-                      icon: {
-                        title: <FiCamera />,
-                      },
-                    },
-                    {
-                      title: "Play",
-                    },
-                  ],
-                  user: [{ title: "Signout" }],
-                }}
-                position="absolute md:right-5 right-16 top-1"
+            <DropContext.Provider value={{ dropState, dropDispatch }}>
+              <NextDropdown
+                clickable={() => (
+                  <Avatar
+                    avatarUrl="https://api.dicebear.com/7.x/pixel-art/svg?seed"
+                    size="md"
+                  />
+                )}
+                className="top-full right-6"
               >
-                {(data: Record<string, any>) => <div>{data.name}</div>}
-              </Avatar>
-            </div>
+                <div className="w-40 h-80 bg-gray-100 shadow-md rounded-sm"></div>
+              </NextDropdown>
+            </DropContext.Provider>
 
             <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
               <span className="sr-only">Toggle menu</span>

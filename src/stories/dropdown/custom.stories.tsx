@@ -7,9 +7,8 @@ const Clickable = ({title, ...props}: Record<string, any>) => {
 }
 
 const meta: Meta<typeof CustomDropdown> = {
-  title: "UI/dropdown/CustomDropdown",
+  title: "UI/dropdown",
   component: CustomDropdown,
-  tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },
@@ -22,9 +21,16 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const CustomDropdownDefault: Story = {
+export const Dropdown_V1: Story = {
   args: {
     title: "Hello",
-    children: "World"
+    children: <div className="h-80 w-40 bg-gray-200 rounded-md"></div>
   },
+  decorators: [
+    (Story) => {
+      return <div className="w-[72px] fixed left-1/2 -translate-x-1/2">
+        <Story />
+      </div>
+    }
+  ]
 };

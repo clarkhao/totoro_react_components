@@ -7,7 +7,6 @@ import React from "react";
 const meta: Meta<typeof SortTable> = {
   title: "Scenary/SortTable",
   component: SortTable,
-  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },
