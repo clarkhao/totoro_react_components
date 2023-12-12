@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { FiCircle } from "react-icons/fi";
-import Image from "next/image";
 //style
 import "./carouselTransition.css";
 import useProgressiveImg from "./hook";

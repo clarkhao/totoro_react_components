@@ -23,3 +23,8 @@ jobs:
         run: |
           echo: "lint failed"
         if: failure()
+      - name: git push again
+        run: |
+          git add .
+          git commit -m 'edit branch v1'
+          git push -u origin v1
