@@ -2,8 +2,6 @@ name: components-update
 
 on:
   push:
-    tags:
-      - v*
 
 jobs:
   build:
