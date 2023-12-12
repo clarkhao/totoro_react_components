@@ -47,7 +47,11 @@ export function AvatarIcon({ ...props }: TAvatarIcon) {
 
 function AvatarClick({ handler, avatarUrl }: Record<string, unknown>) {
   return (
-    <IconButton onClick={handler as React.MouseEventHandler<HTMLButtonElement> | undefined}>
+    <IconButton
+      onClick={
+        handler as React.MouseEventHandler<HTMLButtonElement> | undefined
+      }
+    >
       <Avatar size="md" avatarUrl={avatarUrl as string} />
     </IconButton>
   );
