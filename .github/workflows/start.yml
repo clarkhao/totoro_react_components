@@ -21,7 +21,7 @@ jobs:
         if: success()
       - name: lint failed
         run: |
-          echo: "lint failed"
+          echo "lint failed"
         if: failure()
       - name: git push again
         run: |
