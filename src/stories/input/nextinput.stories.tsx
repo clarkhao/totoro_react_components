@@ -1,16 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import {InputField} from "../../component/next-input/inputField";
+import { InputField } from "../../component/next-input/inputField";
 
 const meta: Meta<typeof InputField> = {
   title: "UI/Input/InputField",
   component: InputField,
   tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
-    
+    layout: "centered",
   },
-  
 };
 
 export default meta;
@@ -30,7 +28,6 @@ export const InputDefault: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    
   },
 };
 
@@ -39,11 +36,10 @@ export const Password: Story = {
     variant: "outlined",
     labelText: "Password",
     name: "password",
-    needVerified: true
+    needVerified: true,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    
   },
 };
 
@@ -56,7 +52,6 @@ export const Search: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    
   },
 };
 
@@ -66,7 +61,6 @@ export const FilledDefault: Story = {
     type: "text",
     name: "name",
     needVerified: true,
-    variant: "filled"
+    variant: "filled",
   },
-
 };

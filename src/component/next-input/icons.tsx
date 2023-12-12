@@ -18,11 +18,11 @@ export default function InputIcon({ ...props }: TInputIcon) {
       return <FiMail />;
     case "password":
       return <FiLock />;
-    case 'search':
+    case "search":
       return <FiSearch />;
-    case 'pwdVisbile':
+    case "pwdVisbile":
       return <FiEyeOff />;
-    case 'pwdInvisible':
+    case "pwdInvisible":
       return <FiEye />;
     default:
       return <FiUser />;

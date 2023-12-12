@@ -1,5 +1,12 @@
 import "../src/app/globals.css";
-import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/blocks";
 
 const preview = {
   globalTypes: {
@@ -33,7 +40,6 @@ const preview = {
       ],
     },
   },
-  
 };
 
 export default preview;

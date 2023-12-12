@@ -7,8 +7,8 @@ const meta: Meta<typeof Check> = {
   component: Check,
   tags: ["autodocs"],
   parameters: {
-    layout: 'centered'
-  }
+    layout: "centered",
+  },
 };
 
 export default meta;
@@ -18,6 +18,5 @@ export const Primary: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    
   },
 };

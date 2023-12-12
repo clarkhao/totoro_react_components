@@ -10,7 +10,6 @@ const meta: Meta<typeof Modal> = {
   component: Modal,
   parameters: {
     layout: "fullscreen",
-    
   },
 };
 
@@ -23,7 +22,9 @@ function sleep(ms: number) {
 
 export const ModalDefault: Story = {
   args: {
-    children: <div className="h-96 flex justify-center items-center">Model Content</div>,
+    children: (
+      <div className="h-96 flex justify-center items-center">Model Content</div>
+    ),
   },
   decorators: [
     (Story) => {

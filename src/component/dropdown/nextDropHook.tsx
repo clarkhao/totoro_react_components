@@ -28,7 +28,7 @@ export function useDropdown() {
   };
   const [dropState, dropDispatch] = React.useReducer(
     dropReducer,
-    initDropState
+    initDropState,
   );
   React.useEffect(() => {
     console.log(dropState.isActive);

@@ -24,9 +24,7 @@ function sleep(ms: number) {
 }
 
 export const HambergerDefault: Story = {
-  args: {
-
-  },
+  args: {},
   decorators: [
     (Story) => {
       const { dropState, dropDispatch } = useDropdown();

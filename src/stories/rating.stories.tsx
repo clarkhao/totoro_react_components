@@ -22,7 +22,7 @@ function sleep(ms: number) {
 export const RatingDefault: Story = {
   args: {
     stars: 3.5,
-    size: "base"
+    size: "base",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

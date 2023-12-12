@@ -25,14 +25,14 @@ function sleep(ms: number) {
 
 export const Dropdown_V2: Story = {
   args: {
-    clickable: () => <Hamberger color="gray" id="gray"/>,
+    clickable: () => <Hamberger color="gray" id="gray" />,
     children: <p className="w-80 h-80 bg-slate-900"></p>,
     className: "top-0",
   },
   decorators: [
     (Story) => {
       const { dropState, dropDispatch } = useDropdown();
-      
+
       return (
         <div className="relative w-20 left-1/2 -translate-x-1/2">
           <DropContext.Provider value={{ dropState, dropDispatch }}>

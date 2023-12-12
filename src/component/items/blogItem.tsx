@@ -16,7 +16,7 @@ export default function Item({ ...props }: TItem) {
             </h3>
 
             <p className="mt-1 text-xs font-medium text-gray-600 dark:text-gray-300">
-              {props.firstName}{" "}{props.lastName}
+              {props.firstName} {props.lastName}
             </p>
           </div>
 
@@ -38,13 +38,21 @@ export default function Item({ ...props }: TItem) {
 
         <dl className="mt-6 flex gap-4 sm:gap-6">
           <div className="flex flex-col-reverse">
-            <dt className="text-sm font-medium text-gray-600 dark:text-gray-300">Published</dt>
-            <dd className="text-xs text-gray-500 dark:text-gray-300">31st June, 2021</dd>
+            <dt className="text-sm font-medium text-gray-600 dark:text-gray-300">
+              Published
+            </dt>
+            <dd className="text-xs text-gray-500 dark:text-gray-300">
+              31st June, 2021
+            </dd>
           </div>
 
           <div className="flex flex-col-reverse">
-            <dt className="text-sm font-medium text-gray-600 dark:text-gray-300">Reading time</dt>
-            <dd className="text-xs text-gray-500 dark:text-gray-300">{props.age} minute</dd>
+            <dt className="text-sm font-medium text-gray-600 dark:text-gray-300">
+              Reading time
+            </dt>
+            <dd className="text-xs text-gray-500 dark:text-gray-300">
+              {props.age} minute
+            </dd>
           </div>
         </dl>
       </a>

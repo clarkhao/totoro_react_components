@@ -32,7 +32,7 @@ export function CartItem({ ...props }: TCartItem) {
             <div>
               <dt className="inline">Price:</dt>
               <dd className="inline">{` ${parseFloat(props.item.price).toFixed(
-                2
+                2,
               )}`}</dd>
             </div>
           </dl>

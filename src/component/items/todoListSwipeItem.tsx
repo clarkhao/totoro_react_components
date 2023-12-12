@@ -80,7 +80,7 @@ export function TodoListSwipeItem({ ...props }: TTodoListSwipeItem) {
                 "p-4 active:bg-ele-error/80 dark:active:bg-ele-error/80",
                 "bg-ele-error/80 dark:bg-ele-error/80",
                 "h-[52px] w-[52px]",
-                swipe === "l" ? "z-10" : "-z-10"
+                swipe === "l" ? "z-10" : "-z-10",
               ].join(" ")}
               onClick={() => {
                 setSwipe("r");

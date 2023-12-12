@@ -22,9 +22,9 @@ function sleep(ms: number) {
 
 export const IconBtnDefault: Story = {
   args: {
-    children: <FaCartShopping className="w-10 h-auto dark:text-white"/>,
-    size: 'base',
-    num: 8
+    children: <FaCartShopping className="w-10 h-auto dark:text-white" />,
+    size: "base",
+    num: 8,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

@@ -6,7 +6,7 @@ export function sortChain<T extends { [key: string]: any }>(
     order: number;
     fn: ((v: any) => number) | undefined;
   }>,
-  list: Array<T>
+  list: Array<T>,
 ) {
   let result = deepclone(list);
   sort.forEach((el) => {

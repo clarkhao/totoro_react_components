@@ -11,7 +11,9 @@
   transform: translateX(-100%) scale(0.1);
 }
 .pagination-disappear-left-exit-active {
-  transition: opacity 500ms, transform 500ms ease;
+  transition:
+    opacity 500ms,
+    transform 500ms ease;
 }
 
 .pagination-disappear-right-exit,
@@ -25,7 +27,9 @@
   transform: translateX(100%) scale(0.1);
 }
 .pagination-disappear-right-exit-active {
-  transition: opacity 500ms, transform 500ms ease;
+  transition:
+    opacity 500ms,
+    transform 500ms ease;
 }
 /****************************************************************************/
 
@@ -35,13 +39,14 @@
   transform: translateX(0%);
 }
 .pagination-left-exit-active,
-.pagination-left-exit-done
- {
+.pagination-left-exit-done {
   opacity: 1;
   transform: translateX(-100%);
 }
 .pagination-left-exit-active {
-  transition: opacity 500ms, transform 500ms ease;
+  transition:
+    opacity 500ms,
+    transform 500ms ease;
 }
 
 .pagination-right-exit,
@@ -50,13 +55,14 @@
   transform: translateX(0%);
 }
 .pagination-right-exit-active,
-.pagination-right-exit-done
- {
+.pagination-right-exit-done {
   opacity: 1;
   transform: translateX(100%);
 }
 .pagination-right-exit-active {
-  transition: opacity 500ms, transform 500ms ease;
+  transition:
+    opacity 500ms,
+    transform 500ms ease;
 }
 /*****************************************************************************/
 .pagination-appear-left-exit {
@@ -75,7 +81,9 @@
 
 .pagination-appear-left-exit-active,
 .pagination-appear-left-exit-done {
-  transition: opacity 500ms, transform 500ms ease;
+  transition:
+    opacity 500ms,
+    transform 500ms ease;
 }
 
 .pagination-appear-right-exit {
@@ -92,7 +100,9 @@
   transform: translateX(100%) scale(1);
 }
 .pagination-appear-right-exit-active {
-  transition: opacity 500ms, transform 500ms ease;
+  transition:
+    opacity 500ms,
+    transform 500ms ease;
 }
 /*************************************************************************************/
 .pagination-stable-exit,

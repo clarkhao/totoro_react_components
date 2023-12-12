@@ -109,17 +109,12 @@ export function Intro({ ...props }: TIntro) {
           body: JSON.stringify(data),
           headers: { "Content-Type": "application/json" },
           signal: controller.current.signal,
-        }
+        },
       )
         .then(async (res) => {
           return await res.json();
         })
         .then((res) => {
-          setData({
-            name: "",
-            email: "",
-            content: "",
-          });
           setState("success");
         })
         .catch((err) => {
@@ -129,7 +124,9 @@ export function Intro({ ...props }: TIntro) {
             setState("fail");
           }
         })
-        .finally(() => setIsFetching(false));
+        .finally(() => {
+          setIsFetching(false);
+        });
     };
     if (state === undefined && isFetching) {
       postContact();
@@ -492,7 +489,7 @@ export function Intro({ ...props }: TIntro) {
                     "w-full border-none bg-gray-50 min-h-[110px] rounded-tl-lg rounded-tr-lg",
                     "outline-0 focus:ring-0 placeholder:text-sm",
                     style.textarea,
-                    errors["content"]?.isErr ? "text-ele-error" : ""
+                    errors["content"]?.isErr ? "text-ele-error" : "",
                   ].join(" ")}
                 />
                 <label

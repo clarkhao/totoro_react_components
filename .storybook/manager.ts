@@ -1,20 +1,20 @@
 // .storybook/manager.js
-import { addons } from '@storybook/manager-api';
-import totoro from './totoro';
+import { addons } from "@storybook/manager-api";
+import totoro from "./totoro";
 
 addons.setConfig({
   isFullscreen: false,
   showNav: true,
   showPanel: true,
-  panelPosition: 'right',
+  panelPosition: "right",
   enableShortcuts: true,
   showToolbar: true,
   theme: totoro,
   selectedPanel: undefined,
-  initialActive: 'sidebar',
+  initialActive: "sidebar",
   sidebar: {
     showRoots: false,
-    collapsedRoots: ['other'],
+    collapsedRoots: ["other"],
   },
   toolbar: {
     title: { hidden: false },

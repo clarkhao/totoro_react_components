@@ -43,7 +43,6 @@ export function FilterNSort({ ...props }: TFilterNSort) {
     setTag("");
   };
 
-  
   return (
     <div className="flex flex-row justify-start items-start gap-3">
       <Select
@@ -103,7 +102,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
                         value=""
                         checked={
                           filterNSort?.filterState.filterTags.indexOf(
-                            item.content
+                            item.content,
                           ) !== -1
                         }
                         className={[

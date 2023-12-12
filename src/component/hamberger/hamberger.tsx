@@ -1,6 +1,6 @@
 import React from "react";
 import { DropContext } from "../dropdown/nextDropHook";
-import style from './hamberger.module.css';
+import style from "./hamberger.module.css";
 
 type THamberger = {
   /**
@@ -16,9 +16,9 @@ type THamberger = {
 export function Hamberger({ ...props }: THamberger) {
   const drop = React.useContext(DropContext);
   React.useEffect(() => {
-    const ele = document.getElementById(props.id)
-    ele?.style.setProperty('--hamberger-btn-color', props.color)
-  }, [props.color])
+    const ele = document.getElementById(props.id);
+    ele?.style.setProperty("--hamberger-btn-color", props.color);
+  }, [props.color]);
   return (
     <article
       id={props.id}

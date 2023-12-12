@@ -4,7 +4,6 @@ import Spinner from "../component/spinner/spinner";
 import { ListContext, useFetch } from "../component/next-pagination/hook";
 import React from "react";
 
-
 const meta: Meta<typeof Spinner> = {
   title: "UI/Spinner",
   component: Spinner,

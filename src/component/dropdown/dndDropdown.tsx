@@ -67,7 +67,7 @@ export function TodoListItem({ ...props }: TTodoListItem) {
       <FaCircleXmark
         className={[
           "absolute right-0 top-0 w-6 h-auto translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer",
-          "hover:fill-ele-error active:fill-ele-error/80"
+          "hover:fill-ele-error active:fill-ele-error/80",
         ].join(" ")}
         onClick={() => handleDelete(props.index)}
       />

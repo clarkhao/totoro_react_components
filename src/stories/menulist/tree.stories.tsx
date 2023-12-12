@@ -21,5 +21,4 @@ function sleep(ms: number) {
 
 export const SortTableDefault: Story = {
   args: {},
-  
 };

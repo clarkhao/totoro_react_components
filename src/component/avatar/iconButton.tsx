@@ -16,7 +16,7 @@ export function IconButton(props: IIconButton) {
         {...props}
         className={[
           "rounded-full bg-transparent flex justify-center items-center hover:bg-gray-200 active:bg-gray-100",
-          "dark:hover:bg-gray-400 dark:active:bg-gray-400"
+          "dark:hover:bg-gray-400 dark:active:bg-gray-400",
         ].join(" ")}
       >
         {props.children}

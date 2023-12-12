@@ -2,7 +2,15 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { IButton, Button } from "../../component/button/button";
 import React from "react";
 import { FaGoogle } from "react-icons/fa6";
-import { Title, Subtitle, Description, Controls, Stories, Story, Source } from '@storybook/blocks';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Controls,
+  Stories,
+  Story,
+  Source,
+} from "@storybook/blocks";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Button",
@@ -22,7 +30,7 @@ export const Primary: Story = {
     children: "Button",
     isPrimary: true,
     width: "w-48",
-    size: 'base'
+    size: "base",
   },
 };
 
@@ -31,7 +39,7 @@ export const Secondary: Story = {
     children: "Button",
     isPrimary: false,
     width: "w-48",
-    size: 'base'
+    size: "base",
   },
 };
 
@@ -41,7 +49,7 @@ export const OutlinedPrimary: Story = {
     isPrimary: true,
     width: "w-48",
     isOutlined: true,
-    size: 'base'
+    size: "base",
   },
 };
 
@@ -51,7 +59,7 @@ export const OutlinedSecondary: Story = {
     isPrimary: false,
     width: "w-48",
     isOutlined: true,
-    size: 'base'
+    size: "base",
   },
 };
 
@@ -65,6 +73,6 @@ export const WithIcons: Story = {
     ),
     width: "w-48",
     isPrimary: true,
-    size: 'base'
+    size: "base",
   },
 };

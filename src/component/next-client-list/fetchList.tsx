@@ -15,7 +15,7 @@ const fetchData = async (
   url: string,
   pageIndex: number = 1,
   fetchLimit: number,
-  signal: AbortSignal | undefined
+  signal: AbortSignal | undefined,
 ) => {
   const response = await axios({
     url: `${url}?limit=${fetchLimit}&skip=${(pageIndex - 1) * 9}`,
@@ -54,7 +54,7 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
   const { data, error, isLoading, isFetching, isPreviousData } = useQuery(
     ["customers", pageIndex],
     ({ signal }) => fetchData(props.url, pageIndex, fetchLimit, signal),
-    { suspense: true, staleTime: 30000, keepPreviousData: true }
+    { suspense: true, staleTime: 30000, keepPreviousData: true },
   );
   /*
   const getPageTotal = React.useCallback(() => {
@@ -63,7 +63,7 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
   */
   const getPageTotal = React.useMemo(
     () => Math.round(data?.total / fetchLimit),
-    [data?.total]
+    [data?.total],
   );
   if (isLoading) return <div>Fetching posts...</div>;
   if (error) return <div>An error occurred: {(error as Error).message}</div>;
@@ -94,7 +94,7 @@ export function FetchInfiniteList({
           props.url,
           pageParam,
           fetchLimit,
-          signal
+          signal,
         ) as Promise<TFetchData>,
       {
         refetchOnWindowFocus: false,
@@ -104,7 +104,7 @@ export function FetchInfiniteList({
             lastPage.users.length === 9 ? allPages.length + 1 : undefined;
           return nextPage;
         },
-      }
+      },
     );
   console.log(data);
   React.useEffect(() => {

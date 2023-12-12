@@ -4,7 +4,7 @@ import { useCartStore } from "../next-list/cart/cartStore";
 type TListData = {
   currentIndex: number;
   isAscending: boolean;
-  cursors: Record<string, string>
+  cursors: Record<string, string>;
 };
 type TListDataPayload = {
   isAscending: boolean;
@@ -12,8 +12,8 @@ type TListDataPayload = {
   "next-page": boolean;
   "prev-page": boolean;
   "set-specified": number;
-  "record-cursor": Record<string,string>;
-  "reset": null;
+  "record-cursor": Record<string, string>;
+  reset: null;
 };
 export interface IDynamicListAction {
   type: keyof TListDataPayload;
@@ -25,7 +25,7 @@ export function usePage(current?: number) {
   const initListData: TListData = {
     currentIndex: current ?? 1,
     isAscending: true,
-    cursors: {}
+    cursors: {},
   };
   const listReducer = (state: TListData, action: IDynamicListAction) => {
     switch (action.type) {
@@ -53,28 +53,31 @@ export function usePage(current?: number) {
             ? state.currentIndex - 1
             : state.currentIndex,
         };
-      case "set-specified": 
+      case "set-specified":
         return {
           ...state,
-          currentIndex: (action.payload as TListDataPayload["set-specified"])
-        }
+          currentIndex: action.payload as TListDataPayload["set-specified"],
+        };
       case "record-cursor":
         return {
           ...state,
-          cursors: {...state.cursors, ...(action.payload as TListDataPayload["record-cursor"])}
-        }
+          cursors: {
+            ...state.cursors,
+            ...(action.payload as TListDataPayload["record-cursor"]),
+          },
+        };
       case "reset":
         return {
           ...state,
-          ...initListData
-        }
+          ...initListData,
+        };
       default:
         return state;
     }
   };
-  
+
   const [listState, listDispatch] = React.useReducer(listReducer, initListData);
-  
+
   return { listState, listDispatch };
 }
 type TListHandle = {

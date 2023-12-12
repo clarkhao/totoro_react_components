@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import {BorderLine} from "../../component/line/line";
+import { BorderLine } from "../../component/line/line";
 import React from "react";
 
 const meta: Meta<typeof BorderLine> = {
@@ -22,7 +22,6 @@ export const LineDefault: Story = {
   //color: "blue" | "dark" | "red" | "green" | "yellow" | "indigo" | "purple" | "pink"
   args: {
     children: "Javascript",
-    color: 'green'
+    color: "green",
   },
-  
 };

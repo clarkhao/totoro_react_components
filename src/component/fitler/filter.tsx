@@ -20,7 +20,7 @@ export async function FilterServer({ ...props }: TFilter) {
   const categories = res.collections.edges.map(
     (item: { cursor: string; node: Record<string, any> }) => {
       return { id: item.node.id, title: item.node.title };
-    }
+    },
   );
 
   return (

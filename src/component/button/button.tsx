@@ -52,15 +52,15 @@ export const Button = function Button({
     rest.callbackState === "success"
       ? "focus:ring-emerald-200 active:border-emerald-200 bg-ele-success hover:bg-ele-success text-white border-ele-success dark:border-ele-success"
       : rest.callbackState === "fail"
-      ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
-      : "focus: ring-rose-300 active:border-brand-primary"
+        ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
+        : "focus: ring-rose-300 active:border-brand-primary"
   }`;
   const primaryOutlined = `text-brand-primary border border-2 border-brand-primary after:bg-brand-primary after:active:text-brand-primary active:border active:ring-0 ${
     rest.callbackState === "success"
       ? "focus:ring-emerald-200 active:border-emerald-200 bg-ele-success hover:bg-ele-success text-white border-ele-success dark:border-ele-success"
       : rest.callbackState === "fail"
-      ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
-      : "focus: ring-rose-300 active:border-brand-primary"
+        ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
+        : "focus: ring-rose-300 active:border-brand-primary"
   }`;
   const primaryColors = rest.isOutlined ? primaryOutlined : primaryContained;
 
@@ -68,23 +68,23 @@ export const Button = function Button({
     rest.callbackState === "success"
       ? "focus:ring-emerald-200 active:border-emerald-200 bg-ele-success hover:bg-ele-success text-white border-ele-success dark:border-ele-success"
       : rest.callbackState === "fail"
-      ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
-      : "focus:ring-violet-300 active:border-violet-300"
+        ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
+        : "focus:ring-violet-300 active:border-violet-300"
   }`;
   const secondaryOutlined = `text-brand-secondary border border-2 border-brand-secondary after:bg-brand-secondary after:active:text-brand-secondary active:border active:border-brand-secondary active:ring-0 ${
     rest.callbackState === "success"
       ? "focus:ring-emerald-200 active:border-emerald-200 bg-ele-success hover:bg-ele-success text-white border-ele-success dark:border-ele-success"
       : rest.callbackState === "fail"
-      ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
-      : "focus:ring-violet-300 active:border-violet-300"
+        ? "focus:ring-amber-200 active:border-amber-200 bg-ele-error hover:bg-ele-error text-white border-ele-error dark:border-ele-error"
+        : "focus:ring-violet-300 active:border-violet-300"
   }`;
 
   const secondaryOutlinedDark = ` dark:after:bg-violet-600 dark:hover:text-white ${
     rest.callbackState === "success"
       ? "dark:focus:ring-emerald-200 dark:border-ele-success"
       : rest.callbackState === "fail"
-      ? "dark:focus:ring-amber-200 dark:border-ele-error"
-      : "dark:focus:ring-violet-400 dark:border-violet-500"
+        ? "dark:focus:ring-amber-200 dark:border-ele-error"
+        : "dark:focus:ring-violet-400 dark:border-violet-500"
   }`;
   const textDarkColor =
     rest.callbackState !== undefined
@@ -140,7 +140,7 @@ export const Button = function Button({
           sizeSelector(),
           !rest.callbackState || !moreAnimated ? `${rest.width}` : "m-0 p-0",
           "flex justify-center items-center",
-          rest.disabled ? "" : ""
+          rest.disabled ? "" : "",
         ].join(" ")}
         data-testid="test-button"
         data-addtocart={addToCart}

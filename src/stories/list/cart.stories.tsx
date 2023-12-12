@@ -6,7 +6,7 @@ const meta: Meta<typeof Cart> = {
   title: "Scenary/Shopping Cart",
   component: Cart,
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
   },
 };
 
@@ -18,9 +18,7 @@ function sleep(ms: number) {
 }
 
 export const CartDefault: Story = {
-  args: {
-    
-  },
+  args: {},
   decorators: [
     (Story) => (
       <div className="pb-2">

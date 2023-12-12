@@ -33,7 +33,10 @@ export function Dropdown(props: TDropdown) {
     };
   }, []);
   return (
-    <div className="flex flex-col justify-start items-center gap-2" ref={dropdownRef}>
+    <div
+      className="flex flex-col justify-start items-center gap-2"
+      ref={dropdownRef}
+    >
       <button
         id="dropdownBgHoverButton"
         data-dropdown-toggle="dropdownBgHover"

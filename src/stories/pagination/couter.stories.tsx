@@ -29,7 +29,7 @@ export const CounterDefault: Story = {
     isNext: true,
     isPrev: true,
     total: 99,
-    range: [1, 99]
+    range: [1, 99],
   },
   decorators: [
     (Story) => {

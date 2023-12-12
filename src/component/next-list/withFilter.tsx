@@ -15,7 +15,7 @@ type TWithFilterList = {
 
 export function WithFilterList({ ...props }: TWithFilterList) {
   const { filterState, filterDispatch } = useFilter();
-  
+
   const [data, setData] = React.useState<
     Array<{ id: string; title: string }> | undefined
   >(undefined);
@@ -28,8 +28,8 @@ export function WithFilterList({ ...props }: TWithFilterList) {
             [{ id: "", title: "All" }].concat(
               res.collections.edges.map((el: Record<string, any>) => {
                 return { id: el.node.id, title: el.node.title };
-              })
-            )
+              }),
+            ),
           );
         }
       })
@@ -37,7 +37,6 @@ export function WithFilterList({ ...props }: TWithFilterList) {
         console.log(err.message);
         setError(err);
       });
-    
   }, []);
   const categoryQuery = React.useMemo(() => {
     const id =

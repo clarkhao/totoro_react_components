@@ -26,8 +26,8 @@ export default function Rating({ ...props }: TRate) {
                 props.size === "small"
                   ? "w-4"
                   : props.size === "base"
-                  ? "w-8"
-                  : "w-12",
+                    ? "w-8"
+                    : "w-12",
               ].join(" ")}
               fill="#fde047"
             />
@@ -41,8 +41,8 @@ export default function Rating({ ...props }: TRate) {
                 props.size === "small"
                   ? "w-4"
                   : props.size === "base"
-                  ? "w-8"
-                  : "w-12",
+                    ? "w-8"
+                    : "w-12",
               ].join(" ")}
             />
           );

@@ -7,7 +7,6 @@ import { useInput } from "./hook";
 //style
 import "./inputField.css";
 
-
 export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * variant
@@ -66,7 +65,7 @@ export function InputField({ variant, value, ...props }: IInput) {
     value as string,
     props.name,
     props.requestErr,
-    props.needVerified
+    props.needVerified,
   );
   const [type, setType] = React.useState<string>(props.type || "password");
   /**

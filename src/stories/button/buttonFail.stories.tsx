@@ -32,8 +32,8 @@ const meta: Meta<typeof ButtonWrapper> = {
     layout: "centered",
     docs: {
       story: { inline: false }, // render the story in an iframe
-      canvas: { sourceState: 'shown' }, // start with the source open
-      source: { type: 'code' }, // forces the raw source code (rather than the rendered JSX).
+      canvas: { sourceState: "shown" }, // start with the source open
+      source: { type: "code" }, // forces the raw source code (rather than the rendered JSX).
     },
   },
 };

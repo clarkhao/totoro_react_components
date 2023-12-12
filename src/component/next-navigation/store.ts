@@ -21,7 +21,7 @@ export const useMenuStore = create<
   TState & Action,
   [
     ["zustand/subscribeWithSelector", never],
-    ["zustand/persist", Omit<TState & Action, "toastMsg">]
+    ["zustand/persist", Omit<TState & Action, "toastMsg">],
   ]
 >(
   logger(
@@ -33,6 +33,6 @@ export const useMenuStore = create<
       setRoute: (newRoute) => set((state) => ({ ...state, route: newRoute })),
       setGroup: (newGroup) =>
         set((state) => ({ ...state, groupIndex: newGroup })),
-    }))
-  )
+    })),
+  ),
 );

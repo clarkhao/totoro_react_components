@@ -22,5 +22,4 @@ function sleep(ms: number) {
 
 export const InputDefault: Story = {
   args: {},
-  
 };

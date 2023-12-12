@@ -31,7 +31,7 @@ export function Counter({ total, ...props }: TCounter) {
   const [setCartItems] = useCartStore((state) => [state.setCartItems]);
   const list = React.useContext(DynamicListContext);
   const [input, setInput] = React.useState(
-    list?.listState.currentIndex.toString()
+    list?.listState.currentIndex.toString(),
   );
   const [toggle, setToggle] = React.useState(true);
   const debounceTimer = React.useRef<number>(0);

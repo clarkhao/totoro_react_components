@@ -24,7 +24,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
     state.sort,
     state.setSortGroup,
   ]);
-  console.log("rerender filter")
+  console.log("rerender filter");
   //tag inside the textinput
   const [tag, setTag] = React.useState<string>("");
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
 
   const handleDeleteSort = (
     e: React.MouseEvent<SVGElement, MouseEvent>,
-    i: number
+    i: number,
   ) => {
     console.log(i);
     setSortGroup((prev) => prev.filter((_, index) => index !== i));
@@ -62,10 +62,8 @@ export function FilterNSort({ ...props }: TFilterNSort) {
   const handleSelectChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
     i: number,
-    key: string
-  ) => {
-
-  };
+    key: string,
+  ) => {};
   return (
     <div className="flex flex-row justify-start items-start gap-3">
       <Select
@@ -125,7 +123,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
                         value=""
                         checked={
                           filterNSort?.filterState.filterTags.indexOf(
-                            item.content
+                            item.content,
                           ) !== -1
                         }
                         className={[

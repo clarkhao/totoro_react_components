@@ -28,7 +28,7 @@ export const DynamicPaginationDefault: Story = {
   args: {
     isNext: true,
     isPrev: true,
-    total: 1000
+    total: 1000,
   },
   decorators: [
     (Story) => {

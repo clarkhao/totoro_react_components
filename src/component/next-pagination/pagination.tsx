@@ -57,7 +57,7 @@ export default function Pagination(props: TPagination) {
     const isCurrent = value?.endsWith("(current)");
     const newValue = parseInt(value ?? "");
     await handleAsyncStateUpdate(
-      newValue > (list?.listState.currentIndex ?? 1)
+      newValue > (list?.listState.currentIndex ?? 1),
     );
     list?.listDispatch({
       type: "specified-page",

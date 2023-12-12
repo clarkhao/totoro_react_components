@@ -27,7 +27,7 @@ export const SelectDefault: Story = {
       { id: "234", title: "Woman" },
     ],
     title: "Select Collection",
-    height: 'small'
+    height: "small",
   },
   decorators: [
     (Story) => (

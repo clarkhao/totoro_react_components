@@ -11,8 +11,7 @@ const ButtonWrapper = (props: IButton) => {
   const handleClick = () => {
     if (state === undefined) {
       setState("pending");
-    }
-    else {
+    } else {
       setState(undefined);
     }
   };
@@ -30,8 +29,8 @@ const meta: Meta<typeof ButtonWrapper> = {
     layout: "centered",
     docs: {
       story: { inline: false }, // render the story in an iframe
-      canvas: { sourceState: 'shown' }, // start with the source open
-      source: { type: 'code' }, // forces the raw source code (rather than the rendered JSX).
+      canvas: { sourceState: "shown" }, // start with the source open
+      source: { type: "code" }, // forces the raw source code (rather than the rendered JSX).
     },
   },
 };
@@ -49,7 +48,7 @@ export const PendingAnimated: Story = {
     isPrimary: true,
     width: "w-48",
     moreAnimated: true,
-    isOutlined: true
+    isOutlined: true,
   },
 
   play: async ({ canvasElement, args }) => {

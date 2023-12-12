@@ -1,7 +1,5 @@
-type TTree = {}
+type TTree = {};
 
-export function Tree({...props}: TTree) {
-	return (
-		<div></div>
-	)
+export function Tree({ ...props }: TTree) {
+  return <div></div>;
 }

@@ -21,13 +21,12 @@ function sleep(ms: number) {
 export const InfiniteList: Story = {
   args: {
     element: Item,
-    renderWays: "infinite"
-    
+    renderWays: "infinite",
   },
 };
 export const PaginationList: Story = {
   args: {
     element: Item,
-    renderWays: "pagination"
+    renderWays: "pagination",
   },
 };

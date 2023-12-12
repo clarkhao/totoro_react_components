@@ -1,21 +1,21 @@
 .conic {
   background: repeating-conic-gradient(
     from var(--a),
-    #FF4081 0%,
-    #FF4081 10%,
+    #ff4081 0%,
+    #ff4081 10%,
     transparent 10%,
     transparent 40%,
     transparent 40%,
-    #03A9F4 50%,
-    #03A9F4 60%,
+    #03a9f4 50%,
+    #03a9f4 60%,
     transparent 60%,
     transparent 90%,
-    #FF4081 100%
+    #ff4081 100%
   );
   animation: animate 2.5s linear infinite;
 }
 @property --a {
-  syntax: '<angle>';
+  syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
 }

@@ -28,7 +28,7 @@ function useInput(
   value: string,
   name: string,
   requestErr?: string | undefined,
-  needVerified?: boolean
+  needVerified?: boolean,
 ) {
   const debounceTimer = React.useRef<number>(0);
   const inputReducer = (state: TInputState, action: IInputAction) => {
@@ -70,7 +70,7 @@ function useInput(
   };
   const [inputState, inputDispatch] = React.useReducer(
     inputReducer,
-    initInputState
+    initInputState,
   );
   const err = React.useContext(ErrorContext);
   React.useEffect(() => {
@@ -108,15 +108,27 @@ function useInput(
           });
         }
       } else {
-        err?.setErrors((prev) => {
-          return {
-            ...prev,
-            email: {
-              isErr: false,
-              errMsg: undefined,
-            },
-          };
-        });
+        if (name === "name") {
+          err?.setErrors((prev) => {
+            return {
+              ...prev,
+              name: {
+                isErr: false,
+                errMsg: undefined,
+              },
+            };
+          });
+        } else if (name === "email") {
+          err?.setErrors((prev) => {
+            return {
+              ...prev,
+              email: {
+                isErr: false,
+                errMsg: undefined,
+              },
+            };
+          });
+        }
       }
     };
     if (

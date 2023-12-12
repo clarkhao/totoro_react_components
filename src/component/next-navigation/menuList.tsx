@@ -34,9 +34,14 @@ type TMenuList = {
   children?: React.ReactNode;
 };
 function MenuList({ ...props }: TMenuList) {
-  const [route, index] = useMenuStore((state) => [state.route, state.groupIndex]);
+  const [route, index] = useMenuStore((state) => [
+    state.route,
+    state.groupIndex,
+  ]);
   React.useEffect(() => {
-    (props.handleRoute ?? console.log)(`current route is ${route} and group is ${index}`);
+    (props.handleRoute ?? console.log)(
+      `current route is ${route} and group is ${index}`,
+    );
   }, [route]);
   const groups = Object.entries(props.data);
   return (

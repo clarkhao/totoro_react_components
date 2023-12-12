@@ -22,7 +22,7 @@ export function Carousel({ imageUrls, ...props }: TCarousel) {
   const [isAscending, setAscending] = React.useState(true);
   const [src, blurred] = useProgressiveImg(
     imageUrls[availableIndex].blur,
-    imageUrls[availableIndex].image
+    imageUrls[availableIndex].image,
   );
   const handleAsyncStateUpdate = async (next: boolean) => {
     return new Promise((resolve) => {

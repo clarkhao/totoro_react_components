@@ -8,7 +8,7 @@ type TState = {
 };
 type Action = {
   setSortGroup: (
-    fn: (prevSorts: Array<TSortGroup>) => Array<TSortGroup>
+    fn: (prevSorts: Array<TSortGroup>) => Array<TSortGroup>,
   ) => void;
 };
 
@@ -20,7 +20,7 @@ export const useSortStore = create<
   TState & Action,
   [
     ["zustand/subscribeWithSelector", never],
-    ["zustand/persist", TState & Action]
+    ["zustand/persist", TState & Action],
   ]
 >(
   logger(
@@ -30,6 +30,6 @@ export const useSortStore = create<
         set((state) => ({
           sort: fn(state.sort),
         })),
-    }))
-  )
+    })),
+  ),
 );

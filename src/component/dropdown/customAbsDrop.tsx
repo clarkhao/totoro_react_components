@@ -1,4 +1,4 @@
-/**clicking the popup also make the popup disappearred, 
+/**clicking the popup also make the popup disappearred,
  * outer relative wrapper is needed */
 import React, { FC } from "react";
 import { CSSTransition } from "react-transition-group";

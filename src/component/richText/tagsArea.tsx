@@ -43,7 +43,7 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
             index,
             tags: [...dndList?.dndListState.list[index].selectedTags].slice(
               0,
-              -1
+              -1,
             ),
           },
         });
@@ -65,7 +65,7 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
       payload: {
         index,
         tags: [...dndList?.dndListState.list[index].selectedTags].filter(
-          (el) => el !== content
+          (el) => el !== content,
         ),
       },
     });

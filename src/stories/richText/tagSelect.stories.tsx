@@ -28,7 +28,7 @@ function StoryTagSelect({ ...props }: TStoryTagSelect) {
       <FilterNSortContext.Provider value={{ filterState, filterDispatch }}>
         <DndListContext.Provider value={{ dndListState, dndListDispatch }}>
           <div className="w-[348px]">
-          <TagSelect index={0} />
+            <TagSelect index={0} />
           </div>
         </DndListContext.Provider>
       </FilterNSortContext.Provider>

@@ -3,15 +3,15 @@ export type TToastMsg = { id: string; bingo: boolean; msg: string };
 type Logger = <
   T,
   Mps extends [StoreMutatorIdentifier, unknown][] = [],
-  Mcs extends [StoreMutatorIdentifier, unknown][] = []
+  Mcs extends [StoreMutatorIdentifier, unknown][] = [],
 >(
   f: StateCreator<T, Mps, Mcs>,
-  name?: string
+  name?: string,
 ) => StateCreator<T, Mps, Mcs>;
 
 type LoggerImpl = <T>(
   f: StateCreator<T, [], []>,
-  name?: string
+  name?: string,
 ) => StateCreator<T, [], []>;
 
 const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {

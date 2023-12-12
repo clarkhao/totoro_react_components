@@ -29,8 +29,8 @@ export function IconButton({ children, ...props }: IIconButton) {
           props.size === "small"
             ? "w-12 h-12"
             : props.size === "base"
-            ? "w-14 h-14"
-            : "w-20 h-20",
+              ? "w-14 h-14"
+              : "w-20 h-20",
           "dark:hover:bg-gray-400 dark:active:bg-gray-500",
         ].join(" ")}
       >

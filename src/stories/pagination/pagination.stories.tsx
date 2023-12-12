@@ -6,10 +6,10 @@ import React from "react";
 
 function PaginationWithContext() {
   const { listState, listDispatch } = useFetch();
-  
+
   return (
     <ListContext.Provider value={{ listState, listDispatch }}>
-      <Pagination lastPageIndex={9}/>
+      <Pagination lastPageIndex={9} />
     </ListContext.Provider>
   );
 }

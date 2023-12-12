@@ -25,7 +25,7 @@ interface TCustomDropdown extends Record<string, any> {
   /**
    * pos
    */
-  pos?: {top: number, right: number}
+  pos?: { top: number; right: number };
   /**
    * childHeight
    */

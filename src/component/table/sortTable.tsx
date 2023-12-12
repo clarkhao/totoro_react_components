@@ -62,34 +62,40 @@ export function SortTable({ ...props }: TSortTable) {
     return props.isPagination
       ? sorted.slice(
           (listState.currentIndex - 1) * 9,
-          (listState.currentIndex - 1) * 9 + 9
+          (listState.currentIndex - 1) * 9 + 9,
         )
       : sorted;
   }, [forestArea, sort, listState.currentIndex, props.isPagination]);
   React.useEffect(() => {
-    d3.csv("https://doggycatty.s3.amazonaws.com/app/forest-area-km.csv", (d) => {
-      return {
-        code: d.Code,
-        entity: d.Entity,
-        forestArea: Math.round(+d["Forest area"]),
-        year: +d.Year,
-      };
-    }).then((data) => {
-      const dataMap = data.reduce((acc, el) => {
-        if (!(el.entity in acc)) {
-          acc[el.entity] = [el];
-        } else {
-          acc[el.entity].push(el);
-        }
-        return acc;
-      }, {} as { [key: string]: TForestArea[] });
+    d3.csv(
+      "https://doggycatty.s3.amazonaws.com/app/forest-area-km.csv",
+      (d) => {
+        return {
+          code: d.Code,
+          entity: d.Entity,
+          forestArea: Math.round(+d["Forest area"]),
+          year: +d.Year,
+        };
+      },
+    ).then((data) => {
+      const dataMap = data.reduce(
+        (acc, el) => {
+          if (!(el.entity in acc)) {
+            acc[el.entity] = [el];
+          } else {
+            acc[el.entity].push(el);
+          }
+          return acc;
+        },
+        {} as { [key: string]: TForestArea[] },
+      );
       console.log(dataMap);
       setForestArea(dataMap);
     });
   }, []);
   const totalPage = React.useMemo(
     () => Math.ceil(Object.keys(forestArea).length / 9),
-    [forestArea]
+    [forestArea],
   );
 
   return (

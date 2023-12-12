@@ -26,7 +26,7 @@ export function NextDropdown({ children, ...props }: ICustomAbsDrop) {
 
   React.useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if(popupRef.current?.contains(event.target as Node)) {
+      if (popupRef.current?.contains(event.target as Node)) {
         return;
       } else if (!labelRef.current?.contains(event.target as Node)) {
         drop?.dropDispatch({ type: "set-active", payload: false });

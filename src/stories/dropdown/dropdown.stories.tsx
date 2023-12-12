@@ -26,7 +26,7 @@ export const Dropdown_V0: Story = {
         className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
         aria-labelledby="dropdownBgHoverButton"
       >
-        {["abccdde","b","c"].map((el, index) => (
+        {["abccdde", "b", "c"].map((el, index) => (
           <li key={index}>
             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
               <input

@@ -21,8 +21,8 @@ function sleep(ms: number) {
 
 export const ProgressDefault: Story = {
   args: {
-    header: 'React',
-    count: 7
+    header: "React",
+    count: 7,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

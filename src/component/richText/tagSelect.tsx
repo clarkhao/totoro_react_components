@@ -20,7 +20,7 @@ export function TagSelect({ ...props }: TTagSelect) {
 
   const handleAddTag = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    i: number
+    i: number,
   ) => {
     const newTag = filterNSort?.filterState.tags[i]?.content;
     dndList?.dndListDispatch({
@@ -34,7 +34,7 @@ export function TagSelect({ ...props }: TTagSelect) {
 
   const handleDelete = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
+    index: number,
   ) => {
     filterNSort?.filterDispatch({
       type: "delete-tag",
@@ -76,7 +76,7 @@ export function TagSelect({ ...props }: TTagSelect) {
                       <div
                         className="flex flex-row justify-start items-center gap-2 p-1 bg-ele-error rounded-md hover:bg-ele-error/80 text-white text-sm"
                         onClick={(
-                          e: React.MouseEvent<HTMLDivElement, MouseEvent>
+                          e: React.MouseEvent<HTMLDivElement, MouseEvent>,
                         ) => handleDelete(e, index)}
                       >
                         <FaTrashCan />

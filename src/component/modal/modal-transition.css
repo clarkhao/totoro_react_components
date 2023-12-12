@@ -19,5 +19,7 @@
 }
 .modal-enter-active,
 .modal-exit-active {
-  transition: opacity 300ms, transform 300ms;
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }

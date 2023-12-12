@@ -41,7 +41,7 @@ export default function Product({ item, ...props }: TItem) {
   };
   React.useEffect(() => {
     const btn = document.querySelector(
-      `button[data-addtocart="${(item.id as string).split("/").reverse()[0]}"]`
+      `button[data-addtocart="${(item.id as string).split("/").reverse()[0]}"]`,
     ) as HTMLButtonElement;
     const addItem = (e: MouseEvent) => {
       const target = e.currentTarget as HTMLButtonElement;

@@ -39,11 +39,11 @@ export function useFilter() {
   };
   const [filterState, filterDispatch] = React.useReducer(
     filterReducer,
-    initFilterState
+    initFilterState,
   );
   React.useEffect(() => {
     console.log(
-      `selected: ${filterState.selected}, search: ${filterState.search}`
+      `selected: ${filterState.selected}, search: ${filterState.search}`,
     );
   }, [filterState]);
   return { filterState, filterDispatch };

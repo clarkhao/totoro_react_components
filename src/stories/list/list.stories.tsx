@@ -7,7 +7,7 @@ const meta: Meta<typeof GraphqlList> = {
   component: GraphqlList,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
   },
 };
 
@@ -21,7 +21,7 @@ function sleep(ms: number) {
 export const ClientListDefault: Story = {
   args: {
     url: "https://mock.shop/api",
-    renderWays: "infinite"
+    renderWays: "infinite",
   },
   decorators: [
     (Story) => (

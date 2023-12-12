@@ -64,7 +64,7 @@ export function CustomDraggable({ ...props }: IDraggable) {
   };
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     console.log(dnd?.dndListState.dragged, dnd?.dndListState.dropped);
-    dnd?.dndListDispatch({type: "set-init-dragged", payload: -1})
+    dnd?.dndListDispatch({ type: "set-init-dragged", payload: -1 });
   };
   return (
     <div

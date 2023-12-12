@@ -96,7 +96,7 @@ export function GraphqlList({ query = initQuery, ...props }: TClientList) {
       props.url,
       query,
       { page: 9, cursor: listState.cursors[index - 1] },
-      { signal }
+      { signal },
     )
       .then((res) => {
         let newData: Record<string, any> = {};
@@ -140,7 +140,7 @@ export function GraphqlList({ query = initQuery, ...props }: TClientList) {
     return [...data?.products.edges].filter((el) =>
       (el.node.title as string)
         .toLowerCase()
-        .includes(filter?.filterState.search.toLowerCase() ?? "")
+        .includes(filter?.filterState.search.toLowerCase() ?? ""),
     );
   }, [data, filter?.filterState.search]);
   if (!data) {

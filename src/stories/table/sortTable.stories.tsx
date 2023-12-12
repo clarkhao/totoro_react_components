@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import {SortTable} from "../../component/table/sortTable";
+import { SortTable } from "../../component/table/sortTable";
 import React from "react";
-
 
 const meta: Meta<typeof SortTable> = {
   title: "Scenary/SortTable",
@@ -22,7 +21,6 @@ function sleep(ms: number) {
 export const SortTableDefault: Story = {
   args: {
     title: "Global Forest Area",
-    isPagination: true
+    isPagination: true,
   },
-  
 };

@@ -84,7 +84,7 @@ export function Cart({ ...props }: TCart) {
                         </a>
                       </li>
                     );
-                  }
+                  },
                 )}
               </ul>
             </nav>

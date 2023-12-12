@@ -54,7 +54,8 @@ export function useFetch(current?: number) {
             .first
             ? state.pageIndex +
               ((action.payload as TListDataPayload["specified-page"]).value -
-                state.pageIndex - 1)
+                state.pageIndex -
+                1)
             : state.pageIndex,
           currentIndex: (action.payload as TListDataPayload["specified-page"])
             .current
@@ -65,12 +66,12 @@ export function useFetch(current?: number) {
         return {
           ...state,
           isNext: action.payload as TListDataPayload["set-is-next"],
-        }
+        };
       default:
         return state;
     }
   };
-  
+
   const [listState, listDispatch] = React.useReducer(listReducer, initListData);
   return { listState, listDispatch };
 }

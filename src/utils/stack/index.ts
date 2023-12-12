@@ -1,8 +1,4 @@
 export class Stack {
-  constructor() {
-
-  }
-  *[Symbol.iterator]() {
-
-  }
+  constructor() {}
+  *[Symbol.iterator]() {}
 }

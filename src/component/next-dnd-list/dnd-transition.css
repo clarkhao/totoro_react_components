@@ -1,54 +1,58 @@
 /* dnd list item transition css */
 .dnd-item-enter {
   opacity: 0;
-  transform:translateY(-10%);
+  transform: translateY(-10%);
 }
 .dnd-item-enter-active {
   opacity: 1;
-  transform:translateY(0);
-  transition: opacity 300ms, transform 300ms;
+  transform: translateY(0);
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }
 .dnd-item-exit {
   opacity: 1;
-  transform:translateY(0);
+  transform: translateY(0);
 }
 .dnd-item-exit-active {
   opacity: 0;
-  transform:translateY(-10%);
-  transition: opacity 300ms, transform 300ms;
+  transform: translateY(-10%);
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }
 /* dnd list sort transition css */
-.dnd-sort-down-enter ,
+.dnd-sort-down-enter,
 .dnd-sort-down-enter-active,
 .dnd-sort-down-enter-done {
   position: static;
-  transform:translateY(0);
+  transform: translateY(0);
 }
 .dnd-sort-down-exit {
-  transform:translateY(-20%);
+  transform: translateY(-20%);
 }
 .dnd-sort-down-exit-active {
-  transform:translateY(0%);
+  transform: translateY(0%);
   transition: transform 300ms;
 }
 .dnd-sort-down-exit-done {
   position: static;
-  transform:translateY(0%);
+  transform: translateY(0%);
 }
 
-.dnd-sort-up-enter ,
+.dnd-sort-up-enter,
 .dnd-sort-up-enter-active,
 .dnd-sort-up-enter-done {
-  transform:translateY(0);
+  transform: translateY(0);
 }
 .dnd-sort-up-exit {
-  transform:translateY(20%);
+  transform: translateY(20%);
 }
 .dnd-sort-up-exit-active {
-  transform:translateY(0%);
+  transform: translateY(0%);
   transition: transform 300ms;
 }
 .dnd-sort-up-exit-done {
   position: static;
-  transform:translateY(0%);
+  transform: translateY(0%);
 }

@@ -45,7 +45,7 @@ function Sidebar() {
                       </a>
                     </li>
                   );
-                }
+                },
               )}
             </ul>
           </nav>

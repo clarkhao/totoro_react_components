@@ -1,38 +1,46 @@
 /* avatar css */
 .avatar-enter {
   opacity: 0;
-  transform:translateY(-10%);
+  transform: translateY(-10%);
 }
 .avatar-enter-active {
   opacity: 1;
-  transform:translateY(0);
-  transition: opacity 300ms, transform 300ms;
+  transform: translateY(0);
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }
 .avatar-exit {
   opacity: 1;
-  transform:translateY(0);
+  transform: translateY(0);
 }
 .avatar-exit-active {
   opacity: 0;
-  transform:translateY(-10%);
-  transition: opacity 300ms, transform 300ms;
+  transform: translateY(-10%);
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }
 /* avatar reverse css */
 .avatar-reverse-enter {
   opacity: 0;
-  transform:translateY(10%);
+  transform: translateY(10%);
 }
 .avatar-reverse-enter-active {
   opacity: 1;
-  transform:translateY(0);
-  transition: opacity 300ms, transform 300ms;
+  transform: translateY(0);
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }
 .avatar-reverse-exit {
   opacity: 1;
-  transform:translateY(0);
+  transform: translateY(0);
 }
 .avatar-reverse-exit-active {
   opacity: 0;
-  transform:translateY(10%);
-  transition: opacity 300ms, transform 300ms;
+  transform: translateY(10%);
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }

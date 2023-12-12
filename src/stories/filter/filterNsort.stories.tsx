@@ -38,7 +38,5 @@ function sleep(ms: number) {
 }
 
 export const SelectDefault: Story = {
-  args: {
-    
-  },
+  args: {},
 };

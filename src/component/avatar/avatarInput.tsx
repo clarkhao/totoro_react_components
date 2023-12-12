@@ -63,7 +63,7 @@ export function AvatarDefault(props: TAvatarTest) {
     <>
       <div
         className={["flex flex-col justify-end items-end", "relative"].join(
-          " "
+          " ",
         )}
       >
         <input

@@ -1,0 +1,19 @@
+name: text-start
+
+on:
+  push:
+    branches:
+      - v1.1.0
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Print Workspace Directory
+        run: | 
+          echo "Workspace: $GITHUB_WORKSPACE"
+      - name: format & lint
+        run: |
+          cd C:\Users\clark\Documents\codes\aws\aws-cdk-ts\
+          npm run format
+          npm run lint

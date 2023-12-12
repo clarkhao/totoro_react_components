@@ -40,7 +40,7 @@ export function Tooltip({ text, ...props }: TTooltip) {
           className={[
             "absolute top-full left-1/2 -translate-x-1/2 p-1 rounded-full z-50 min-w-[120px]",
             "bg-gray-50 shadow-md dark:bg-gray-700 dark:text-gray-50",
-            "flex justify-center"
+            "flex justify-center",
           ].join(" ")}
         >
           {text}

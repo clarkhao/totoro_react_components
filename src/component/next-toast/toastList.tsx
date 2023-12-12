@@ -1,4 +1,4 @@
-"use client"
+"use client";
 //app
 import React from "react";
 //components
@@ -43,7 +43,7 @@ function ToastList() {
                   aria-label="Close"
                   onClick={() =>
                     setToastMsg((prevToasts) =>
-                      prevToasts.filter((el) => el.id !== toast?.id)
+                      prevToasts.filter((el) => el.id !== toast?.id),
                     )
                   }
                 >
@@ -59,4 +59,4 @@ function ToastList() {
   );
 }
 
-export {ToastList};
+export { ToastList };

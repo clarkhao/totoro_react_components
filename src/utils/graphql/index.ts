@@ -11,7 +11,7 @@ export const graphqlFetch = async (
     },
     body: JSON.stringify({
       query,
-      variables
+      variables,
     }),
     next: { revalidate: 10 },
     signal: options?.signal,

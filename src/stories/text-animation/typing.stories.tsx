@@ -2,7 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import { Typing } from "../../component/group-text-animation/typing";
 import React from "react";
-import { TypingContext, useTyping } from "../../component/group-text-animation/typingHook";
+import {
+  TypingContext,
+  useTyping,
+} from "../../component/group-text-animation/typingHook";
 
 const meta: Meta<typeof Typing> = {
   title: "UI/Text-Animation/Typing",

@@ -21,11 +21,8 @@ function sleep(ms: number) {
 
 export const NumberDefault: Story = {
   args: {
-    numbers: {start: "0.00", end: "1000.00"},
+    numbers: { start: "0.00", end: "1000.00" },
     size: "large",
-    
   },
-  decorators: [
-
-  ]
+  decorators: [],
 };

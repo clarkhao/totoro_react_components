@@ -48,7 +48,7 @@ export function DndList({ ...props }: TDndList) {
           return list
             ?.filter((el) => el.completed === false)
             .filter((el) =>
-              el.selectedTags.some((tag) => filterTags.includes(tag))
+              el.selectedTags.some((tag) => filterTags.includes(tag)),
             );
         }
       }
@@ -60,7 +60,7 @@ export function DndList({ ...props }: TDndList) {
           return list
             ?.filter((el) => el.completed === true)
             .filter((el) =>
-              el.selectedTags.some((tag) => filterTags.includes(tag))
+              el.selectedTags.some((tag) => filterTags.includes(tag)),
             );
         }
       }
@@ -69,7 +69,7 @@ export function DndList({ ...props }: TDndList) {
           return list;
         } else {
           return list?.filter((el) =>
-            el.selectedTags.some((tag) => filterTags.includes(tag))
+            el.selectedTags.some((tag) => filterTags.includes(tag)),
           );
         }
       }
@@ -191,7 +191,7 @@ export function DndList({ ...props }: TDndList) {
 
 function sortChain<T extends { [key: string]: any }>(
   types: Array<{ type: string; order: number }>,
-  list: Array<T>
+  list: Array<T>,
 ) {
   let result = [...list];
   types.forEach((el) => {

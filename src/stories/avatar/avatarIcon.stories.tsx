@@ -24,10 +24,12 @@ function sleep(ms: number) {
 export const AvatarIconWithDropdown: Story = {
   args: {
     handler: console.log,
-    children: (data: Record<string, any>) => <div className="w-full px-6 p-2">{data.name}</div>,
+    children: (data: Record<string, any>) => (
+      <div className="w-full px-6 p-2">{data.name}</div>
+    ),
     userInfo: {
       avatarUrl: "https://api.dicebear.com/7.x/pixel-art/svg?seed",
-      name: "Clark"
+      name: "Clark",
     },
     menu: {
       menu: [

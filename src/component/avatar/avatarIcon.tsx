@@ -1,13 +1,11 @@
 import React, { FC } from "react";
-import { CSSTransition } from "react-transition-group";
 
 import { IconButton } from "./iconButton";
 import { MenuList, TMenuData } from "../next-navigation/menuList";
-import { FiHelpCircle } from "react-icons/fi";
 
 import "./avatar.css";
 import { CustomDropdown } from "../dropdown/customDropdown";
-import { Avatar, TAvatar } from "./avatar";
+import { Avatar } from "./avatar";
 
 type TAvatarIcon = {
   /**
@@ -17,7 +15,7 @@ type TAvatarIcon = {
   /**
    * user
    */
-  userInfo: Record<string, any>;
+  userInfo: Record<string, unknown>;
   /**
    * menu
    */
@@ -28,24 +26,29 @@ type TAvatarIcon = {
   children: FC;
 };
 
-export function AvatarIcon({...props}: TAvatarIcon) {
+export function AvatarIcon({ ...props }: TAvatarIcon) {
   return (
     <div className="w-10">
-      <CustomDropdown clickable={AvatarClick} isAbs avatarUrl={props.userInfo.avatarUrl} pos={{top: 50, right: -160}}>
-      <div className="w-[200px]">
-        <MenuList data={props.menu} isCompact handleRoute={props.handler}>
-          {props.children(props.userInfo)}
-        </MenuList>
-      </div>
-    </CustomDropdown>
+      <CustomDropdown
+        clickable={AvatarClick}
+        isAbs
+        avatarUrl={props.userInfo.avatarUrl}
+        pos={{ top: 50, right: -160 }}
+      >
+        <div className="w-[200px]">
+          <MenuList data={props.menu} isCompact handleRoute={props.handler}>
+            {props.children(props.userInfo)}
+          </MenuList>
+        </div>
+      </CustomDropdown>
     </div>
   );
 }
 
-function AvatarClick({handler, avatarUrl, ...props}: Record<string, any>) {
+function AvatarClick({ handler, avatarUrl }: Record<string, unknown>) {
   return (
-    <IconButton onClick={handler}>
-      <Avatar size="md" avatarUrl={avatarUrl}/>
+    <IconButton onClick={handler as React.MouseEventHandler<HTMLButtonElement> | undefined}>
+      <Avatar size="md" avatarUrl={avatarUrl as string} />
     </IconButton>
   );
 }

@@ -10,13 +10,13 @@ const debounce = (callback: () => void, time: number) => {
 //any following nonstop disturb won't stop my first trigger， 节流
 let throttleTimer: boolean = false;
 const throttle = (callback: () => void, time: number) => {
-    if (throttleTimer) return;
-    throttleTimer = true;
-    callback();
-    setTimeout(() => {
-        //
-        throttleTimer = false;
-    }, time);
-}
+  if (throttleTimer) return;
+  throttleTimer = true;
+  callback();
+  setTimeout(() => {
+    //
+    throttleTimer = false;
+  }, time);
+};
 
-export {debounce, throttle};
+export { debounce, throttle };

@@ -32,7 +32,7 @@ const initModalState: TModalState = {
 export function useModal() {
   const [modalState, modalDispatch] = React.useReducer(
     modalReducer,
-    initModalState
+    initModalState,
   );
   return { modalState, modalDispatch };
 }

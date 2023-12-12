@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import {HambergerDrop} from "../../component/intro/hambergerDrop";
+import { HambergerDrop } from "../../component/intro/hambergerDrop";
 import React from "react";
 
 const meta: Meta<typeof HambergerDrop> = {
@@ -21,7 +21,6 @@ function sleep(ms: number) {
 export const WithHamberger: Story = {
   args: {
     className: "fixed right-10 top-10",
-    color: 'blue'
+    color: "blue",
   },
-  
 };

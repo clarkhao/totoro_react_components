@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import {Intro} from "../../component/intro/intro";
+import { Intro } from "../../component/intro/intro";
 import React from "react";
 
 const meta: Meta<typeof Intro> = {
@@ -19,8 +19,5 @@ function sleep(ms: number) {
 }
 
 export const Introduction: Story = {
-  args: {
-    
-  },
-  
+  args: {},
 };
