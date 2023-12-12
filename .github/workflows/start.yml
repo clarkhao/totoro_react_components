@@ -15,3 +15,11 @@ jobs:
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
           npm run format
           npm run lint
+      - name: lint success
+        run: |
+          echo "lint success"
+        if: success()
+      - name: lint failed
+        run: |
+          echo: "lint failed"
+        if: failure()
