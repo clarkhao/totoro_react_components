@@ -2,8 +2,8 @@ name: text-start
 
 on:
   push:
-    branches:
-      - v1.1.0
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -14,6 +14,6 @@ jobs:
           echo "Workspace: $GITHUB_WORKSPACE"
       - name: format & lint
         run: |
-          cd C:\Users\clark\Documents\codes\aws\aws-cdk-ts\
+          cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
           npm run format
           npm run lint
