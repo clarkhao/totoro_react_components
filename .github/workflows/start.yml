@@ -2,6 +2,8 @@ name: components-update
 
 on:
   push:
+    tags:
+      - "*"
 
 jobs:
   build:
@@ -10,6 +12,11 @@ jobs:
       - name: Print Workspace Directory
         run: | 
           echo "Workspace: $GITHUB_WORKSPACE"
+      - name: git push again
+        run: |
+          git add .
+          git commit -m 'edit branch v1'
+          git push -u origin v1
       - name: format & lint
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
@@ -23,8 +30,4 @@ jobs:
         run: |
           echo "lint failed"
         if: failure()
-      - name: git push again
-        run: |
-          git add .
-          git commit -m 'edit branch v1'
-          git push -u origin v1
+      
