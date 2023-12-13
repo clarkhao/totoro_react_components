@@ -2,10 +2,18 @@ name: components-update
 
 on:
   push:
+    tags:
+      - "*"
+    branches-ignore:
+      - "main"
+  pull_request:
+    types:
+      - opened
 
 jobs:
-  build:
+  pushJob:
     runs-on: self-hosted
+    if: github.event_name == 'push'
     steps:
       - name: Print Workspace Directory
         run: | 
@@ -17,9 +25,22 @@ jobs:
           npm run lint
       - name: lint success
         run: |
-          echo "lint success"
+          cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
+          git add .
+          git commit -m 'edit branch v1'
+          git push -u origin v1
         if: success()
       - name: lint failed
         run: |
-          echo: "lint failed"
+          echo "lint failed"
         if: failure()
+  pullRequestJob:
+    runs-on: self-hosted
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Deploy
+        run: |
+          cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
+          rm /storybook-static
