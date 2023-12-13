@@ -4,10 +4,16 @@ on:
   push:
     tags:
       - "*"
+    branches-ignore:
+      - "main"
+  pull_request:
+    types:
+      - opened
 
 jobs:
-  build:
+  pushJob:
     runs-on: self-hosted
+    if: github.event_name == 'push'
     steps:
       - name: Print Workspace Directory
         run: | 
@@ -28,4 +34,14 @@ jobs:
         run: |
           echo "lint failed"
         if: failure()
-      
+  pullRequestJob:
+    runs-on: self-hosted
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Deploy
+        run: |
+          cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
+          rm /storybook-static
+         
