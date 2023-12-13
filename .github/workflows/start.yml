@@ -40,6 +40,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+      - name: Main repo
+        run: |
+          cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
+          git switch main
       - name: ready to deploy
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\devop\
