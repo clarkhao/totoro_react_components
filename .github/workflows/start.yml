@@ -43,5 +43,5 @@ jobs:
       - name: Deploy
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
-          rm .\storybook-static\
+          rmdir /s .\storybook-static\
 
