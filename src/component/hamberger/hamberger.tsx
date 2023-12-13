@@ -18,7 +18,7 @@ export function Hamberger({ ...props }: THamberger) {
   React.useEffect(() => {
     const ele = document.getElementById(props.id);
     ele?.style.setProperty("--hamberger-btn-color", props.color);
-  }, [props.color]);
+  }, [props.color, props.id]);
   return (
     <article
       id={props.id}

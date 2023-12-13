@@ -1,12 +1,10 @@
 import React, { FC } from "react";
-import { CSSTransition } from "react-transition-group";
 
 import { IconButton } from "../button/iconButton";
 import { MenuList, TMenuData } from "../next-navigation/menuList";
 import { FiHelpCircle } from "react-icons/fi";
 
 import "./avatar.css";
-import Image from "next/image";
 
 type TAvatarTest = {
   /**
@@ -16,7 +14,7 @@ type TAvatarTest = {
   /**
    * user
    */
-  userInfo: Record<string, any>;
+  userInfo: Record<string, unknown>;
   /**
    * menu
    */

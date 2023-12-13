@@ -27,7 +27,7 @@ export function Modal({ ...props }: TModal) {
     return () => {
       document.body.removeEventListener("keydown", modalEscape);
     };
-  }, []);
+  }, [modal]);
   return (
     <>
       <CSSTransition

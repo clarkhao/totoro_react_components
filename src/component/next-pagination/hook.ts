@@ -11,10 +11,10 @@ type TListDataPayload = {
   "specified-page": { first: boolean; current: boolean; value: number };
   "set-is-next": boolean;
 };
-export interface IListAction {
+export type IListAction = {
   type: keyof TListDataPayload;
   payload: TListDataPayload[IListAction["type"]];
-}
+};
 
 export function useFetch(current?: number) {
   const currentPage = current ?? 1;

@@ -1,4 +1,4 @@
-import React, { Fragment, FC } from "react";
+import React, { Fragment } from "react";
 import { graphqlFetch } from "../../utils";
 //hooks
 import { DynamicListContext, usePage } from "../next-pagination/dynamicHook";
@@ -86,7 +86,7 @@ export function GraphqlList({ query = initQuery, ...props }: TClientList) {
       listDispatch({ type: "reset", payload: null });
       setError(undefined);
     };
-  }, [query]);
+  }, [listDispatch, query]);
   React.useEffect(() => {
     console.log("fetch");
     const controller = new AbortController();
@@ -135,9 +135,17 @@ export function GraphqlList({ query = initQuery, ...props }: TClientList) {
     return () => {
       controller.abort();
     };
-  }, [listState.currentIndex, query]);
+  }, [
+    listDispatch,
+    listState.currentIndex,
+    listState.cursors,
+    props.fromCollections,
+    props.renderWays,
+    props.url,
+    query,
+  ]);
   const searchProduct = React.useCallback(() => {
-    return [...data?.products.edges].filter((el) =>
+    return [...(data?.products.edges ?? [])].filter((el) =>
       (el.node.title as string)
         .toLowerCase()
         .includes(filter?.filterState.search.toLowerCase() ?? ""),
@@ -218,7 +226,7 @@ export function GraphqlList({ query = initQuery, ...props }: TClientList) {
             {data.products.pageInfo.hasNextPage && !isFetching ? (
               <>
                 <Button
-                  variant="secondary"
+                  isPrimary
                   onClick={() => {
                     setIsFetching(true);
                     listDispatch({

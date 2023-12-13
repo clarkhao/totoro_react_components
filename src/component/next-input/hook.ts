@@ -19,10 +19,10 @@ type TInputPayload = {
   "clear-error": undefined;
   "toggle-visible": boolean;
 };
-export interface IInputAction {
+export type IInputAction = {
   type: keyof TInputPayload;
   payload: TInputPayload[IInputAction["type"]];
-}
+};
 
 function useInput(
   value: string,
@@ -140,7 +140,7 @@ function useInput(
       debounceTimer.current = window.setTimeout(verifyData, 1000);
     }
     return () => clearTimeout(debounceTimer.current);
-  }, [inputState.inputValue, name, inputState.isBlured]);
+  }, [inputState.inputValue, name, inputState.isBlured, needVerified, err]);
   return { inputState, inputDispatch };
 }
 

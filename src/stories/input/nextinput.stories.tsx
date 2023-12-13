@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { InputField } from "../../component/next-input/inputField";
 
 const meta: Meta<typeof InputField> = {
@@ -13,10 +12,6 @@ const meta: Meta<typeof InputField> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const InputDefault: Story = {
   args: {
@@ -25,9 +20,6 @@ export const InputDefault: Story = {
     type: "text",
     name: "name",
     needVerified: true,
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
   },
 };
 
@@ -38,9 +30,6 @@ export const Password: Story = {
     name: "password",
     needVerified: true,
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const Search: Story = {
@@ -49,9 +38,6 @@ export const Search: Story = {
     labelText: "Search",
     type: "search",
     name: "search",
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
   },
 };
 

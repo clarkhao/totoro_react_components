@@ -11,10 +11,10 @@ export type TDndPayload = {
   "set-offset": { x: number; y: number };
   "set-active": boolean;
 };
-export interface IDndAction {
+export type IDndAction = {
   type: keyof TDndPayload;
   payload: TDndPayload[IDndAction["type"]];
-}
+};
 export function useDnd() {
   const dndReducer = (state: TDndState, action: IDndAction) => {
     switch (action.type) {

@@ -7,7 +7,7 @@ import { FiCheck, FiXCircle } from "react-icons/fi";
 //style
 import "./transition.css";
 
-export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type IButton = {
   /**
    * children
    */
@@ -40,7 +40,7 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
    * data-addToCart
    */
   addToCart?: string;
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 export const Button = function Button({
   children,
   isPrimary = true,

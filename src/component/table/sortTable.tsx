@@ -34,7 +34,7 @@ export function SortTable({ ...props }: TSortTable) {
   });
   const sortedData = React.useMemo(() => {
     const sorted = Object.entries(forestArea)
-      .map(([key, value], i) => {
+      .map(([, value]) => {
         return value;
       })
       .sort((a, b) => {

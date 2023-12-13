@@ -1,16 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { IButton, Button } from "../../component/button/button";
+import { Button } from "../../component/button/button";
 import React from "react";
 import { FaGoogle } from "react-icons/fa6";
-import {
-  Title,
-  Subtitle,
-  Description,
-  Controls,
-  Stories,
-  Story,
-  Source,
-} from "@storybook/blocks";
+import { Story } from "@storybook/blocks";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Button",

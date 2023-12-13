@@ -7,7 +7,7 @@ import { useInput } from "./hook";
 //style
 import "./inputField.css";
 
-export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+export type IInput = {
   /**
    * variant
    */
@@ -57,7 +57,7 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
    * isLeftIcon?
    */
   isLeftIcon?: boolean;
-}
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export function InputField({ variant, value, ...props }: IInput) {
   const inputId = useId();

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CartList } from "../../component/next-list/cart/cartList";
-import React from "react";
 
 const meta: Meta<typeof CartList> = {
   title: "UI/List/CartList",
@@ -10,10 +9,6 @@ const meta: Meta<typeof CartList> = {
 
 export default meta;
 type Story = StoryObj<typeof CartList>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const ClientListDefault: Story = {
   args: {

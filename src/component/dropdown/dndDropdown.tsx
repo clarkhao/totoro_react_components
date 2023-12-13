@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { FaCalendarCheck } from "react-icons/fa6";
@@ -8,9 +8,6 @@ import sanitizeHtml from "sanitize-html";
 import { DndListContext, TItem } from "../next-dnd-list/dndListHook";
 import { TagSelect } from "../richText/tagSelect";
 import { CustomDropdown } from "./customDropdown";
-
-type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 type TTodoListItem = {
   /**
@@ -33,20 +30,23 @@ export function TodoListItem({ ...props }: TTodoListItem) {
   //main content of item
   const overallRef = React.useRef<HTMLDivElement>(null);
 
-  const onContentBlur = React.useCallback((evt: React.FocusEvent) => {
-    const sanitizeConf = {
-      allowedTags: ["b", "i", "a", "p"],
-      allowedAttributes: { a: ["href"] },
-    };
+  const onContentBlur = React.useCallback(
+    (evt: React.FocusEvent) => {
+      const sanitizeConf = {
+        allowedTags: ["b", "i", "a", "p"],
+        allowedAttributes: { a: ["href"] },
+      };
 
-    dnd?.dndListDispatch({
-      type: "set-item-content",
-      payload: {
-        index: props.index,
-        content: sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf),
-      },
-    });
-  }, []);
+      dnd?.dndListDispatch({
+        type: "set-item-content",
+        payload: {
+          index: props.index,
+          content: sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf),
+        },
+      });
+    },
+    [dnd, props.index],
+  );
 
   const handleCompleted = () => {
     dnd?.dndListDispatch({
@@ -157,20 +157,20 @@ export function TodoListItem({ ...props }: TTodoListItem) {
   );
 }
 
-const ClickedDue = ({ handler, ...props }: Record<string, any>) => {
+const ClickedDue = ({ handler, ...props }: Record<string, unknown>) => {
   return (
     <div
       className="inline-flex flex-col items-end cursor-pointer m-2 mt-[10px] "
-      onClick={handler}
+      onClick={handler as MouseEventHandler<HTMLDivElement> | undefined}
     >
       {(props.due as Date) ? (
         <span className="text-sm font-medium text-gray-900 dark:text-gray-300 flex flex-row justify-center items-center gap-2">
           <FaCalendarCheck className="text-base " />
           <span>
-            {new Date(props.due)?.toLocaleDateString() ===
+            {new Date(props.due as string)?.toLocaleDateString() ===
             new Date().toLocaleDateString()
               ? "Today"
-              : new Date(props.due)?.toLocaleDateString()}
+              : new Date(props.due as string)?.toLocaleDateString()}
           </span>
         </span>
       ) : null}

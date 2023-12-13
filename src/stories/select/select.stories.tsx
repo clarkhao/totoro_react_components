@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { Select } from "../../component/select/select";
 import React from "react";
 import { FilterWrapper } from "../../component/fitler/filterWrapper";
@@ -15,10 +14,6 @@ const meta: Meta<typeof Select> = {
 
 export default meta;
 type Story = StoryObj<typeof Select>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const SelectDefault: Story = {
   args: {

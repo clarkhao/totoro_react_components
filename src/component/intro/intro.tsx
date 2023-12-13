@@ -34,15 +34,13 @@ import React from "react";
 //hooks
 import { ErrorContext } from "./contactHook";
 
-type TIntro = {};
-
 type TContact = {
   name: string;
   email: string;
   content: string;
 };
 
-export function Intro({ ...props }: TIntro) {
+export function Intro() {
   const { typingStates, typingDispatch } = useTyping();
   const [data, setData] = React.useState<TContact>({
     name: "",
@@ -114,7 +112,7 @@ export function Intro({ ...props }: TIntro) {
         .then(async (res) => {
           return await res.json();
         })
-        .then((res) => {
+        .then(() => {
           setState("success");
         })
         .catch((err) => {
@@ -131,7 +129,7 @@ export function Intro({ ...props }: TIntro) {
     if (state === undefined && isFetching) {
       postContact();
     }
-  }, [isFetching, state]);
+  }, [data, isFetching, state]);
 
   return (
     <div className={["w-full h-screen relative", style.scroll].join(" ")}>
@@ -508,6 +506,7 @@ export function Intro({ ...props }: TIntro) {
             </div>
             {Object.entries(errors)
               .map(([_, value]) => {
+                console.log(_);
                 return value.isErr;
               })
               .every((bool) => {
@@ -515,6 +514,7 @@ export function Intro({ ...props }: TIntro) {
               }) &&
             Object.entries(data)
               .map(([_, value]) => {
+                console.log(_);
                 return value as string;
               })
               .every((value) => value && value.length > 0) ? (

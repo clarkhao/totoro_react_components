@@ -7,12 +7,7 @@ import { ModalContext, useModal } from "../../modal/hook";
 import { Modal } from "../../modal/modal";
 import { CartList } from "./cartList";
 
-type TCart = {};
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export function Cart({ ...props }: TCart) {
+export function Cart() {
   const [isTopBarFixed, setIsTopBarFixed] = useState(false);
   const [setCartPos, cartItems] = useCartStore((state) => [
     state.setCartPos,
@@ -28,11 +23,11 @@ export function Cart({ ...props }: TCart) {
     window.addEventListener("scroll", handleScroll);
     const cart = document.body.querySelector("[data-cart]");
     const pos = cart?.getBoundingClientRect();
-    setCartPos(pos?.right! - pos?.width! / 2, pos?.top!);
+    setCartPos(pos?.right ?? 0 - (pos?.width ?? 0) / 2, pos?.top ?? 0);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [setCartPos]);
   const getItemCount = React.useCallback(() => {
     const count = Object.values(cartItems).reduce((acc, el) => {
       acc += el.quantity;

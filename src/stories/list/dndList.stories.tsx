@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { DndList } from "../../component/next-dnd-list/dndList";
-import Item from "../../component/items/blogItem";
 import React from "react";
 import {
   FilterNSortContext,
@@ -22,10 +20,6 @@ const meta: Meta<typeof DndList> = {
 
 export default meta;
 type Story = StoryObj<typeof DndList>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const DndListDefault: Story = {
   args: {},

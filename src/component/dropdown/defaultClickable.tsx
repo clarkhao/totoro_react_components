@@ -1,4 +1,9 @@
-export function DefaultClickable({ handler, ...props }: Record<string, any>) {
+import { MouseEventHandler } from "react";
+
+export function DefaultClickable({
+  handler,
+  ...props
+}: Record<string, unknown>) {
   return (
     <button
       id="dropdownBgHoverButton"
@@ -9,7 +14,7 @@ export function DefaultClickable({ handler, ...props }: Record<string, any>) {
         "focus:ring-violet-500 focus:ring-1",
       ].join(" ")}
       type="button"
-      onClick={handler}
+      onClick={handler as MouseEventHandler<HTMLButtonElement> | undefined}
     >
       <span
         className={[
@@ -17,7 +22,7 @@ export function DefaultClickable({ handler, ...props }: Record<string, any>) {
           "inline-flex items-center gap-2",
         ].join(" ")}
       >
-        {props.title}
+        {props.title as string}
       </span>
       <span className="shrink-0 transition duration-300 group-focus/btn:-rotate-180">
         <svg

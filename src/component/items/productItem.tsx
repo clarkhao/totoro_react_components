@@ -7,23 +7,30 @@ import { useCartStore } from "../next-list/cart/cartStore";
 import React, { useRef } from "react";
 
 type TItem = {
-  item: Record<string, any>;
+  item: Record<string, unknown>;
 };
 const speed = 500,
   curveDelay = 300;
-export default function Product({ item, ...props }: TItem) {
-  const [cartItems, setCartItems, cartPos] = useCartStore((state) => [
-    state.cartItems,
+export default function Product({ item }: TItem) {
+  const [setCartItems, cartPos] = useCartStore((state) => [
     state.setCartItems,
     state.cartPos,
   ]);
   const timerRef = useRef(0);
   const removeRef = useRef(0);
-  const productId = item.variants.edges[0].node.id;
-  const title = item.title;
-  const image = item.images.edges[0].node.url;
-  const price = item.variants.edges[0].node.price.amount;
-  const handeAddToCart = (e: React.MouseEvent) => {
+  const productId = (
+    item.variants as { edges: Array<Record<string, { id: string }>> }
+  ).edges[0].node.id;
+  const title = item.title as string;
+  const image = (
+    item.images as { edges: Array<Record<string, { url: string }>> }
+  ).edges[0].node.url;
+  const price = (
+    item.variants as {
+      edges: Array<Record<string, { price: { amount: number } }>>;
+    }
+  ).edges[0].node.price.amount;
+  const handeAddToCart = () => {
     window.setTimeout(() => {
       setCartItems((prev) => {
         return {
@@ -82,14 +89,16 @@ export default function Product({ item, ...props }: TItem) {
       window.clearTimeout(timerRef.current);
       window.clearTimeout(removeRef.current);
     };
-  }, [item]);
+  }, [cartPos.x, cartPos.y, item]);
   return (
     <>
       <div className="w-full relative max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <Carousel
-          imageUrls={item.images.edges.map((el: Record<string, any>) => {
+          imageUrls={(
+            item.images as { edges: Array<Record<string, unknown>> }
+          ).edges.map((el: Record<string, unknown>) => {
             return {
-              image: el.node.url,
+              image: (el.node as { url: string }).url,
               blur: "data:image/webp;base64,UklGRpoDAABXRUJQVlA4WAoAAAAgAAAAgQAAgQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggrAEAAPAUAJ0BKoIAggA+7WinTjo/tKIvdcyT8B2JZwcFf3XZBhuL2ee87QNmeTYbfv1RLxwFhEG7VtpRFb3XJ1ZWEfdi9bXfKMsagJW58JSol95NFSfF87ZaYdN6wmHo9Kq2zAsz1DYA0UhY4r+pKtnp8okVEWncrGSd0mgh4Nwhk7yDv/yKx/zDqLfEH/8BXhOf1/BZbFtpnMkN+BW0313NjQPENa1BsGkYO16vRax+EqgAAP7yxOTSZnX0ryPJeD6LwwcUka4P98LegWO/a7T5WjfYCCJgTwJvVqwZCctGX2ITvenAS3qTKPl1SZ/jq+uHbyUXLRhwFPKuBMSV1xJ+Ti8LYNPMX9ca/uY7UxB3mEB9A9bUiONShWcvfvaOn0yj1rPoGoLF3428UU5OVpyq/45ACl81BaBu6LNDCVOm5541kuuAOAiJ8V3prtukrujA+zaK0P2PLDv4IKPlXkkLF5pf/y9QIDhJDiuVz4/GSaRTo74erxwQLW9MEK8rfRYRWqnqK+B1DmcLpcb6aVIb8jJAi7GQTRsoj2BhW4S1PKCQEOcQ91Gk5tkPgAAA",
             };
           })}
@@ -108,7 +117,7 @@ export default function Product({ item, ...props }: TItem) {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
-              {`\$${price}`}
+              {`$${price}`}
             </span>
             <Button
               size="small"

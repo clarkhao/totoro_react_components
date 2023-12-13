@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { FiCircle } from "react-icons/fi";
-import Image from "next/image";
 //style
 import "./carouselTransition.css";
 import useProgressiveImg from "./hook";
+import Image from "next/image";
 
 type TCarousel = {
   /**
@@ -44,7 +44,7 @@ export function Carousel({ imageUrls, ...props }: TCarousel) {
           timeout={{ exit: 500, enter: 500 }}
           classNames={isAscending ? "item-toleft" : "item-toright"}
         >
-          <img
+          <Image
             src={src as string}
             alt="image"
             width={props.imageSize?.width}

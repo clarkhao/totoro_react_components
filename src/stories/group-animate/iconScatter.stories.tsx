@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { IconScatter } from "../../component/group-animate/iconScatter";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,10 +15,6 @@ const meta: Meta<typeof IconScatter> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const IconScatterDefault: Story = {
   args: {

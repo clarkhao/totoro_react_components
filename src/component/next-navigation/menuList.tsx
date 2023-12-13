@@ -42,7 +42,7 @@ function MenuList({ ...props }: TMenuList) {
     (props.handleRoute ?? console.log)(
       `current route is ${route} and group is ${index}`,
     );
-  }, [route]);
+  }, [index, props.handleRoute, route]);
   const groups = Object.entries(props.data);
   return (
     <div

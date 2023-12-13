@@ -1,5 +1,4 @@
-import { create, StateCreator, StoreMutatorIdentifier } from "zustand";
-import { subscribeWithSelector } from "zustand/middleware";
+import { create } from "zustand";
 import { logger } from "../../store/logger";
 export type TCartItemState = {
   productId: string;

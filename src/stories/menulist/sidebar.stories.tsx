@@ -1,7 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
-import { MenuList } from "../../component/next-navigation/menuList";
-import { FiCamera } from "react-icons/fi";
 import React from "react";
 import { Avatar } from "../../component/avatar/avatar";
 import {
@@ -99,10 +96,6 @@ const meta: Meta<typeof Sidebar> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const SidebarDefault: Story = {
   args: {},

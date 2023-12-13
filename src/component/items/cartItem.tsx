@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Counter } from "../next-pagination/counter";
 import { DynamicListContext, usePage } from "../next-pagination/dynamicHook";
 
@@ -5,7 +6,7 @@ type TCartItem = {
   /**
    * item
    */
-  item: Record<string, any>;
+  item: Record<string, unknown>;
   /**
    * handleRemove
    */
@@ -13,27 +14,31 @@ type TCartItem = {
 };
 
 export function CartItem({ ...props }: TCartItem) {
-  const { listState, listDispatch } = usePage(props.item.quantity);
+  const { listState, listDispatch } = usePage(
+    props.item.quantity as number | undefined,
+  );
 
   return (
     <DynamicListContext.Provider value={{ listState, listDispatch }}>
       <div className="flex items-center gap-4 w-full">
-        <img
-          src={props.item.image}
+        <Image
+          src={props.item.image as string}
           alt=""
           className="h-16 w-16 rounded object-cover"
+          width={64}
+          height={64}
         />
 
         <div className="h-16 flex flex-col justify-between items-start p-2 ">
           <h3 className="text-sm text-gray-900 dark:text-white">
-            {props.item.title}
+            {props.item.title as string}
           </h3>
           <dl className="mt-0.5 space-y-px text-[10px] text-gray-600 dark:text-white">
             <div>
               <dt className="inline">Price:</dt>
-              <dd className="inline">{` ${parseFloat(props.item.price).toFixed(
-                2,
-              )}`}</dd>
+              <dd className="inline">{` ${parseFloat(
+                props.item.price as string,
+              ).toFixed(2)}`}</dd>
             </div>
           </dl>
         </div>
@@ -44,12 +49,12 @@ export function CartItem({ ...props }: TCartItem) {
             isPrev
             total={99}
             range={[1, 99]}
-            id={props.item.productId}
+            id={props.item.productId as string}
           />
 
           <button
             className="text-gray-600 transition hover:text-red-600 dark:text-white dark:hover:text-brand-primary-light"
-            onClick={() => props.handleRemove(props.item.productId)}
+            onClick={() => props.handleRemove(props.item.productId as string)}
           >
             <span className="sr-only">Remove item</span>
 

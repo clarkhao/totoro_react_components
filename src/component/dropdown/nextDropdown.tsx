@@ -1,9 +1,10 @@
+//latest version
 import React, { FC } from "react";
 import { CSSTransition } from "react-transition-group";
 import "../avatar/avatar.css";
 import { DropContext } from "./nextDropHook";
 
-interface ICustomAbsDrop extends Record<string, any> {
+type ICustomAbsDrop = {
   /**
    * children
    */
@@ -16,7 +17,7 @@ interface ICustomAbsDrop extends Record<string, any> {
    * className
    */
   className?: string;
-}
+} & Record<string, unknown>;
 
 export function NextDropdown({ children, ...props }: ICustomAbsDrop) {
   const drop = React.useContext(DropContext);
@@ -37,7 +38,7 @@ export function NextDropdown({ children, ...props }: ICustomAbsDrop) {
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, []);
+  }, [drop]);
 
   return (
     <>

@@ -42,10 +42,10 @@ export type TFilterNSortPayload = {
   "update-select-group": { index: number; key: string; value: number };
 };
 
-export interface IFilterNSortAction {
+export type IFilterNSortAction = {
   type: keyof TFilterNSortPayload;
   payload: TFilterNSortPayload[IFilterNSortAction["type"]];
-}
+};
 
 export function useFilterNSort() {
   const inputReducer = (
@@ -103,7 +103,7 @@ export function useFilterNSort() {
               (action.payload as TFilterNSortPayload["deselect-filter-tags"]),
           ),
         };
-      case "create-select-group":
+      case "create-select-group": {
         const payloadCreate =
           action.payload as TFilterNSortPayload["create-select-group"];
         const isExisted =
@@ -114,14 +114,16 @@ export function useFilterNSort() {
             ? [...state.sort]
             : [...state.sort, { type: payloadCreate, order: 0 }],
         };
-      case "delete-select-group":
+      }
+      case "delete-select-group": {
         const payloadDel =
           action.payload as TFilterNSortPayload["delete-select-group"];
         return {
           ...state,
           sort: [...state.sort].filter((_, i) => i !== payloadDel),
         };
-      case "update-select-group":
+      }
+      case "update-select-group": {
         const payloadUpdate =
           action.payload as TFilterNSortPayload["update-select-group"];
         return {
@@ -134,6 +136,7 @@ export function useFilterNSort() {
             }
           }),
         };
+      }
       default:
         return state;
     }

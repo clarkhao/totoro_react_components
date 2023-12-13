@@ -1,5 +1,5 @@
 import { sortChain, deepclone } from "../utils";
-import { describe, expect, jest, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
 
 describe("sortListWichSortChains", () => {
   const mockList: Array<{ due: string; age: number }> = [

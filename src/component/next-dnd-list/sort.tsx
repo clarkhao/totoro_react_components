@@ -1,14 +1,14 @@
 import React, { forwardRef } from "react";
-import { CustomDropdown } from "../dropdown/customDropdown";
 import { Select } from "../select/select";
 import { FilterNSortContext } from "./hook";
 import { FaGripVertical, FaXmark } from "react-icons/fa6";
 import { CustomAbsDrop } from "../dropdown/customAbsDrop";
 import { AddSort } from "./addSort";
-
+// eslint-disable-next-line @typescript-eslint/ban-types
 type TSort = {};
 
-export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortGroup(
+export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
+  // eslint-disable-next-line no-empty-pattern
   {}: TSort,
   ref,
 ) {
@@ -56,10 +56,6 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortGroup(
                 index={i}
                 selectKey="type"
                 onChange={(e) => {
-                  const items = [
-                    { id: "date", title: "Date" },
-                    { id: "tags", title: "Tags" },
-                  ];
                   handleSelectChange(e, i, "type");
                 }}
               />
@@ -72,10 +68,6 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortGroup(
                 index={i}
                 selectKey="order"
                 onChange={(e) => {
-                  const items = [
-                    { id: "asc", title: "Ascending" },
-                    { id: "dsc", title: "Descending" },
-                  ];
                   handleSelectChange(e, i, "order");
                 }}
               />

@@ -1,5 +1,4 @@
 import { Button } from "../../button/button";
-import { FaPaypal, FaApplePay } from "react-icons/fa6";
 import { TCartItemState, useCartStore } from "./cartStore";
 import { CartItem } from "../../items/cartItem";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -28,15 +27,15 @@ export function CartList({ ...props }: TCartList) {
     return acc;
   }, 0);
   const prevNum = React.useRef(initTotal.toFixed(2));
-  React.useEffect(() => {
-    prevNum.current = (total ?? "0").toString();
-  }, [cartItems]);
   const total = React.useMemo(() => {
     return Object.values(cartItems).reduce((acc, el) => {
       acc += el.price * el.quantity;
       return acc;
     }, 0);
   }, [cartItems]);
+  React.useEffect(() => {
+    prevNum.current = (total ?? "0").toString();
+  }, [cartItems, total]);
 
   const handleRemove = (id: string) => {
     setCartItems((prev) => {
@@ -85,7 +84,7 @@ export function CartList({ ...props }: TCartList) {
               </span>
             </div>
             <div className="space-y-4 text-center w-48">
-              <Button variant="primary" size="base" width="w-full">
+              <Button isPrimary size="base" width="w-full">
                 Check out
               </Button>
             </div>

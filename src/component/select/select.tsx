@@ -1,9 +1,9 @@
-import React, { useTransition } from "react";
+import React from "react";
 import { FilterContext } from "../fitler/hook";
 import { FilterNSortContext } from "../next-dnd-list/hook";
 import { useSortStore } from "../next-dnd-list/store";
 
-export interface ISelect extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export type ISelect = {
   /**
    * items
    */
@@ -24,12 +24,11 @@ export interface ISelect extends React.SelectHTMLAttributes<HTMLSelectElement> {
    * size?
    */
   height?: "tiny" | "small" | "base" | "large";
-}
+} & React.SelectHTMLAttributes<HTMLSelectElement>;
 
-export function Select({ items, id, ...rest }: ISelect) {
+export function Select({ items, ...rest }: ISelect) {
   const filter = React.useContext(FilterContext);
   const filterNSort = React.useContext(FilterNSortContext);
-  const [isPending, startTransition] = useTransition();
   const [sort] = useSortStore((state) => [state.sort]);
   const getSize = React.useMemo(() => {
     switch (rest.height) {
