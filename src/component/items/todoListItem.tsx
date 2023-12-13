@@ -36,20 +36,23 @@ export function TodoListItem({ ...props }: TTodoListItem) {
 
   const [absPos, setAbsPos] = React.useState<string>("top-10");
 
-  const onContentBlur = React.useCallback((evt: React.FocusEvent) => {
-    const sanitizeConf = {
-      allowedTags: ["b", "i", "a", "p"],
-      allowedAttributes: { a: ["href"] },
-    };
+  const onContentBlur = React.useCallback(
+    (evt: React.FocusEvent) => {
+      const sanitizeConf = {
+        allowedTags: ["b", "i", "a", "p"],
+        allowedAttributes: { a: ["href"] },
+      };
 
-    dnd?.dndListDispatch({
-      type: "set-item-content",
-      payload: {
-        index: props.index,
-        content: sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf),
-      },
-    });
-  }, [dnd, props.index]);
+      dnd?.dndListDispatch({
+        type: "set-item-content",
+        payload: {
+          index: props.index,
+          content: sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf),
+        },
+      });
+    },
+    [dnd, props.index],
+  );
   React.useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -80,7 +83,7 @@ export function TodoListItem({ ...props }: TTodoListItem) {
       console.log("bottom");
       setAbsPos("bottom-24");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dnd?.dndListState.list[props.index].active]);
   const handleCompleted = () => {
     dnd?.dndListDispatch({

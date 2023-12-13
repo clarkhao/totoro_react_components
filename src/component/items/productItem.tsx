@@ -48,7 +48,7 @@ export default function Product({ item }: TItem) {
   };
   React.useEffect(() => {
     const btn = document.querySelector(
-      `button[data-addtocart="${(item.id as string).split("/").reverse()[0]}"]`
+      `button[data-addtocart="${(item.id as string).split("/").reverse()[0]}"]`,
     ) as HTMLButtonElement;
     const addItem = (e: MouseEvent) => {
       const target = e.currentTarget as HTMLButtonElement;
@@ -94,14 +94,14 @@ export default function Product({ item }: TItem) {
     <>
       <div className="w-full relative max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <Carousel
-          imageUrls={(item.images as {edges: Array<Record<string, unknown>>}).edges.map(
-            (el: Record<string, unknown>) => {
-              return {
-                image: (el.node as {url: string}).url,
-                blur: "data:image/webp;base64,UklGRpoDAABXRUJQVlA4WAoAAAAgAAAAgQAAgQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggrAEAAPAUAJ0BKoIAggA+7WinTjo/tKIvdcyT8B2JZwcFf3XZBhuL2ee87QNmeTYbfv1RLxwFhEG7VtpRFb3XJ1ZWEfdi9bXfKMsagJW58JSol95NFSfF87ZaYdN6wmHo9Kq2zAsz1DYA0UhY4r+pKtnp8okVEWncrGSd0mgh4Nwhk7yDv/yKx/zDqLfEH/8BXhOf1/BZbFtpnMkN+BW0313NjQPENa1BsGkYO16vRax+EqgAAP7yxOTSZnX0ryPJeD6LwwcUka4P98LegWO/a7T5WjfYCCJgTwJvVqwZCctGX2ITvenAS3qTKPl1SZ/jq+uHbyUXLRhwFPKuBMSV1xJ+Ti8LYNPMX9ca/uY7UxB3mEB9A9bUiONShWcvfvaOn0yj1rPoGoLF3428UU5OVpyq/45ACl81BaBu6LNDCVOm5541kuuAOAiJ8V3prtukrujA+zaK0P2PLDv4IKPlXkkLF5pf/y9QIDhJDiuVz4/GSaRTo74erxwQLW9MEK8rfRYRWqnqK+B1DmcLpcb6aVIb8jJAi7GQTRsoj2BhW4S1PKCQEOcQ91Gk5tkPgAAA",
-              };
-            }
-          )}
+          imageUrls={(
+            item.images as { edges: Array<Record<string, unknown>> }
+          ).edges.map((el: Record<string, unknown>) => {
+            return {
+              image: (el.node as { url: string }).url,
+              blur: "data:image/webp;base64,UklGRpoDAABXRUJQVlA4WAoAAAAgAAAAgQAAgQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggrAEAAPAUAJ0BKoIAggA+7WinTjo/tKIvdcyT8B2JZwcFf3XZBhuL2ee87QNmeTYbfv1RLxwFhEG7VtpRFb3XJ1ZWEfdi9bXfKMsagJW58JSol95NFSfF87ZaYdN6wmHo9Kq2zAsz1DYA0UhY4r+pKtnp8okVEWncrGSd0mgh4Nwhk7yDv/yKx/zDqLfEH/8BXhOf1/BZbFtpnMkN+BW0313NjQPENa1BsGkYO16vRax+EqgAAP7yxOTSZnX0ryPJeD6LwwcUka4P98LegWO/a7T5WjfYCCJgTwJvVqwZCctGX2ITvenAS3qTKPl1SZ/jq+uHbyUXLRhwFPKuBMSV1xJ+Ti8LYNPMX9ca/uY7UxB3mEB9A9bUiONShWcvfvaOn0yj1rPoGoLF3428UU5OVpyq/45ACl81BaBu6LNDCVOm5541kuuAOAiJ8V3prtukrujA+zaK0P2PLDv4IKPlXkkLF5pf/y9QIDhJDiuVz4/GSaRTo74erxwQLW9MEK8rfRYRWqnqK+B1DmcLpcb6aVIb8jJAi7GQTRsoj2BhW4S1PKCQEOcQ91Gk5tkPgAAA",
+            };
+          })}
           imageSize={{ width: 400, height: 400 }}
         />
 
@@ -134,4 +134,3 @@ export default function Product({ item }: TItem) {
     </>
   );
 }
-

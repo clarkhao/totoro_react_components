@@ -30,20 +30,23 @@ export function TodoListItem({ ...props }: TTodoListItem) {
   //main content of item
   const overallRef = React.useRef<HTMLDivElement>(null);
 
-  const onContentBlur = React.useCallback((evt: React.FocusEvent) => {
-    const sanitizeConf = {
-      allowedTags: ["b", "i", "a", "p"],
-      allowedAttributes: { a: ["href"] },
-    };
+  const onContentBlur = React.useCallback(
+    (evt: React.FocusEvent) => {
+      const sanitizeConf = {
+        allowedTags: ["b", "i", "a", "p"],
+        allowedAttributes: { a: ["href"] },
+      };
 
-    dnd?.dndListDispatch({
-      type: "set-item-content",
-      payload: {
-        index: props.index,
-        content: sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf),
-      },
-    });
-  }, [dnd, props.index]);
+      dnd?.dndListDispatch({
+        type: "set-item-content",
+        payload: {
+          index: props.index,
+          content: sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf),
+        },
+      });
+    },
+    [dnd, props.index],
+  );
 
   const handleCompleted = () => {
     dnd?.dndListDispatch({

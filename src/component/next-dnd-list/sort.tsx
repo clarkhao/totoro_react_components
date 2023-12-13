@@ -10,7 +10,7 @@ type TSort = {};
 export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
   // eslint-disable-next-line no-empty-pattern
   {}: TSort,
-  ref
+  ref,
 ) {
   const filterNSort = React.useContext(FilterNSortContext);
   const handleCreateSort = (num: number) => {
@@ -19,7 +19,7 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
 
   const handleDeleteSort = (
     e: React.MouseEvent<SVGElement, MouseEvent>,
-    i: number
+    i: number,
   ) => {
     console.log(i);
     filterNSort?.filterDispatch({ type: "delete-select-group", payload: i });
@@ -27,7 +27,7 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
   const handleSelectChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
     i: number,
-    key: string
+    key: string,
   ) => {
     filterNSort?.filterDispatch({
       type: "update-select-group",
@@ -94,7 +94,7 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
                 (_, i) =>
                   !filterNSort?.filterState.sort
                     .map((item) => item["type"])
-                    .includes(i)
+                    .includes(i),
               )
               .map((el, index) => {
                 return (
@@ -114,4 +114,3 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
     </div>
   );
 });
-

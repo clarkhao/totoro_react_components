@@ -50,7 +50,7 @@ export type IFilterNSortAction = {
 export function useFilterNSort() {
   const inputReducer = (
     state: TFilterNSortState,
-    action: IFilterNSortAction
+    action: IFilterNSortAction,
   ) => {
     switch (action.type) {
       case "set-category":
@@ -79,10 +79,11 @@ export function useFilterNSort() {
           tags: [...state.tags].filter(
             (el) =>
               el.content !==
-              (action.payload as TFilterNSortPayload["delete-tag"])
+              (action.payload as TFilterNSortPayload["delete-tag"]),
           ),
           filterTags: [...state.filterTags].filter(
-            (el) => el !== (action.payload as TFilterNSortPayload["delete-tag"])
+            (el) =>
+              el !== (action.payload as TFilterNSortPayload["delete-tag"]),
           ),
         };
       case "select-filter-tags":
@@ -99,7 +100,7 @@ export function useFilterNSort() {
           filterTags: [...state.filterTags].filter(
             (el) =>
               el !==
-              (action.payload as TFilterNSortPayload["deselect-filter-tags"])
+              (action.payload as TFilterNSortPayload["deselect-filter-tags"]),
           ),
         };
       case "create-select-group": {
@@ -148,7 +149,7 @@ export function useFilterNSort() {
   };
   const [filterState, filterDispatch] = React.useReducer(
     inputReducer,
-    initFilterState
+    initFilterState,
   );
   React.useEffect(() => {
     console.log(filterState);
@@ -161,4 +162,3 @@ export type TFilterNSortHandle = {
 };
 export const FilterNSortContext =
   React.createContext<TFilterNSortHandle | null>(null);
-

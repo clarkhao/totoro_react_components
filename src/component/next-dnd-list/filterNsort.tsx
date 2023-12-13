@@ -1,10 +1,6 @@
 import { CustomDropdown } from "../dropdown/customDropdown";
 import { Select } from "../select/select";
-import {
-  FaSquarePlus,
-  FaEllipsisVertical,
-  FaTrashCan,
-} from "react-icons/fa6";
+import { FaSquarePlus, FaEllipsisVertical, FaTrashCan } from "react-icons/fa6";
 import React from "react";
 import { FilterNSortContext } from "./hook";
 import { DefaultClickable } from "../dropdown/defaultClickable";

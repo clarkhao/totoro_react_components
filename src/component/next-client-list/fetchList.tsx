@@ -48,7 +48,7 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
   // Queries
   // staleTime reduce the refetch
   // isPreviousData is used in pagination
-  const { data, error, isLoading, } = useQuery(
+  const { data, error, isLoading } = useQuery(
     ["customers", pageIndex],
     ({ signal }) => fetchData(props.url, pageIndex, fetchLimit, signal),
     { suspense: true, staleTime: 30000, keepPreviousData: true },
@@ -59,7 +59,7 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
   }, [data?.total]);
   */
   const getPageTotal = React.useMemo(
-    () => Math.round(data?.total as number / fetchLimit),
+    () => Math.round((data?.total as number) / fetchLimit),
     [data?.total, fetchLimit],
   );
   if (isLoading) return <div>Fetching posts...</div>;
@@ -69,9 +69,11 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
     <>
       <div className="w-full">
         <ul className="grid max-xs:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-4">
-          {(data!.users as Array<Record<string, unknown>>).map((d: Record<string, unknown>) => (
-            <li key={`customer-${d.id}`}>{props.children(d)}</li>
-          ))}
+          {(data!.users as Array<Record<string, unknown>>).map(
+            (d: Record<string, unknown>) => (
+              <li key={`customer-${d.id}`}>{props.children(d)}</li>
+            ),
+          )}
         </ul>
       </div>
       <Pagination lastPageIndex={getPageTotal} />
@@ -98,7 +100,9 @@ export function FetchInfiniteList({
         retry: 2,
         getNextPageParam: (lastPage: TFetchData, allPages: TFetchData[]) => {
           const nextPage =
-            (lastPage.users as Array<unknown>).length === 9 ? allPages.length + 1 : undefined;
+            (lastPage.users as Array<unknown>).length === 9
+              ? allPages.length + 1
+              : undefined;
           return nextPage;
         },
       },

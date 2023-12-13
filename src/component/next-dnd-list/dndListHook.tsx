@@ -69,7 +69,7 @@ export function useDndList() {
           ...state,
           list: (deepCopyList as TItem[]).filter(
             (_, i) =>
-              i !== (action.payload as TDndListPayload["delete-item"]).index
+              i !== (action.payload as TDndListPayload["delete-item"]).index,
           ),
         };
       }
@@ -242,7 +242,7 @@ export function useDndList() {
   };
   const [dndListState, dndListDispatch] = React.useReducer(
     dndReducer,
-    initDndState
+    initDndState,
   );
   React.useEffect(() => {
     if (dndListState.dragged === dndListState.dropped) {
@@ -266,4 +266,3 @@ export type TDndListHandle = {
   dndListDispatch: React.Dispatch<IDndListAction>;
 };
 export const DndListContext = React.createContext<TDndListHandle | null>(null);
-

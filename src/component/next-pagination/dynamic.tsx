@@ -106,7 +106,12 @@ export function DynamicPagination({
       <button
         className="bg-gray-200 inline-flex h-8 w-8 items-center justify-center rtl:rotate-180 border-l border-l-white text-brand-primary rounded-tr-sm rounded-br-sm"
         onClick={handleNext}
-        disabled={!(props.isNext && (list?.listState.currentIndex ?? Number.POSITIVE_INFINITY) < total)}
+        disabled={
+          !(
+            props.isNext &&
+            (list?.listState.currentIndex ?? Number.POSITIVE_INFINITY) < total
+          )
+        }
       >
         {use === "page" ? (
           <>

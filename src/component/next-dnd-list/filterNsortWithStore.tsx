@@ -196,7 +196,6 @@ export function FilterNSort() {
                     ]}
                     index={i}
                     selectKey="type"
-                    
                   />
                   <Select
                     height="tiny"
@@ -206,7 +205,6 @@ export function FilterNSort() {
                     ]}
                     index={i}
                     selectKey="order"
-                    
                   />
                 </span>
                 <FaXmark

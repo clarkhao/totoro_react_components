@@ -135,7 +135,15 @@ export function GraphqlList({ query = initQuery, ...props }: TClientList) {
     return () => {
       controller.abort();
     };
-  }, [listDispatch, listState.currentIndex, listState.cursors, props.fromCollections, props.renderWays, props.url, query]);
+  }, [
+    listDispatch,
+    listState.currentIndex,
+    listState.cursors,
+    props.fromCollections,
+    props.renderWays,
+    props.url,
+    query,
+  ]);
   const searchProduct = React.useCallback(() => {
     return [...(data?.products.edges ?? [])].filter((el) =>
       (el.node.title as string)

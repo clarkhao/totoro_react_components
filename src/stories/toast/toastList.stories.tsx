@@ -17,9 +17,7 @@ const lorem = new LoremIpsum({
   },
 });
 function TestToastList() {
-  const [setToastMsg] = useToastStore((state) => [
-    state.setToastMsg,
-  ]);
+  const [setToastMsg] = useToastStore((state) => [state.setToastMsg]);
   const [count, setCount] = React.useState(0);
   const removeToast = (id: string) => {
     setToastMsg((prevToasts) => prevToasts.filter((el) => el.id !== id));

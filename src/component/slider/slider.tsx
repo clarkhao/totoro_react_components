@@ -1,7 +1,4 @@
-import {
-  faCaretLeft,
-  faCaretRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import style from "./slider.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";

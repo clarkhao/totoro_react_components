@@ -35,16 +35,19 @@ export function TagsArea({ index, ...props }: Record<string, unknown>) {
         });
       }
       setTag("");
-    } else if (evt.key === "Backspace" && dndList?.dndListState.list[index as number]) {
+    } else if (
+      evt.key === "Backspace" &&
+      dndList?.dndListState.list[index as number]
+    ) {
       if (!tag || tag.length === 0) {
         dndList?.dndListDispatch({
           type: "set-item-tags",
           payload: {
             index: index as number,
-            tags: [...(dndList?.dndListState.list[index as number].selectedTags ?? [])].slice(
-              0,
-              -1,
-            ),
+            tags: [
+              ...(dndList?.dndListState.list[index as number].selectedTags ??
+                []),
+            ].slice(0, -1),
           },
         });
       }
@@ -64,9 +67,9 @@ export function TagsArea({ index, ...props }: Record<string, unknown>) {
       type: "set-item-tags",
       payload: {
         index: index as number,
-        tags: [...(dndList?.dndListState.list[index as number].selectedTags ?? [])].filter(
-          (el) => el !== content,
-        ),
+        tags: [
+          ...(dndList?.dndListState.list[index as number].selectedTags ?? []),
+        ].filter((el) => el !== content),
       },
     });
   };
@@ -99,7 +102,9 @@ export function TagsArea({ index, ...props }: Record<string, unknown>) {
         value={tag}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        onFocus={props.handler as FocusEventHandler<HTMLInputElement> | undefined}
+        onFocus={
+          props.handler as FocusEventHandler<HTMLInputElement> | undefined
+        }
         placeholder="Add new tag..."
       />
     </div>

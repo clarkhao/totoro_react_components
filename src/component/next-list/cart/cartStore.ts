@@ -18,7 +18,7 @@ type Action = {
   setCartItems: (
     fn: (prevCartItems: { [key: string]: TCartItemState }) => {
       [key: string]: TCartItemState;
-    }
+    },
   ) => void;
   setCartPos: (x: number, y: number) => void;
 };
@@ -38,6 +38,5 @@ export const useCartStore = create<TState & Action>(
         cartItems: fn(state.cartItems),
       })),
     setCartPos: (x, y) => set(() => ({ cartPos: { x, y } })),
-  }))
+  })),
 );
-

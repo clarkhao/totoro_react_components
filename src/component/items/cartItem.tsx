@@ -14,7 +14,9 @@ type TCartItem = {
 };
 
 export function CartItem({ ...props }: TCartItem) {
-  const { listState, listDispatch } = usePage(props.item.quantity as number | undefined);
+  const { listState, listDispatch } = usePage(
+    props.item.quantity as number | undefined,
+  );
 
   return (
     <DynamicListContext.Provider value={{ listState, listDispatch }}>
@@ -34,9 +36,9 @@ export function CartItem({ ...props }: TCartItem) {
           <dl className="mt-0.5 space-y-px text-[10px] text-gray-600 dark:text-white">
             <div>
               <dt className="inline">Price:</dt>
-              <dd className="inline">{` ${parseFloat(props.item.price as string).toFixed(
-                2,
-              )}`}</dd>
+              <dd className="inline">{` ${parseFloat(
+                props.item.price as string,
+              ).toFixed(2)}`}</dd>
             </div>
           </dl>
         </div>
