@@ -52,7 +52,7 @@ jobs:
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
           git init
-          git branch main master
+          git branch -M main
           git remote add origin https://github.com/clarkhao/clarkhao.github.io
           git add .
           git commit -m 'init and clear'
