@@ -15,9 +15,9 @@ jobs:
     runs-on: self-hosted
     if: github.event_name == 'push'
     steps:
-      - name: Print Workspace Directory
+      - name: event name
         run: | 
-          echo "Workspace: $GITHUB_WORKSPACE"
+          echo {{github.event_name}}
       - name: format & lint
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
@@ -43,7 +43,7 @@ jobs:
       - name: Deploy
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
-          rm /storybook-static
+          rm .\storybook-static\
           
 
 
