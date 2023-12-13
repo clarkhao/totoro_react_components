@@ -61,6 +61,9 @@ jobs:
       - name: update new static
         run: | 
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
+          git init
+          git remote add origin https://github.com/clarkhao/clarkhao.github.io
+          git branch -M main
           git add .
           git commit -m 'update'
           git push -u origin main
