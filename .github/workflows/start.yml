@@ -51,9 +51,6 @@ jobs:
       - name: github connect
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
-          git init
-          git branch -M main
-          git remote add origin https://github.com/clarkhao/clarkhao.github.io
           git add .
           git commit -m 'init and clear'
           git push -u origin main
