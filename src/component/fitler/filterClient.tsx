@@ -60,7 +60,9 @@ export function FilterClient({ ...props }: TFilter) {
                 <button
                   className="text-white absolute right-0 bottom-0 bg-brand-secondary-light hover:bg-brand-secondary focus:outline-none font-medium rounded-tr-lg rounded-br-lg text-sm h-8 xs:h-14 px-4 py-1 dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800"
                   onClick={() => {
-                    console.log("hello");
+                    window.alert(
+                      `selected: ${filter?.filterState.selected}, search: ${filter?.filterState.search}`,
+                    );
                   }}
                 >
                   Search
