@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { CustomDropdown } from "../dropdown/customDropdown";
 import { TagsArea } from "./tagsArea";
 import { FilterNSortContext } from "../next-dnd-list/hook";
@@ -93,11 +93,3 @@ export function TagSelect({ ...props }: TTagSelect) {
     </CustomDropdown>
   );
 }
-
-const Clicked = ({ ...props }: Record<string, any>) => {
-  return (
-    <div className="hover:bg-gray-400 dark:hover:bg-gray-500 w-6 h-6 flex justify-center items-center">
-      <FaEllipsisVertical {...props} />
-    </div>
-  );
-};

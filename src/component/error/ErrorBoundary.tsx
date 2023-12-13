@@ -19,7 +19,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log(error.message);
+    console.error(error.message, errorInfo);
     this.setState({ hasError: true, msg: error.message });
   }
 
@@ -32,31 +32,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
           {(() => {
             switch (this.state.msg) {
               case "authenticate failed":
-                console.log("authenticate");
-                return (
-                  <BackHome
-                    error="401"
-                    reason="Please Login in."
-                    isLogin={true}
-                  />
-                );
+                return <></>;
               case "authorize failed":
                 console.log("authorize");
-                return (
-                  <BackHome
-                    error="403"
-                    reason="Please Upgrade Your Account."
-                    isLogin={false}
-                  />
-                );
+                return <></>;
               default:
                 console.log("default");
-                return (
-                  <BackHome
-                    error="404"
-                    reason="The page you are looking for does not exist."
-                  />
-                );
+                return <></>;
                 break;
             }
           })()}

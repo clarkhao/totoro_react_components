@@ -42,15 +42,15 @@ export type TFilterNSortPayload = {
   "update-select-group": { index: number; key: string; value: number };
 };
 
-export interface IFilterNSortAction {
+export type IFilterNSortAction = {
   type: keyof TFilterNSortPayload;
   payload: TFilterNSortPayload[IFilterNSortAction["type"]];
-}
+};
 
 export function useFilterNSort() {
   const inputReducer = (
     state: TFilterNSortState,
-    action: IFilterNSortAction,
+    action: IFilterNSortAction
   ) => {
     switch (action.type) {
       case "set-category":
@@ -79,11 +79,10 @@ export function useFilterNSort() {
           tags: [...state.tags].filter(
             (el) =>
               el.content !==
-              (action.payload as TFilterNSortPayload["delete-tag"]),
+              (action.payload as TFilterNSortPayload["delete-tag"])
           ),
           filterTags: [...state.filterTags].filter(
-            (el) =>
-              el !== (action.payload as TFilterNSortPayload["delete-tag"]),
+            (el) => el !== (action.payload as TFilterNSortPayload["delete-tag"])
           ),
         };
       case "select-filter-tags":
@@ -100,10 +99,10 @@ export function useFilterNSort() {
           filterTags: [...state.filterTags].filter(
             (el) =>
               el !==
-              (action.payload as TFilterNSortPayload["deselect-filter-tags"]),
+              (action.payload as TFilterNSortPayload["deselect-filter-tags"])
           ),
         };
-      case "create-select-group":
+      case "create-select-group": {
         const payloadCreate =
           action.payload as TFilterNSortPayload["create-select-group"];
         const isExisted =
@@ -114,14 +113,16 @@ export function useFilterNSort() {
             ? [...state.sort]
             : [...state.sort, { type: payloadCreate, order: 0 }],
         };
-      case "delete-select-group":
+      }
+      case "delete-select-group": {
         const payloadDel =
           action.payload as TFilterNSortPayload["delete-select-group"];
         return {
           ...state,
           sort: [...state.sort].filter((_, i) => i !== payloadDel),
         };
-      case "update-select-group":
+      }
+      case "update-select-group": {
         const payloadUpdate =
           action.payload as TFilterNSortPayload["update-select-group"];
         return {
@@ -134,6 +135,7 @@ export function useFilterNSort() {
             }
           }),
         };
+      }
       default:
         return state;
     }
@@ -146,7 +148,7 @@ export function useFilterNSort() {
   };
   const [filterState, filterDispatch] = React.useReducer(
     inputReducer,
-    initFilterState,
+    initFilterState
   );
   React.useEffect(() => {
     console.log(filterState);
@@ -159,3 +161,4 @@ export type TFilterNSortHandle = {
 };
 export const FilterNSortContext =
   React.createContext<TFilterNSortHandle | null>(null);
+

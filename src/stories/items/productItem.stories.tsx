@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import Product from "../../component/items/productItem";
 import React from "react";
 
@@ -14,10 +13,6 @@ const meta: Meta<typeof Product> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const ItemDefault: Story = {
   args: {

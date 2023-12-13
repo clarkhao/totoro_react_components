@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { Dropdown } from "../../component/dropdown/dropdown";
 import React from "react";
 
@@ -13,10 +12,6 @@ const meta: Meta<typeof Dropdown> = {
 
 export default meta;
 type Story = StoryObj<typeof Dropdown>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const Dropdown_V0: Story = {
   args: {

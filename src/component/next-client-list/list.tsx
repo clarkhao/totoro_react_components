@@ -2,7 +2,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { FC, Suspense } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { FetchInfiniteList, FetchPageList, TFetchData } from "./fetchList";
+import { FetchInfiniteList, FetchPageList } from "./fetchList";
 import { ListContext, useFetch } from "../next-pagination/hook";
 import React from "react";
 
@@ -50,7 +50,7 @@ function ListRender(props: TListRender) {
                 pageIndex={listState.currentIndex}
                 fetchLimit={9}
               >
-                {(item: Record<string, any>) => <props.element {...item} />}
+                {(item: Record<string, unknown>) => <props.element {...item} />}
               </FetchPageList>
             ) : (
               <FetchInfiniteList
@@ -58,7 +58,7 @@ function ListRender(props: TListRender) {
                 fetchLimit={9}
                 isScrolling={false}
               >
-                {(item: Record<string, any>) => <props.element {...item} />}
+                {(item: Record<string, unknown>) => <props.element {...item} />}
               </FetchInfiniteList>
             )}
           </Suspense>

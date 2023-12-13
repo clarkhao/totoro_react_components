@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { Stepper } from "../component/stepper/stepper";
-import { ListContext, useFetch } from "../component/next-pagination/hook";
-import React from "react";
 
 const meta: Meta<typeof Stepper> = {
   title: "UI/Stepper",
@@ -15,10 +12,6 @@ const meta: Meta<typeof Stepper> = {
 
 export default meta;
 type Story = StoryObj<typeof Stepper>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const InputDefault: Story = {
   args: {},

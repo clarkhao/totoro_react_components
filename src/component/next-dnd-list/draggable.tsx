@@ -1,7 +1,7 @@
 import React from "react";
 import { DndListContext } from "./dndListHook";
 
-interface IDraggable extends React.HtmlHTMLAttributes<HTMLDivElement> {
+type IDraggable = {
   /**
    * children
    */
@@ -14,7 +14,7 @@ interface IDraggable extends React.HtmlHTMLAttributes<HTMLDivElement> {
    * className
    */
   className?: string;
-}
+} & React.HtmlHTMLAttributes<HTMLDivElement>;
 
 export function CustomDraggable({ ...props }: IDraggable) {
   const dnd = React.useContext(DndListContext);
@@ -56,13 +56,13 @@ export function CustomDraggable({ ...props }: IDraggable) {
   const handleDropOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
-  const handleDragEnter = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDragEnter = () => {
     dnd?.dndListDispatch({
       type: "set-dropped",
       payload: props.index,
     });
   };
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = () => {
     console.log(dnd?.dndListState.dragged, dnd?.dndListState.dropped);
     dnd?.dndListDispatch({ type: "set-init-dragged", payload: -1 });
   };

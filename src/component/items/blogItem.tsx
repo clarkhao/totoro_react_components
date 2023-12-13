@@ -1,5 +1,7 @@
+import Image from "next/image";
+
 //firstName,age,email,image
-type TItem = Record<string, any>;
+type TItem = Record<string, unknown>;
 export default function Item({ ...props }: TItem) {
   return (
     <div className="md:max-w-sm">
@@ -12,19 +14,21 @@ export default function Item({ ...props }: TItem) {
         <div className="sm:flex sm:justify-between sm:gap-4">
           <div>
             <h3 className="text-lg font-bold text-gray-900 sm:text-xl dark:text-white">
-              {props.username}
+              {props.username as string}
             </h3>
 
             <p className="mt-1 text-xs font-medium text-gray-600 dark:text-gray-300">
-              {props.firstName} {props.lastName}
+              {props.firstName as string} {props.lastName as string}
             </p>
           </div>
 
           <div className="hidden sm:block sm:shrink-0">
-            <img
+            <Image
               alt="Paul Clapton"
-              src={props.image}
+              src={props.image as string}
               className="h-16 w-16 rounded-lg object-cover shadow-sm"
+              width={64}
+              height={64}
             />
           </div>
         </div>
@@ -51,7 +55,7 @@ export default function Item({ ...props }: TItem) {
               Reading time
             </dt>
             <dd className="text-xs text-gray-500 dark:text-gray-300">
-              {props.age} minute
+              {props.age as number} minute
             </dd>
           </div>
         </dl>

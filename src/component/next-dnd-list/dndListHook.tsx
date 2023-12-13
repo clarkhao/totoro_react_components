@@ -36,10 +36,10 @@ export type TDndListPayload = {
   "set-dropped": number;
   "sort-list": { from: number; to: number };
 };
-export interface IDndListAction {
+export type IDndListAction = {
   type: keyof TDndListPayload;
   payload: TDndListPayload[IDndListAction["type"]];
-}
+};
 export function useDndList() {
   const dndReducer = (state: TDndListState, action: IDndListAction) => {
     switch (action.type) {
@@ -63,16 +63,16 @@ export function useDndList() {
             },
           ],
         };
-      case "delete-item":
+      case "delete-item": {
         const deepCopyList = JSON.parse(JSON.stringify(state.list));
-        console.log(deepCopyList);
         return {
           ...state,
           list: (deepCopyList as TItem[]).filter(
             (_, i) =>
-              i !== (action.payload as TDndListPayload["delete-item"]).index,
+              i !== (action.payload as TDndListPayload["delete-item"]).index
           ),
         };
+      }
       case "set-item-tags":
         return {
           ...state,
@@ -216,7 +216,7 @@ export function useDndList() {
           ...state,
           dropped: action.payload as TDndListPayload["set-dropped"],
         };
-      case "sort-list":
+      case "sort-list": {
         const temp = [...state.list];
         const payload = action.payload as TDndListPayload["sort-list"];
         const choose = temp.splice(payload.from, 1);
@@ -229,6 +229,7 @@ export function useDndList() {
           dragged: state.dropped,
           lastDragged: state.dragged,
         };
+      }
       default:
         return state;
     }
@@ -241,7 +242,7 @@ export function useDndList() {
   };
   const [dndListState, dndListDispatch] = React.useReducer(
     dndReducer,
-    initDndState,
+    initDndState
   );
   React.useEffect(() => {
     if (dndListState.dragged === dndListState.dropped) {
@@ -254,7 +255,7 @@ export function useDndList() {
         payload: { from: dndListState.dropped, to: dndListState.dragged },
       });
     }
-  }, [dndListState.dropped]);
+  }, [dndListState.dragged, dndListState.dropped]);
   React.useEffect(() => {
     console.log(dndListState);
   }, [dndListState]);
@@ -265,3 +266,4 @@ export type TDndListHandle = {
   dndListDispatch: React.Dispatch<IDndListAction>;
 };
 export const DndListContext = React.createContext<TDndListHandle | null>(null);
+

@@ -12,11 +12,6 @@ jobs:
       - name: Print Workspace Directory
         run: | 
           echo "Workspace: $GITHUB_WORKSPACE"
-      - name: git push again
-        run: |
-          git add .
-          git commit -m 'edit branch v1'
-          git push -u origin v1
       - name: format & lint
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
@@ -24,7 +19,10 @@ jobs:
           npm run lint
       - name: lint success
         run: |
-          echo "lint success"
+          cd  C:\Users\clark\Documents\codes\aws\influencers\next-components\
+          git add .
+          git commit -m 'edit branch v1'
+          git push -u origin v1
         if: success()
       - name: lint failed
         run: |

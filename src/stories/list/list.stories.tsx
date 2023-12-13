@@ -13,10 +13,6 @@ const meta: Meta<typeof GraphqlList> = {
 
 export default meta;
 type Story = StoryObj<typeof GraphqlList>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const ClientListDefault: Story = {
   args: {

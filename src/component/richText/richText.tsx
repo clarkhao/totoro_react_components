@@ -1,8 +1,6 @@
 import { useRef } from "react";
 
-type TRichText = {};
-
-export function RichText({ ...props }: TRichText) {
+export function RichText() {
   const editorRef = useRef<HTMLDivElement>(null);
 
   const handleInput = () => {

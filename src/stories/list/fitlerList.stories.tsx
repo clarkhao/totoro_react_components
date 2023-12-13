@@ -12,10 +12,6 @@ const meta: Meta<typeof WithFilterList> = {
 
 export default meta;
 type Story = StoryObj<typeof WithFilterList>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const FilterListDefault: Story = {
   args: {},

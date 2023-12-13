@@ -16,14 +16,14 @@ export function Number({ numbers, ...props }: TNumber) {
   const numberRef = React.useRef<HTMLDivElement>(null);
   const getSize = React.useCallback(() => {
     switch (props.size) {
-      case "small":
-        return "text-sm";
-      case "base":
-        return "text-base";
-      case "large":
-        return "text-xl";
-      default:
-        return "text-base";
+    case "small":
+      return "text-sm";
+    case "base":
+      return "text-base";
+    case "large":
+      return "text-xl";
+    default:
+      return "text-base";
     }
   }, [props.size]);
   React.useEffect(() => {
@@ -32,8 +32,8 @@ export function Number({ numbers, ...props }: TNumber) {
     el.transition()
       .tween("text", () => {
         const interpolator = d3.interpolateString(
-          (parseFloat(numbers.start).toFixed(2) ?? 0.00),
-          parseFloat(numbers.end).toFixed(2)
+          parseFloat(numbers.start).toFixed(2) ?? 0.0,
+          parseFloat(numbers.end).toFixed(2),
         );
         return function (t) {
           d3.select(this).text(parseFloat(interpolator(t)).toFixed(2));

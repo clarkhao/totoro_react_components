@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
-import { Badge, getRandomColor } from "../../component/badge/badge";
-import React from "react";
+import { Badge } from "../../component/badge/badge";
 
 const meta: Meta<typeof Badge> = {
   title: "UI/Badge",
@@ -14,10 +12,6 @@ const meta: Meta<typeof Badge> = {
 
 export default meta;
 type Story = StoryObj<typeof Badge>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const BadgeDefault: Story = {
   args: {

@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { Avatar } from "../../component/avatar/avatar";
-import React from "react";
-import { FaApple } from "react-icons/fa6";
-import { FiCamera } from "react-icons/fi";
 
 const meta: Meta<typeof Avatar> = {
   title: "UI/Avatar",
@@ -17,10 +13,6 @@ const meta: Meta<typeof Avatar> = {
 
 export default meta;
 type Story = StoryObj<typeof Avatar>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const AvatarDefault: Story = {
   args: {

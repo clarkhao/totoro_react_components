@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useCartStore } from "../next-list/cart/cartStore";
 type TListData = {
   currentIndex: number;
   isAscending: boolean;
@@ -15,13 +14,12 @@ type TListDataPayload = {
   "record-cursor": Record<string, string>;
   reset: null;
 };
-export interface IDynamicListAction {
+export type IDynamicListAction = {
   type: keyof TListDataPayload;
   payload: TListDataPayload[IDynamicListAction["type"]];
-}
+};
 
 export function usePage(current?: number) {
-  const [setCartItems] = useCartStore((state) => [state.setCartItems]);
   const initListData: TListData = {
     currentIndex: current ?? 1,
     isAscending: true,

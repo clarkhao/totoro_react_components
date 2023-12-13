@@ -1,6 +1,6 @@
 import style from "./line.module.css";
 
-interface IBorderLine extends React.HTMLAttributes<HTMLDivElement> {
+type IBorderLine = {
   /**
    * children
    */
@@ -17,7 +17,7 @@ interface IBorderLine extends React.HTMLAttributes<HTMLDivElement> {
     | "indigo"
     | "purple"
     | "pink";
-}
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export function BorderLine({ ...props }: IBorderLine) {
   const bgColor = () => {

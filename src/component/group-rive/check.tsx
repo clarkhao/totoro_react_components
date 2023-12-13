@@ -1,4 +1,4 @@
-import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
+import { useRive } from "@rive-app/react-canvas";
 
 type TCheck = {
   /**
@@ -7,7 +7,7 @@ type TCheck = {
   bingo: boolean;
 };
 
-function Check({ bingo = false, ...props }: TCheck) {
+function Check({ bingo = false }: TCheck) {
   const { rive, RiveComponent } = useRive({
     src: "https://doggycatty.s3.amazonaws.com/app/small.riv",
     stateMachines: "bingo",
@@ -22,3 +22,4 @@ function Check({ bingo = false, ...props }: TCheck) {
 }
 
 export default Check;
+

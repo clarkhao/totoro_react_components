@@ -1,16 +1,13 @@
 import axios from "axios";
 import React from "react";
 import { FC } from "react";
-import { useQuery, useInfiniteQuery, QueryClient } from "react-query";
-import { useFetch } from "../next-pagination/hook";
+import { useQuery, useInfiniteQuery } from "react-query";
 import Spinner from "../spinner/spinner";
 import Pagination from "../next-pagination/pagination";
 import { Button } from "../button/button";
 
-export type TFetchData = Record<string, any>;
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+export type TFetchData = Record<string, unknown>;
+
 const fetchData = async (
   url: string,
   pageIndex: number = 1,
@@ -51,7 +48,7 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
   // Queries
   // staleTime reduce the refetch
   // isPreviousData is used in pagination
-  const { data, error, isLoading, isFetching, isPreviousData } = useQuery(
+  const { data, error, isLoading, } = useQuery(
     ["customers", pageIndex],
     ({ signal }) => fetchData(props.url, pageIndex, fetchLimit, signal),
     { suspense: true, staleTime: 30000, keepPreviousData: true },
@@ -62,8 +59,8 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
   }, [data?.total]);
   */
   const getPageTotal = React.useMemo(
-    () => Math.round(data?.total / fetchLimit),
-    [data?.total],
+    () => Math.round(data?.total as number / fetchLimit),
+    [data?.total, fetchLimit],
   );
   if (isLoading) return <div>Fetching posts...</div>;
   if (error) return <div>An error occurred: {(error as Error).message}</div>;
@@ -72,7 +69,7 @@ export function FetchPageList({ pageIndex, fetchLimit, ...props }: TList) {
     <>
       <div className="w-full">
         <ul className="grid max-xs:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-4">
-          {(data as TFetchData)!.users.map((d: Record<string, any>) => (
+          {(data!.users as Array<Record<string, unknown>>).map((d: Record<string, unknown>) => (
             <li key={`customer-${d.id}`}>{props.children(d)}</li>
           ))}
         </ul>
@@ -101,12 +98,11 @@ export function FetchInfiniteList({
         retry: 2,
         getNextPageParam: (lastPage: TFetchData, allPages: TFetchData[]) => {
           const nextPage =
-            lastPage.users.length === 9 ? allPages.length + 1 : undefined;
+            (lastPage.users as Array<unknown>).length === 9 ? allPages.length + 1 : undefined;
           return nextPage;
         },
       },
     );
-  console.log(data);
   React.useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
@@ -127,11 +123,11 @@ export function FetchInfiniteList({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [fetchNextPage, hasNextPage, props.isScrolling]);
   const users = React.useCallback(() => {
     return data?.pages.reduce((acc: Array<TFetchData>, page) => {
       const user = page.users;
-      acc = acc.concat(user);
+      acc = acc.concat(user as TFetchData);
       return acc;
     }, [] as Array<TFetchData>);
   }, [data]);
@@ -142,7 +138,7 @@ export function FetchInfiniteList({
     <>
       <div className="w-full">
         <ul className="grid max-xs:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-4 xl:grid-cols-4">
-          {users()?.map((data: Record<string, any>) => (
+          {users()?.map((data: Record<string, unknown>) => (
             <li key={`customer-${data.id}`}>{props.children(data)}</li>
           ))}
         </ul>
@@ -154,7 +150,7 @@ export function FetchInfiniteList({
         {!props.isScrolling && !isFetching && hasNextPage ? (
           <>
             <Button
-              variant="secondary"
+              isPrimary
               onClick={() => fetchNextPage()}
               width="w-full"
               size="base"

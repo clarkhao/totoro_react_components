@@ -1,5 +1,4 @@
 import {
-  faAngleLeft,
   faCaretLeft,
   faCaretRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -15,11 +14,11 @@ type TSlider = {
 };
 
 export function Slider({ ...props }: TSlider) {
-  const onScrollLeft = (e: React.MouseEvent) => {
+  const onScrollLeft = () => {
     const ele = document.querySelector("[data-scroll]");
     ele?.scrollTo({ left: ele?.scrollLeft - 395, behavior: "smooth" });
   };
-  const onScrollRight = (e: React.MouseEvent) => {
+  const onScrollRight = () => {
     const ele = document.querySelector("[data-scroll]");
     ele?.scrollTo({ left: ele?.scrollLeft + 395, behavior: "smooth" });
   };

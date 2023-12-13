@@ -2,23 +2,20 @@ import { CustomDropdown } from "../dropdown/customDropdown";
 import { Select } from "../select/select";
 import {
   FaSquarePlus,
-  FaPlus,
   FaXmark,
   FaGripVertical,
   FaEllipsisVertical,
   FaTrashCan,
 } from "react-icons/fa6";
 import React from "react";
-import { FilterNSortContext, TSelected } from "./hook";
+import { FilterNSortContext } from "./hook";
 import { DefaultClickable } from "../dropdown/defaultClickable";
 import { AddSort } from "./addSort";
 import { Badge } from "../badge/badge";
 import { CustomAbsDrop } from "../dropdown/customAbsDrop";
 import { useSortStore } from "./store";
 
-type TFilterNSort = {};
-
-export function FilterNSort({ ...props }: TFilterNSort) {
+export function FilterNSort() {
   const filterNSort = React.useContext(FilterNSortContext);
   const [sort, setSortGroup] = useSortStore((state) => [
     state.sort,
@@ -59,11 +56,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
     console.log(i);
     setSortGroup((prev) => prev.filter((_, index) => index !== i));
   };
-  const handleSelectChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-    i: number,
-    key: string,
-  ) => {};
+
   return (
     <div className="flex flex-row justify-start items-start gap-3">
       <Select
@@ -203,13 +196,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
                     ]}
                     index={i}
                     selectKey="type"
-                    onChange={(e) => {
-                      const items = [
-                        { id: "date", title: "Date" },
-                        { id: "tags", title: "Tags" },
-                      ];
-                      handleSelectChange(e, i, "type");
-                    }}
+                    
                   />
                   <Select
                     height="tiny"
@@ -219,13 +206,7 @@ export function FilterNSort({ ...props }: TFilterNSort) {
                     ]}
                     index={i}
                     selectKey="order"
-                    onChange={(e) => {
-                      const items = [
-                        { id: "asc", title: "Ascending" },
-                        { id: "dsc", title: "Descending" },
-                      ];
-                      handleSelectChange(e, i, "order");
-                    }}
+                    
                   />
                 </span>
                 <FaXmark

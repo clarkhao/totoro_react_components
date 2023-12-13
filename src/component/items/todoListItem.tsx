@@ -6,12 +6,8 @@ import { CSSTransition } from "react-transition-group";
 import "../avatar/avatar.css";
 import { FaGripVertical } from "react-icons/fa6";
 import sanitizeHtml from "sanitize-html";
-import { TagsArea } from "../richText/tagsArea";
 import { DndListContext, TItem } from "../next-dnd-list/dndListHook";
 import { TagSelect } from "../richText/tagSelect";
-
-type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 type TTodoListItem = {
   /**
@@ -53,7 +49,7 @@ export function TodoListItem({ ...props }: TTodoListItem) {
         content: sanitizeHtml(evt.currentTarget.innerHTML, sanitizeConf),
       },
     });
-  }, []);
+  }, [dnd, props.index]);
   React.useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -84,6 +80,7 @@ export function TodoListItem({ ...props }: TTodoListItem) {
       console.log("bottom");
       setAbsPos("bottom-24");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dnd?.dndListState.list[props.index].active]);
   const handleCompleted = () => {
     dnd?.dndListDispatch({

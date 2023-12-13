@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "tsc",
+    "build": "next build",
     "start": "next start",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(tsx|js|ts|json|css)\"",
     "lint": "next lint --fix",

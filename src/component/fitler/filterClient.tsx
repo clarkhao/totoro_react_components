@@ -1,6 +1,4 @@
 import { TFilter } from "./filter";
-import { graphqlFetch } from "../../utils";
-import { query } from "./query";
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { Select } from "../select/select";

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { TagSelect } from "../../component/richText/tagSelect";
 import React from "react";
 import {
@@ -11,8 +10,7 @@ import {
   useDndList,
 } from "../../component/next-dnd-list/dndListHook";
 
-type TStoryTagSelect = {};
-function StoryTagSelect({ ...props }: TStoryTagSelect) {
+function StoryTagSelect() {
   const { filterState, filterDispatch } = useFilterNSort();
   const { dndListState, dndListDispatch } = useDndList();
   React.useEffect(() => {
@@ -22,7 +20,7 @@ function StoryTagSelect({ ...props }: TStoryTagSelect) {
     });
     filterDispatch({ type: "create-tag", payload: "Hello" });
     filterDispatch({ type: "create-tag", payload: "World" });
-  }, []);
+  }, [dndListDispatch, filterDispatch]);
   return (
     <div className="w-full">
       <FilterNSortContext.Provider value={{ filterState, filterDispatch }}>
@@ -47,10 +45,6 @@ const meta: Meta<typeof StoryTagSelect> = {
 
 export default meta;
 type Story = StoryObj<typeof StoryTagSelect>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const TagSelectDefault: Story = {
   args: {},

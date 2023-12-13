@@ -2,12 +2,12 @@
 import React, { ButtonHTMLAttributes } from "react";
 //component
 
-export interface IIconButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type IIconButton = {
   /**
    * children
    */
   children: React.ReactNode;
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function IconButton(props: IIconButton) {
   return (

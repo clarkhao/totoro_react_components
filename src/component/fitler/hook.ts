@@ -11,10 +11,10 @@ export type TFilterPayload = {
   "set-search": string;
 };
 
-export interface IFilterAction {
+export type IFilterAction = {
   type: keyof TFilterPayload;
   payload: TFilterPayload[IFilterAction["type"]];
-}
+};
 
 export function useFilter() {
   const filterReducer = (state: TFilterState, action: IFilterAction) => {

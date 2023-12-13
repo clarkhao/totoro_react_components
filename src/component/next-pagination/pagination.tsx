@@ -19,7 +19,7 @@ export default function Pagination(props: TPagination) {
   React.useEffect(() => {
     console.log(list?.listState.currentIndex);
     console.log(list?.listState.pageIndex);
-  }, [list?.listState.currentIndex]);
+  }, [list?.listState.currentIndex, list?.listState.pageIndex]);
   const handleAsyncStateUpdate = async (next: boolean) => {
     return new Promise((resolve) => {
       setIsNext(next);
@@ -84,7 +84,7 @@ export default function Pagination(props: TPagination) {
           <SwitchTransition mode="out-in">
             <CSSTransition
               classNames={
-                isNext ? `pagination-stable` : "pagination-appear-right"
+                isNext ? "pagination-stable" : "pagination-appear-right"
               }
               timeout={500}
               key={firstIndex}
@@ -102,7 +102,7 @@ export default function Pagination(props: TPagination) {
           <SwitchTransition mode="out-in">
             <CSSTransition
               classNames={
-                isNext ? `pagination-disappear-left` : "pagination-right"
+                isNext ? "pagination-disappear-left" : "pagination-right"
               }
               timeout={500}
               key={firstIndex}
@@ -136,7 +136,7 @@ export default function Pagination(props: TPagination) {
           </SwitchTransition>
           <SwitchTransition mode="out-in">
             <CSSTransition
-              classNames={isNext ? `pagination-left` : "pagination-right"}
+              classNames={isNext ? "pagination-left" : "pagination-right"}
               timeout={500}
               key={firstIndex}
             >
@@ -175,7 +175,7 @@ export default function Pagination(props: TPagination) {
           <SwitchTransition mode="out-in">
             <CSSTransition
               classNames={
-                isNext ? `pagination-left` : "pagination-disappear-right"
+                isNext ? "pagination-left" : "pagination-disappear-right"
               }
               timeout={500}
               key={firstIndex}
@@ -198,7 +198,7 @@ export default function Pagination(props: TPagination) {
           <SwitchTransition mode="out-in">
             <CSSTransition
               classNames={
-                isNext ? `pagination-appear-left` : "pagination-stable"
+                isNext ? "pagination-appear-left" : "pagination-stable"
               }
               timeout={500}
               key={firstIndex}

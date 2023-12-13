@@ -8,10 +8,10 @@ type TDropPayload = {
   "set-active": boolean;
 };
 
-export interface IDropAction {
+export type IDropAction = {
   type: keyof TDropPayload;
   payload: TDropPayload[IDropAction["type"]];
-}
+};
 
 export function useDropdown() {
   const dropReducer = (state: TDropState, action: IDropAction) => {
@@ -30,9 +30,6 @@ export function useDropdown() {
     dropReducer,
     initDropState,
   );
-  React.useEffect(() => {
-    console.log(dropState.isActive);
-  }, [dropState.isActive]);
   return { dropState, dropDispatch };
 }
 export type TDropHandle = {

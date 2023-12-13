@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React, { FocusEventHandler, Fragment } from "react";
 import { Badge } from "../badge/badge";
 import { FilterNSortContext } from "../next-dnd-list/hook";
 import { DndListContext } from "../next-dnd-list/dndListHook";
 
-export function TagsArea({ index, ...props }: Record<string, any>) {
+export function TagsArea({ index, ...props }: Record<string, unknown>) {
   const filterNSort = React.useContext(FilterNSortContext);
   const dndList = React.useContext(DndListContext);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -14,11 +14,11 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
   };
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (evt.key === "Enter") {
-      console.log(dndList?.dndListState.list[index]);
+      console.log(dndList?.dndListState.list[index as number]);
       console.log(tag);
-      if (tag && dndList?.dndListState.list[index]) {
+      if (tag && dndList?.dndListState.list[index as number]) {
         const selected =
-          dndList?.dndListState.list[index].selectedTags ??
+          dndList?.dndListState.list[index as number].selectedTags ??
           ([] as Array<string>);
         filterNSort?.filterDispatch({
           type: "create-tag",
@@ -27,7 +27,7 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
         dndList?.dndListDispatch({
           type: "set-item-tags",
           payload: {
-            index,
+            index: index as number,
             tags: selected?.includes((evt.target as HTMLInputElement).value)
               ? [...selected]
               : [...selected, (evt.target as HTMLInputElement).value],
@@ -35,13 +35,13 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
         });
       }
       setTag("");
-    } else if (evt.key === "Backspace" && dndList?.dndListState.list[index]) {
+    } else if (evt.key === "Backspace" && dndList?.dndListState.list[index as number]) {
       if (!tag || tag.length === 0) {
         dndList?.dndListDispatch({
           type: "set-item-tags",
           payload: {
-            index,
-            tags: [...dndList?.dndListState.list[index].selectedTags].slice(
+            index: index as number,
+            tags: [...(dndList?.dndListState.list[index as number].selectedTags ?? [])].slice(
               0,
               -1,
             ),
@@ -54,8 +54,8 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
   const getTags = React.useCallback(() => {
     const allTags = filterNSort?.filterState.tags;
     const indexes =
-      dndList?.dndListState.list[index] &&
-      dndList?.dndListState.list[index].selectedTags;
+      dndList?.dndListState.list[index as number] &&
+      dndList?.dndListState.list[index as number].selectedTags;
     return allTags?.filter((el) => indexes?.includes(el.content));
   }, [filterNSort?.filterState.tags, dndList?.dndListState.list, index]);
 
@@ -63,8 +63,8 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
     dndList?.dndListDispatch({
       type: "set-item-tags",
       payload: {
-        index,
-        tags: [...dndList?.dndListState.list[index].selectedTags].filter(
+        index: index as number,
+        tags: [...(dndList?.dndListState.list[index as number].selectedTags ?? [])].filter(
           (el) => el !== content,
         ),
       },
@@ -99,7 +99,7 @@ export function TagsArea({ index, ...props }: Record<string, any>) {
         value={tag}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        onFocus={props.handler}
+        onFocus={props.handler as FocusEventHandler<HTMLInputElement> | undefined}
         placeholder="Add new tag..."
       />
     </div>

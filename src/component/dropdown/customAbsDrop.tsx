@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { CSSTransition } from "react-transition-group";
 import "../avatar/avatar.css";
 
-interface ICustomAbsDrop extends Record<string, any> {
+type ICustomAbsDrop = {
   /**
    * children
    */
@@ -21,7 +21,7 @@ interface ICustomAbsDrop extends Record<string, any> {
    * className
    */
   className?: string;
-}
+} & Record<string, unknown>;
 
 export function CustomAbsDrop({ children, ...props }: ICustomAbsDrop) {
   //checked controll the appearrance of popup

@@ -15,10 +15,10 @@ export type TFilter = {
   isTopBarFixed?: boolean;
 };
 
-export async function FilterServer({ ...props }: TFilter) {
+export async function FilterServer() {
   const res = await graphqlFetch("https://mock.shop/api", query);
   const categories = res.collections.edges.map(
-    (item: { cursor: string; node: Record<string, any> }) => {
+    (item: { cursor: string; node: Record<string, unknown> }) => {
       return { id: item.node.id, title: item.node.title };
     },
   );

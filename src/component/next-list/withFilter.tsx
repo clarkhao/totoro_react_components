@@ -19,7 +19,7 @@ export function WithFilterList({ ...props }: TWithFilterList) {
   const [data, setData] = React.useState<
     Array<{ id: string; title: string }> | undefined
   >(undefined);
-  const [error, setError] = React.useState<Error>();
+  const [, setError] = React.useState<Error>();
   React.useEffect(() => {
     graphqlFetch("https://mock.shop/api", query)
       .then(async (res) => {

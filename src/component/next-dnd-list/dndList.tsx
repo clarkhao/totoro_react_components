@@ -9,9 +9,7 @@ import "./dnd-transition.css";
 import { FilterNSort } from "./filterNsort";
 import { FilterNSortContext } from "./hook";
 
-type TDndList = {};
-
-export function DndList({ ...props }: TDndList) {
+export function DndList() {
   const dndList = React.useContext(DndListContext);
   const filterNSort = React.useContext(FilterNSortContext);
   const editorRef = React.useRef<HTMLDivElement>(null);
@@ -37,7 +35,7 @@ export function DndList({ ...props }: TDndList) {
   const renderList = React.useMemo(() => {
     const category = +(filterNSort?.filterState.category ?? 0);
     const filterTags = filterNSort?.filterState.filterTags;
-    const sort = filterNSort?.filterState.sort;
+    //const sort = filterNSort?.filterState.sort;
     const list = dndList?.dndListState.list;
     console.log(filterTags);
     switch (category) {
@@ -187,15 +185,4 @@ export function DndList({ ...props }: TDndList) {
       </div>
     </>
   );
-}
-
-function sortChain<T extends { [key: string]: any }>(
-  types: Array<{ type: string; order: number }>,
-  list: Array<T>,
-) {
-  let result = [...list];
-  types.forEach((el) => {
-    result = result.sort((a, b) => a[el.type] - b[el.type]);
-  });
-  return result;
 }

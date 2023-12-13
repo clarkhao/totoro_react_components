@@ -54,7 +54,7 @@ export const SuccessAnimated: Story = {
     isOutlined: true,
   },
 
-  play: async ({ canvasElement, args }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const contained = canvas.getAllByTestId("test-button");
     await sleep(1000);

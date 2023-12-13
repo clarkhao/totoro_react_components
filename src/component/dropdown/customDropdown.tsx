@@ -1,11 +1,11 @@
 /* position fixed default, isAbs turn to absolute position*/
-import React, { FC, ReactElement } from "react";
+import React, { FC } from "react";
 import { DefaultClickable } from "./defaultClickable";
 import { CSSTransition } from "react-transition-group";
 import "../avatar/avatar.css";
 import { searchParentNode } from "../../utils";
 
-interface TCustomDropdown extends Record<string, any> {
+type TCustomDropdown = {
   /**
    * children
    */
@@ -34,7 +34,7 @@ interface TCustomDropdown extends Record<string, any> {
    * index
    */
   index?: number;
-}
+} & Record<string, unknown>;
 
 export function CustomDropdown({
   index = 0,
@@ -49,7 +49,6 @@ export function CustomDropdown({
 
   React.useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      console.log(event.target);
       if (
         !(
           (dropdownRef.current &&
@@ -68,9 +67,7 @@ export function CustomDropdown({
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
-  React.useEffect(() => {
-    console.log(`hidden status: ${hidden}`);
-  }, [hidden]);
+
   const handler = () => {
     const calculateFixedPos = async () => {
       const position = dropdownRef.current?.getBoundingClientRect();
@@ -110,9 +107,9 @@ export function CustomDropdown({
       const position = dropdownRef.current?.getBoundingClientRect();
       const spaceAbove = position?.top;
       const spaceBelow = window.innerHeight - (position?.top ?? 0);
-      const spaceBelowBottom = window.innerHeight - (position?.bottom ?? 0);
-      const spaceRight = window.innerWidth - (position?.right ?? 0);
-      const spaceLeft = position?.left;
+      //const spaceBelowBottom = window.innerHeight - (position?.bottom ?? 0);
+      //const spaceRight = window.innerWidth - (position?.right ?? 0);
+      //const spaceLeft = position?.left;
       const calendarHeight = props.childHeight ?? 0;
       if (spaceBelow >= calendarHeight || spaceBelow >= spaceAbove!) {
         setStyle({
@@ -143,7 +140,7 @@ export function CustomDropdown({
           handler,
           index,
           ...props,
-        } as Record<string, any>)}
+        } as Record<string, unknown>)}
         <CSSTransition
           in={!hidden}
           timeout={300}

@@ -1,12 +1,20 @@
-export function deepclone(obj: any) {
-  if (typeof obj !== "object" || obj === null) return obj;
-  const result: any = Array.isArray(obj) ? [] : {};
+export function deepClone<T>(obj: T): T {
+  if (typeof obj !== "object" || obj === null) {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    const result = obj.map((item) => deepClone(item));
+    return result as T;
+  }
+
+  const result: Partial<T> = {};
   for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      result[key] = deepclone(obj[key]);
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result[key] = deepClone(obj[key]);
     }
   }
-  return result;
+  return result as T;
 }
 
 //another simple one

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { ToastList } from "../../component/next-toast/toastList";
 import { useToastStore } from "../../component/next-toast/store";
 import React from "react";
@@ -18,18 +17,13 @@ const lorem = new LoremIpsum({
   },
 });
 function TestToastList() {
-  const [toastMsg, setToastMsg] = useToastStore((state) => [
-    state.toastMsg,
+  const [setToastMsg] = useToastStore((state) => [
     state.setToastMsg,
   ]);
   const [count, setCount] = React.useState(0);
   const removeToast = (id: string) => {
     setToastMsg((prevToasts) => prevToasts.filter((el) => el.id !== id));
   };
-  React.useEffect(() => {
-    //remove the toast after 5 seconds
-    const timer = setTimeout(() => {}, 5000);
-  }, [toastMsg]);
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <button
@@ -67,10 +61,6 @@ const meta: Meta<typeof TestToastList> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const Default: Story = {
   args: {},

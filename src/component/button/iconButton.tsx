@@ -4,7 +4,7 @@ import { SwitchTransition, CSSTransition } from "react-transition-group";
 //component
 import "./transition.css";
 
-export interface IIconButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type IIconButton = {
   /**
    * children
    */
@@ -17,7 +17,7 @@ export interface IIconButton extends ButtonHTMLAttributes<HTMLButtonElement> {
    * num?
    */
   num?: number;
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function IconButton({ children, ...props }: IIconButton) {
   return (

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { FiCircle } from "react-icons/fi";
 import Image from "next/image";

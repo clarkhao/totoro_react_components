@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { TodoListItem } from "../../component/dropdown/dndDropdown";
 import React from "react";
 import {
@@ -12,8 +11,7 @@ import {
   useDndList,
 } from "../../component/next-dnd-list/dndListHook";
 
-type TDragableItem = {};
-function DragableItem({ ...props }: TDragableItem) {
+function DragableItem() {
   const { filterState, filterDispatch } = useFilterNSort();
   const { dndListState, dndListDispatch } = useDndList();
   //drop event handler
@@ -37,7 +35,7 @@ function DragableItem({ ...props }: TDragableItem) {
       type: "create-item",
       payload: { content: "Hello World" },
     });
-  }, []);
+  }, [dndListDispatch]);
   return (
     <DndListContext.Provider value={{ dndListState, dndListDispatch }}>
       <div
@@ -91,10 +89,6 @@ const meta: Meta<typeof DragableItem> = {
 
 export default meta;
 type Story = StoryObj<typeof DragableItem>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const TotoListItemDefault: Story = {
   args: {},

@@ -8,10 +8,10 @@ type TModalPayload = {
   "toggle-modal": boolean;
 };
 
-export interface IModalAction {
+export type IModalAction = {
   type: keyof TModalPayload;
   payload: TModalPayload[IModalAction["type"]];
-}
+};
 
 const modalReducer = (state: TModalState, action: IModalAction) => {
   switch (action.type) {

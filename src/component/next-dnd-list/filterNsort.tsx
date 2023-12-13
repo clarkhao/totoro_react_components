@@ -2,23 +2,17 @@ import { CustomDropdown } from "../dropdown/customDropdown";
 import { Select } from "../select/select";
 import {
   FaSquarePlus,
-  FaPlus,
-  FaXmark,
-  FaGripVertical,
   FaEllipsisVertical,
   FaTrashCan,
 } from "react-icons/fa6";
 import React from "react";
-import { FilterNSortContext, TSelected } from "./hook";
+import { FilterNSortContext } from "./hook";
 import { DefaultClickable } from "../dropdown/defaultClickable";
-import { AddSort } from "./addSort";
 import { Badge } from "../badge/badge";
 import { CustomAbsDrop } from "../dropdown/customAbsDrop";
 import { SortGroup } from "./sort";
 
-type TFilterNSort = {};
-
-export function FilterNSort({ ...props }: TFilterNSort) {
+export function FilterNSort() {
   const filterNSort = React.useContext(FilterNSortContext);
   //tag inside the textinput
   const [tag, setTag] = React.useState<string>("");

@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within } from "@storybook/testing-library";
 import { Slider } from "../../component/slider/slider";
-import React from "react";
 
 const meta: Meta<typeof Slider> = {
   title: "UI/Slider",
@@ -14,10 +12,6 @@ const meta: Meta<typeof Slider> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-// Function to emulate pausing between interactions
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const SliderDefault: Story = {
   args: {
@@ -39,8 +33,5 @@ export const SliderDefault: Story = {
         to: "",
       },
     ],
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
   },
 };
