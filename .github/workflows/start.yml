@@ -50,18 +50,20 @@ jobs:
           git pull origin main
       - name: ready to deploy
         run: |
-          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
+          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\clarkhao.github.io\
           git fetch
           git pull origin main
           cd  C:\Users\clark\Documents\codes\aws\influencers\devop\
-          .\cleanstatic.exe
-          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
+          .\cleanstatic.exe -mode del
+          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\clarkhao.github.io\
           git add .
           git commit -m 'clear'
           git push -u origin main
           cd C:\Users\clark\Documents\codes\aws\influencers\next-components\
           npm run build-storybook
-          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
+          cd  C:\Users\clark\Documents\codes\aws\influencers\devop\
+          .\cleanstatic.exe -mode copy -src "C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static"
+          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\clarkhao.github.io\
           git fetch
           git pull origin main
           git add .
