@@ -52,9 +52,4 @@ jobs:
         run: |
           cd  C:\Users\clark\Documents\codes\aws\influencers\devop\
           .\cleanstatic.exe
-<<<<<<< HEAD
         if: github.event.action == 'closed'
-=======
-        if: github.event.action == 'closed'
-    
->>>>>>> 8637e218703a61b94fdae47b907f82c01358ba73
