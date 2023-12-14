@@ -50,7 +50,21 @@ jobs:
           git pull origin main
       - name: ready to deploy
         run: |
+          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
+          git fetch
+          git pull origin main
           cd  C:\Users\clark\Documents\codes\aws\influencers\devop\
           .\cleanstatic.exe
+          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
+          git add .
+          git commit -m 'clear'
+          git push -u origin main
+          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\
+          npm run build-storybook
+          cd C:\Users\clark\Documents\codes\aws\influencers\next-components\storybook-static\
+          git fetch
+          git pull origin main
+          git add .
+          git commit -m 'update'
+          git push -u origin main
         if: github.event.action == 'closed'
-    
