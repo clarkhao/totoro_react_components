@@ -8,6 +8,7 @@
   position: absolute;
   top: 0;
 }
+/* "https://doggycatty.s3.amazonaws.com/app/work.jpg" */
 .image {
   background-image: url("https://doggycatty.s3.amazonaws.com/app/work.jpg");
   background-size: 100%;

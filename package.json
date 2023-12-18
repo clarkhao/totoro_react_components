@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(tsx|js|ts|json|css)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(tsx|js|ts|json|css|mjs)\"",
     "lint": "next lint --fix",
     "storybook": "storybook dev -p 6006 -s ../public",
     "build-storybook": "storybook build",
