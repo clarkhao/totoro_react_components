@@ -5,7 +5,7 @@ import {
   DropContext,
   useDropdown,
 } from "../../component/dropdown/nextDropHook";
-import { NextDropdown } from "../../component/dropdown/nextDropdown";
+import { NextDropdown } from "../../component/dropdown/dropdownV3";
 
 function Sidebar() {
   const { dropState, dropDispatch } = useDropdown();
@@ -57,6 +57,8 @@ function Sidebar() {
                   />
                 )}
                 className="top-full right-6"
+                autoPos={{ auto: false, popupHeight: 0, popupWidth: 0 }}
+                isByHover={false}
               >
                 <div className="w-40 h-80 bg-gray-100 shadow-md rounded-sm"></div>
               </NextDropdown>

@@ -1,0 +1,100 @@
+/* dropdown css */
+.dropdown-enter {
+  opacity: 0;
+  transform-origin: 0% 0%;
+  transform: translateY(-5px) scaleY(0.1);
+}
+.dropdown-enter-active {
+  opacity: 1;
+  transform-origin: 0% 0%;
+  transform: translateY(0px) scaleY(1);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+.dropdown-exit {
+  opacity: 1;
+  transform-origin: 0% 0%;
+  transform: translateY(0px) scaleY(1);
+}
+.dropdown-exit-active {
+  opacity: 0;
+  transform-origin: 0% 0%;
+  transform: translateY(5px) scaleY(0.1);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+/* dropdown reverse css */
+.dropdown-reverse-enter {
+  opacity: 0;
+  transform-origin: 100% 100%;
+  transform: translateY(5px) scaleY(0.1);
+}
+.dropdown-reverse-enter-active {
+  opacity: 1;
+  transform-origin: 100% 100%;
+  transform: translateY(0) scaleY(1);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}
+.dropdown-reverse-exit {
+  opacity: 1;
+  transform-origin: 100% 100%;
+  transform: translateY(0) scaleY(1);
+}
+.dropdown-reverse-exit-active {
+  opacity: 0;
+  transform-origin: 100% 100%;
+  transform: translateY(5px) scaleY(0.1);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}
+/* badge css */
+.badge-enter {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+.badge-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+.badge-exit {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.badge-exit-active {
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+/* btn css */
+.btn-enter {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+.btn-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+.btn-exit {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.btn-exit-active {
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}

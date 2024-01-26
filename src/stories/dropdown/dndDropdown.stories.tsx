@@ -80,7 +80,7 @@ function DragableItem() {
 }
 
 const meta: Meta<typeof DragableItem> = {
-  title: "UI/dropdown/dndDropdown",
+  title: "UI/DnD",
   component: DragableItem,
   parameters: {
     layout: "fullscreen",
@@ -90,6 +90,6 @@ const meta: Meta<typeof DragableItem> = {
 export default meta;
 type Story = StoryObj<typeof DragableItem>;
 
-export const TotoListItemDefault: Story = {
+export const DnDDropdown: Story = {
   args: {},
 };

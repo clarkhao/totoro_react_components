@@ -8,6 +8,8 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "storybook-tailwind-dark-mode",
+    "storybook-addon-themes",
+    "@storybook/addon-a11y",
     {
       name: "@storybook/addon-styling",
       options: {

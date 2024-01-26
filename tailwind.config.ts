@@ -1,5 +1,36 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import ds from "./data/design.json";
+
+//import and read design json file
+const colors = ds.colors;
+const colorSet: { [key: string]: string } = {};
+
+const lightColorList = Object.entries(colors.light) as Array<Array<string>>;
+lightColorList.forEach((v) => {
+  if (v[0] !== "text") {
+    colorSet[`light-${v[0]}`] = v[1];
+  }
+});
+const lightTextColorList = Object.entries(colors.light.text) as Array<
+  Array<string>
+>;
+lightTextColorList.forEach((v) => {
+  colorSet[`light-${v[0]}`] = v[1];
+});
+const darkColorList = Object.entries(colors.dark) as Array<Array<string>>;
+darkColorList.forEach((v) => {
+  if (v[0] !== "text") {
+    colorSet[`dark-${v[0]}`] = v[1];
+  }
+});
+const darkTextColorList = Object.entries(colors.dark.text) as Array<
+  Array<string>
+>;
+darkTextColorList.forEach((v) => {
+  colorSet[`dark-${v[0]}`] = v[1];
+});
+
 const config: Config = {
   darkMode: "class",
   content: [
@@ -29,6 +60,7 @@ const config: Config = {
         "ele-error": "#EE7D52",
         "ele-neutral": "#EAEAEA",
         "ele-overlay": "#2B1E70",
+        ...colorSet,
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { Select } from "../select/select";
 import { FilterNSortContext } from "./hook";
 import { FaGripVertical, FaXmark } from "react-icons/fa6";
-import { CustomAbsDrop } from "../dropdown/customAbsDrop";
+import { NextDropdown } from "../dropdown/dropdownV3";
 import { AddSort } from "./addSort";
 // eslint-disable-next-line @typescript-eslint/ban-types
 type TSort = {};
@@ -82,11 +82,15 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
       })}
 
       <div className="w-full relative">
-        <CustomAbsDrop
-          title="Add Sort"
-          clickable={AddSort}
-          id={0}
+        <NextDropdown
+          clickable={() => <AddSort title="Add Sort" />}
           className="top-20"
+          autoPos={{
+            auto: false,
+            popupHeight: 0,
+            popupWidth: 0,
+          }}
+          isByHover={false}
         >
           <div className="-mt-4 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 min-h-[200px] p-2 w-64 rounded-md shadow-md">
             {[0, 1]
@@ -109,7 +113,7 @@ export const SortGroup = forwardRef<HTMLDivElement, TSort>(function SortG(
                 );
               })}
           </div>
-        </CustomAbsDrop>
+        </NextDropdown>
       </div>
     </div>
   );

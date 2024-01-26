@@ -1,19 +1,6 @@
 import "../src/app/globals.css";
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  Controls,
-  Stories,
-} from "@storybook/blocks";
 
 const preview = {
-  globalTypes: {
-    darkMode: {
-      defaultValue: false, // Enable dark mode by default on all stories
-    },
-  },
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -22,22 +9,40 @@ const preview = {
         date: /Date$/,
       },
     },
-    backgrounds: {
-      default: "light",
-      values: [
+    themes: {
+      default: "Light",
+      list: [
         {
-          name: "light",
-          value: "#ffffff",
+          name: "Light",
+          class: [],
+          color: "#ffffff",
+          default: true,
         },
         {
-          name: "dark",
-          value: "#222233",
-        },
-        {
-          name: "grey",
-          value: "#999999",
+          name: "Dark",
+          // The class dark will be added to the body tag
+          class: ["dark"],
+          color: "#000000",
         },
       ],
+    },
+  },
+};
+export const Primary = {
+  args: {
+    primary: true,
+    label: "Button",
+  },
+};
+
+export const PrimaryDark = {
+  args: {
+    primary: true,
+    label: "Button",
+  },
+  parameters: {
+    themes: {
+      themeOverride: "dark", // Story level override
     },
   },
 };

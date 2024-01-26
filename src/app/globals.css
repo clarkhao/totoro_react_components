@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -24,4 +26,42 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+}
+body.dark {
+  background-color: rgb(50, 50, 50);
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+@layer utilities {
+  .spinner-glow {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff)
+      drop-shadow(0 0 3px #fff);
+  }
+  .text-glow {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff;
+  }
+  .success-glow {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #40ce59);
+  }
+  .success-more-glow {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1.5px #fff)
+      drop-shadow(0 0 2px #40ce59) drop-shadow(0 0 3px #40ce59);
+  }
+  .error-glow {
+    filter: drop-shadow(0 0 0.5px #fff) drop-shadow(0 0 1.5px #fff)
+      drop-shadow(0 0 2px #f25556);
+  }
+  .error-more-glow {
+    filter: drop-shadow(0 0 0.5px #fff) drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 2px #f25556)
+      drop-shadow(0 0 3px #f25556);
+  }
 }

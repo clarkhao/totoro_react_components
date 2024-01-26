@@ -2,10 +2,10 @@ import React from "react";
 import { CustomDropdown } from "../dropdown/customDropdown";
 import { TagsArea } from "./tagsArea";
 import { FilterNSortContext } from "../next-dnd-list/hook";
-import { Badge } from "../badge/badge";
 import { DndListContext } from "../next-dnd-list/dndListHook";
 import { FaEllipsisVertical, FaTrashCan } from "react-icons/fa6";
-import { CustomAbsDrop } from "../dropdown/customAbsDrop";
+import { NextDropdown } from "../dropdown/dropdownV3";
+import { Chip } from "../chip/chip";
 
 type TTagSelect = {
   /**
@@ -65,13 +65,22 @@ export function TagSelect({ ...props }: TTagSelect) {
                   }
                 >
                   <div className="flex-1">
-                    <Badge actual={el.content} color={el.color} />
+                    <Chip
+                      actual={el.content}
+                      bgColor={el.color}
+                      btnColor={el.color}
+                    />
                   </div>
                   <div className="">
-                    <CustomAbsDrop
+                    <NextDropdown
                       clickable={() => FaEllipsisVertical({})}
                       className="right-0 bottom-1/2 translate-y-1/2 -translate-x-1/2"
-                      id={index}
+                      autoPos={{
+                        auto: false,
+                        popupHeight: 0,
+                        popupWidth: 0,
+                      }}
+                      isByHover={false}
                     >
                       <div
                         className="flex flex-row justify-start items-center gap-2 p-1 bg-ele-error rounded-md hover:bg-ele-error/80 text-white text-sm"
@@ -82,7 +91,7 @@ export function TagSelect({ ...props }: TTagSelect) {
                         <FaTrashCan />
                         <span>Delete</span>
                       </div>
-                    </CustomAbsDrop>
+                    </NextDropdown>
                   </div>
                 </div>
               );

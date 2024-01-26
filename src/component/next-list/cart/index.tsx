@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { WithFilterList } from "../withFilter";
-import { IconButton } from "../../button/iconButton";
-import { FaCartShopping } from "react-icons/fa6";
 import { useCartStore } from "./cartStore";
 import { ModalContext, useModal } from "../../modal/hook";
 import { Modal } from "../../modal/modal";
 import { CartList } from "./cartList";
+import { Badge } from "../../badge/cvaBadge";
+import { IconButton } from "../../badge/iconButton";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function Cart() {
   const [isTopBarFixed, setIsTopBarFixed] = useState(false);
@@ -85,18 +87,30 @@ export function Cart() {
             </nav>
             <div>
               <ModalContext.Provider value={{ modalState, modalDispatch }}>
-                <IconButton
-                  size="small"
+                <Badge
+                  intent={"error"}
+                  isDot={false}
+                  isAnimated
                   num={getItemCount()}
-                  onClick={() =>
-                    modalDispatch({ type: "toggle-modal", payload: true })
-                  }
+                  className="right-0 top-0"
                 >
-                  <FaCartShopping
-                    className="w-8 h-auto dark:text-white"
-                    data-cart
-                  />
-                </IconButton>
+                  <IconButton
+                    size={"base"}
+                    fill={"borderless"}
+                    shape={"circular"}
+                    disabled={false}
+                    onClick={() =>
+                      modalDispatch({ type: "toggle-modal", payload: true })
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      className="h-6"
+                      data-cart
+                    />
+                  </IconButton>
+                </Badge>
+
                 <Modal title="Shopping Cart">
                   <CartList />
                 </Modal>

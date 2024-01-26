@@ -1,9 +1,10 @@
 import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { FiCircle } from "react-icons/fi";
 import Image from "next/image";
 //style
 import "./carouselTransition.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 type TCarousel = {
   /**
@@ -58,23 +59,28 @@ export function Carousel({ imageUrls, ...props }: TCarousel) {
       >
         {imageUrls.length > 1
           ? imageUrls.map((_, index) => (
-              <FiCircle
-                key={`circle-${index}`}
-                fill={index !== availableIndex ? "gray" : "white"}
-                className={[
-                  "w-3 h-auto",
-                  index !== availableIndex ? "text-gray-400" : "text-gray-200",
-                ].join(" ")}
-                onClick={async () => {
-                  let temp;
-                  setAvailableIndex((prev) => {
-                    temp = prev;
-                    return prev;
-                  });
-                  await handleAsyncStateUpdate(index >= (temp ?? 1));
-                  setAvailableIndex(index);
-                }}
-              />
+              <>
+                <FontAwesomeIcon
+                  icon={faCircle}
+                  key={`circle-${index}`}
+                  fill={index !== availableIndex ? "gray" : "white"}
+                  className={[
+                    "w-3 h-auto",
+                    index !== availableIndex
+                      ? "text-gray-400"
+                      : "text-gray-200",
+                  ].join(" ")}
+                  onClick={async () => {
+                    let temp;
+                    setAvailableIndex((prev) => {
+                      temp = prev;
+                      return prev;
+                    });
+                    await handleAsyncStateUpdate(index >= (temp ?? 1));
+                    setAvailableIndex(index);
+                  }}
+                />
+              </>
             ))
           : null}
       </span>

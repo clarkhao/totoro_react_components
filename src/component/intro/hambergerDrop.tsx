@@ -1,4 +1,4 @@
-import { NextDropdown } from "../../component/dropdown/nextDropdown";
+import { NextDropdown } from "../../component/dropdown/dropdownV3";
 import React from "react";
 import {
   DropContext,
@@ -10,23 +10,33 @@ type THambergerDrop = {
   /**
    * className
    */
-  className: string;
+  className?: string;
   /**
    * color
    */
   color: string;
+  isLeft: boolean;
 };
 
 export function HambergerDrop({ ...props }: THambergerDrop) {
   const { dropState, dropDispatch } = useDropdown();
   return (
-    <div className={["w-20 fixed", props.className].join(" ")}>
+    <div className={["w-20", props.className].join(" ")}>
       <DropContext.Provider value={{ dropState, dropDispatch }}>
         <NextDropdown
-          clickable={() => (
-            <Hamberger color={props.color} id="blue-hamberger" />
-          )}
-          className="-top-4 -right-4"
+          clickable={(data: Record<string, unknown>) => {
+            console.log(data);
+            return (
+              <Hamberger
+                color={props.color}
+                id="blue-hamberger"
+                drop={data.active as boolean}
+              />
+            );
+          }}
+          className={props.isLeft ? "-top-4 -left-4" : "-top-4 -right-4"}
+          autoPos={{ auto: false, popupHeight: 0, popupWidth: 0 }}
+          isByHover={false}
         >
           <section className="bg-gray-50 shadow-md pt-24 rounded-md">
             <ul className="p-4 flex flex-col justify-start items-start gap-2 transition-all">

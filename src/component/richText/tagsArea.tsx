@@ -1,7 +1,7 @@
 import React, { FocusEventHandler, Fragment } from "react";
-import { Badge } from "../badge/badge";
 import { FilterNSortContext } from "../next-dnd-list/hook";
 import { DndListContext } from "../next-dnd-list/dndListHook";
+import { Chip } from "../chip/chip";
 
 export function TagsArea({ index, ...props }: Record<string, unknown>) {
   const filterNSort = React.useContext(FilterNSortContext);
@@ -83,9 +83,10 @@ export function TagsArea({ index, ...props }: Record<string, unknown>) {
       {getTags()?.map((el, index) => {
         return (
           <Fragment key={`tags-area-${index}`}>
-            <Badge
+            <Chip
               actual={el.content}
-              color={el.color}
+              bgColor={el.color}
+              btnColor={el.color}
               isRemoved
               removeHandler={() => handleRemove(el.content)}
             />

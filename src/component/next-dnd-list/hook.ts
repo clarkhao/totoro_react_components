@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { getRandomColor } from "../badge/badge";
 export type TSelected = {
   group: string;
   subGroup: number;
@@ -19,7 +18,27 @@ export type TTagContent = {
     | "purple"
     | "pink";
 };
-
+export const getRandomColor = () => {
+  const colors = [
+    "blue",
+    "dark",
+    "red",
+    "green",
+    "yellow",
+    "indigo",
+    "purple",
+    "pink",
+  ];
+  return colors[Math.floor(Math.random() * colors.length)] as
+    | "blue"
+    | "dark"
+    | "red"
+    | "green"
+    | "yellow"
+    | "indigo"
+    | "purple"
+    | "pink";
+};
 //state start
 export type TFilterNSortState = {
   //category

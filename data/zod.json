@@ -1,0 +1,26 @@
+{
+  "name": {
+    "type": "string",
+    "min": {
+      "value": 4,
+      "message": "Must be 4 or more characters long"
+    },
+    "max": {
+      "value": 32,
+      "message": "Must be 32 or fewer characters long"
+    },
+    "regex": [
+      {
+        "value": "^[a-zA-Z0-9_-]+$",
+        "message": "Must only contain letter, number, underscore and hyphen"
+      },
+      {
+        "value": "^[a-zA-Z].*$",
+        "message": "Must begin with letter"
+      }
+    ]
+  },
+  "password": {
+    "type": "string"
+  }
+}

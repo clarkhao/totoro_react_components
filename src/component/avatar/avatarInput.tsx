@@ -1,10 +1,9 @@
 import React, { FC } from "react";
 
-import { IconButton } from "../button/iconButton";
 import { MenuList, TMenuData } from "../next-navigation/menuList";
-import { FiHelpCircle } from "react-icons/fi";
-
-import "./avatar.css";
+import { IconButton } from "../badge/iconButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 type TAvatarTest = {
   /**
@@ -50,10 +49,14 @@ export function AvatarDefault(props: TAvatarTest) {
   };
   if (!props.userInfo.avatarUrl) {
     return (
-      <IconButton size="base">
-        <FiHelpCircle
-          className={["text-brand-secondary-light", size()].join(" ")}
-        />
+      <IconButton
+        size={"base"}
+        intent={"primary"}
+        fill={"contained"}
+        shape={"circular"}
+        disabled={false}
+      >
+        <FontAwesomeIcon icon={faQuestion} className="h-6" />
       </IconButton>
     );
   }

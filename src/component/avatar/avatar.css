@@ -1,45 +1,53 @@
 /* avatar css */
 .avatar-enter {
   opacity: 0;
-  transform: translateY(-10%);
+  transform-origin: 0% 0%;
+  transform: translateY(-5px) scaleY(0.1);
 }
 .avatar-enter-active {
   opacity: 1;
-  transform: translateY(0);
+  transform-origin: 0% 0%;
+  transform: translateY(0px) scaleY(1);
   transition:
-    opacity 300ms,
-    transform 300ms;
+    opacity 150ms,
+    transform 150ms;
 }
 .avatar-exit {
   opacity: 1;
-  transform: translateY(0);
+  transform-origin: 0% 0%;
+  transform: translateY(0px) scaleY(1);
 }
 .avatar-exit-active {
   opacity: 0;
-  transform: translateY(-10%);
+  transform-origin: 0% 0%;
+  transform: translateY(5px) scaleY(0.1);
   transition:
-    opacity 300ms,
-    transform 300ms;
+    opacity 150ms,
+    transform 150ms;
 }
 /* avatar reverse css */
 .avatar-reverse-enter {
   opacity: 0;
-  transform: translateY(10%);
+  transform-origin: 100% 100%;
+  transform: translateY(5px) scaleY(0.1);
 }
 .avatar-reverse-enter-active {
   opacity: 1;
-  transform: translateY(0);
+  transform-origin: 100% 100%;
+  transform: translateY(0) scaleY(1);
   transition:
     opacity 300ms,
     transform 300ms;
 }
 .avatar-reverse-exit {
   opacity: 1;
-  transform: translateY(0);
+  transform-origin: 100% 100%;
+  transform: translateY(0) scaleY(1);
 }
 .avatar-reverse-exit-active {
   opacity: 0;
-  transform: translateY(10%);
+  transform-origin: 100% 100%;
+  transform: translateY(5px) scaleY(0.1);
   transition:
     opacity 300ms,
     transform 300ms;

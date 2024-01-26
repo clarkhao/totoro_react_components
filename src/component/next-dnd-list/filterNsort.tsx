@@ -1,12 +1,11 @@
-import { CustomDropdown } from "../dropdown/customDropdown";
 import { Select } from "../select/select";
 import { FaSquarePlus, FaEllipsisVertical, FaTrashCan } from "react-icons/fa6";
 import React from "react";
 import { FilterNSortContext } from "./hook";
 import { DefaultClickable } from "../dropdown/defaultClickable";
-import { Badge } from "../badge/badge";
-import { CustomAbsDrop } from "../dropdown/customAbsDrop";
+import { NextDropdown } from "../dropdown/dropdownV3";
 import { SortGroup } from "./sort";
+import { Chip } from "../chip/chip";
 
 export function FilterNSort() {
   const filterNSort = React.useContext(FilterNSortContext);
@@ -51,11 +50,15 @@ export function FilterNSort() {
         }}
       />
       <div className="w-32">
-        <CustomDropdown
-          title="Filter by Tags"
-          clickable={DefaultClickable}
-          isAbs
+        <NextDropdown
+          clickable={() => <DefaultClickable title="Filter by Tags" />}
           className="top-10 -left-[64px]"
+          autoPos={{
+            auto: false,
+            popupHeight: 0,
+            popupWidth: 0,
+          }}
+          isByHover={false}
         >
           <div className="w-64 shadow-md">
             <div className="relative flex">
@@ -117,14 +120,23 @@ export function FilterNSort() {
                         htmlFor={`checkbox-item-${index}`}
                         className="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
                       >
-                        <Badge actual={item.content} color={item.color} />
+                        <Chip
+                          actual={item.content}
+                          bgColor={item.color}
+                          btnColor={item.color}
+                        />
                       </label>
                     </div>
                     <div className="relative">
-                      <CustomAbsDrop
+                      <NextDropdown
                         clickable={() => FaEllipsisVertical({})}
-                        id={0}
                         className="right-0"
+                        autoPos={{
+                          auto: false,
+                          popupHeight: 0,
+                          popupWidth: 0,
+                        }}
+                        isByHover={false}
                       >
                         <div
                           className="flex flex-row justify-start items-center gap-2 p-1 bg-ele-error rounded-md hover:bg-ele-error/80 text-white text-sm"
@@ -139,24 +151,28 @@ export function FilterNSort() {
                           <FaTrashCan className="w-4 h-auto" />
                           <span>Delete</span>
                         </div>
-                      </CustomAbsDrop>
+                      </NextDropdown>
                     </div>
                   </div>
                 );
               })}
             </main>
           </div>
-        </CustomDropdown>
+        </NextDropdown>
       </div>
       <div className="w-[1px] h-8 bg-gray-300/40"></div>
-      <CustomDropdown
-        title="Sort by ..."
-        clickable={DefaultClickable}
-        isAbs
+      <NextDropdown
+        clickable={() => <DefaultClickable title={"Sort by ..."} />}
         className="top-10 -left-[78px]"
+        autoPos={{
+          auto: false,
+          popupHeight: 0,
+          popupWidth: 0,
+        }}
+        isByHover={false}
       >
         <SortGroup />
-      </CustomDropdown>
+      </NextDropdown>
     </div>
   );
 }

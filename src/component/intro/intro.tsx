@@ -134,8 +134,9 @@ export function Intro() {
   return (
     <div className={["w-full h-screen relative", style.scroll].join(" ")}>
       <HambergerDrop
-        className="top-6 right-10 md:top-10 md:right-16 z-[99]"
+        className="fixed top-6 right-10 md:top-10 md:right-16 z-[99]"
         color={"#FF2773"}
+        isLeft={false}
       />
       <section
         className={[

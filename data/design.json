@@ -1,0 +1,59 @@
+{
+  "name": "Design System",
+  "version": "1.0.0",
+  "items": ["colors", "font", "Space"],
+  "colors": {
+    "light": {
+      "primary": "#007bff",
+      "primary-light-variant": "#61a5ff",
+      "primary-lighter-variant": "#b3d4ff",
+      "primary-dark-variant": "#0056b3",
+      "secondary": "#6c757d",
+      "secondary-light-variant": "#a0a6ab",
+      "secondary-lighter-variant": "#d6d9dc",
+      "secondary-dark-variant": "#464c51",
+      "background": "#ffffff",
+      "surface": "#f7f7f7",
+      "success": "#28a745",
+      "error": "#dc3545",
+      "text": {
+        "on-primary": "#ffffff",
+        "on-primary-light-variant": "#000000",
+        "on-primary-dark-variant": "#ffffff",
+        "on-secondary": "#ffffff",
+        "on-secondary-light-variant": "#000000",
+        "on-secondary-dark-variant": "#ffffff",
+        "on-background": "#323232",
+        "on-surface": "#323232",
+        "on-success": "#ffffff",
+        "on-error": "#ffffff"
+      }
+    },
+    "dark": {
+      "primary": "#61a5ff",
+      "primary-light-variant": "#a0cafe",
+      "primary-dark-variant": "#1a6cd1",
+      "primary-darker-variant": "#004ba3",
+      "secondary": "#adb5bd",
+      "secondary-light-variant": "#e5e7eb",
+      "secondary-dark-variant": "#868e96",
+      "secondary-darker-variant": "#5c636a",
+      "background": "#323232",
+      "surface": "#343a40",
+      "success": "#28a745",
+      "error": "#dc3545",
+      "text": {
+        "on-primary": "#000000",
+        "on-primary-light-variant": "#000000",
+        "on-primary-dark-variant": "#ffffff",
+        "on-secondary": "#000000",
+        "on-secondary-light-variant": "#000000",
+        "on-secondary-dark-variant": "#ffffff",
+        "on-background": "#ffffff",
+        "on-surface": "#ffffff",
+        "on-success": "#ffffff",
+        "on-error": "#ffffff"
+      }
+    }
+  }
+}

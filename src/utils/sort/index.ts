@@ -1,4 +1,4 @@
-import { deepclone } from "../deepclone";
+import { deepClone } from "../deepclone";
 
 export function sortChain<T extends { [key: string]: any }>(
   sort: Array<{
@@ -8,7 +8,7 @@ export function sortChain<T extends { [key: string]: any }>(
   }>,
   list: Array<T>,
 ) {
-  let result = deepclone(list);
+  let result = deepClone(list);
   sort.forEach((el) => {
     result =
       el.order === 0

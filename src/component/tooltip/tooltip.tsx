@@ -2,7 +2,7 @@ import { useState } from "react";
 
 type TTooltip = {
   /**
-   * text
+   * children
    */
   text: string;
   /**
@@ -38,8 +38,8 @@ export function Tooltip({ text, ...props }: TTooltip) {
       {showTooltip && (
         <div
           className={[
-            "absolute top-full left-1/2 -translate-x-1/2 p-1 rounded-full z-50 min-w-[120px]",
-            "bg-gray-50 shadow-md dark:bg-gray-700 dark:text-gray-50",
+            "absolute top-[120%] left-1/2 -translate-x-1/2 p-1 rounded-md z-50 min-w-[120px]",
+            "bg-gray-50 shadow-md dark:bg-gray-700 dark:text-gray-50 font-light text-sm",
             "flex justify-center",
           ].join(" ")}
         >

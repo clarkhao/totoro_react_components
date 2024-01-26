@@ -1,4 +1,3 @@
-import { CustomDropdown } from "../dropdown/customDropdown";
 import { Select } from "../select/select";
 import {
   FaSquarePlus,
@@ -11,9 +10,9 @@ import React from "react";
 import { FilterNSortContext } from "./hook";
 import { DefaultClickable } from "../dropdown/defaultClickable";
 import { AddSort } from "./addSort";
-import { Badge } from "../badge/badge";
-import { CustomAbsDrop } from "../dropdown/customAbsDrop";
+import { NextDropdown } from "../dropdown/dropdownV3";
 import { useSortStore } from "./store";
+import { Chip } from "../chip/chip";
 
 export function FilterNSort() {
   const filterNSort = React.useContext(FilterNSortContext);
@@ -75,11 +74,15 @@ export function FilterNSort() {
         }}
       />
       <div className="w-32">
-        <CustomDropdown
-          title="Filter by Tags"
-          clickable={DefaultClickable}
-          isAbs
+        <NextDropdown
+          clickable={() => <DefaultClickable title="Filter by Tags" />}
           className="top-10 -left-[64px]"
+          autoPos={{
+            auto: false,
+            popupHeight: 0,
+            popupWidth: 0,
+          }}
+          isByHover={false}
         >
           <div className="w-64 shadow-md">
             <div className="relative flex">
@@ -141,14 +144,23 @@ export function FilterNSort() {
                         htmlFor={`checkbox-item-${index}`}
                         className="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
                       >
-                        <Badge actual={item.content} color={item.color} />
+                        <Chip
+                          actual={item.content}
+                          bgColor={item.color}
+                          btnColor={item.color}
+                        />
                       </label>
                     </div>
                     <div className="relative">
-                      <CustomAbsDrop
+                      <NextDropdown
                         clickable={() => FaEllipsisVertical({})}
-                        id={0}
                         className="right-0"
+                        autoPos={{
+                          auto: false,
+                          popupHeight: 0,
+                          popupWidth: 0,
+                        }}
+                        isByHover={false}
                       >
                         <div
                           className="flex flex-row justify-start items-center gap-2 p-1 bg-ele-error rounded-md hover:bg-ele-error/80 text-white text-sm"
@@ -163,21 +175,25 @@ export function FilterNSort() {
                           <FaTrashCan className="w-4 h-auto" />
                           <span>Delete</span>
                         </div>
-                      </CustomAbsDrop>
+                      </NextDropdown>
                     </div>
                   </div>
                 );
               })}
             </main>
           </div>
-        </CustomDropdown>
+        </NextDropdown>
       </div>
       <div className="w-[1px] h-8 bg-gray-300/40"></div>
-      <CustomDropdown
-        title="Sort by ..."
-        clickable={DefaultClickable}
-        isAbs
+      <NextDropdown
+        clickable={() => <DefaultClickable title="Sort by ..." />}
         className="top-10 -left-[78px]"
+        autoPos={{
+          auto: false,
+          popupHeight: 0,
+          popupWidth: 0,
+        }}
+        isByHover={false}
       >
         <div className="flex flex-col justify-start items-start bg-gray-200 dark:bg-gray-600 rounded-md w-64 shadow-md">
           {sort.map((item, i) => {
@@ -216,11 +232,15 @@ export function FilterNSort() {
           })}
 
           <div className="w-full relative">
-            <CustomAbsDrop
-              title="Add Sort"
-              clickable={AddSort}
-              id={0}
+            <NextDropdown
+              clickable={() => <AddSort title="Add Sort" />}
               className="top-20"
+              autoPos={{
+                auto: false,
+                popupHeight: 0,
+                popupWidth: 0,
+              }}
+              isByHover={false}
             >
               <div className="-mt-4 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 min-h-[200px] p-2 w-64 rounded-md shadow-md">
                 {["date", "tags"].map((el, index) => {
@@ -235,10 +255,10 @@ export function FilterNSort() {
                   );
                 })}
               </div>
-            </CustomAbsDrop>
+            </NextDropdown>
           </div>
         </div>
-      </CustomDropdown>
+      </NextDropdown>
     </div>
   );
 }

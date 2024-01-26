@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Avatar } from "../../component/avatar/avatar";
+import { AvatarWrapper } from "../../component/avatar/avatarWrapper";
 
-const meta: Meta<typeof Avatar> = {
+const meta: Meta<typeof AvatarWrapper> = {
   title: "UI/Avatar",
-  component: Avatar,
+  component: AvatarWrapper,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
@@ -12,11 +12,12 @@ const meta: Meta<typeof Avatar> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Avatar>;
+type Story = StoryObj<typeof meta>;
 
 export const AvatarDefault: Story = {
   args: {
+    shape: "circular",
     size: "md",
-    avatarUrl: "https://api.dicebear.com/7.x/pixel-art/svg?seed",
+    isLocal: true,
   },
 };

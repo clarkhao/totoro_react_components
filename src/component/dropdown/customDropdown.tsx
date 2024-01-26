@@ -1,6 +1,5 @@
 /* position fixed default, isAbs turn to absolute position*/
 import React, { FC } from "react";
-import { DefaultClickable } from "./defaultClickable";
 import { CSSTransition } from "react-transition-group";
 import "../avatar/avatar.css";
 import { searchParentNode } from "../../utils";
@@ -38,7 +37,7 @@ type TCustomDropdown = {
 
 export function CustomDropdown({
   index = 0,
-  clickable = DefaultClickable,
+  clickable,
   children,
   ...props
 }: TCustomDropdown) {

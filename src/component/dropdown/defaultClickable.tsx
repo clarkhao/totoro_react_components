@@ -1,43 +1,67 @@
-import { MouseEventHandler } from "react";
+import React, { HTMLAttributes } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
-export function DefaultClickable({
-  handler,
-  ...props
-}: Record<string, unknown>) {
+type Clickable = {
+  title: string;
+};
+
+const clickable = cva(
+  [
+    "border-2",
+    "hover:outline",
+    "hover:outline-light-primary-light-variant",
+    "dark:hover:outline-dark-primary-light-variant",
+    "rounded-lg inline-flex items-center justify-between",
+    "text-center font-medium",
+    "bg-transparent",
+    "text-light-on-surface dark:text-dark-on-surface",
+  ],
+  {
+    variants: {
+      size: {
+        small: ["text-sm px-1 h-8"],
+        base: ["text-base px-2 h-12"],
+        large: [],
+      },
+      drop: {
+        true: ["border-light-primary dark:border-dark-primary"],
+        false: ["border-gray-300 dark:border-gray-600"],
+      },
+    },
+    defaultVariants: {},
+  },
+);
+
+export type TClickable = VariantProps<typeof clickable> &
+  Clickable &
+  HTMLAttributes<HTMLDivElement>;
+
+export function DefaultClickable({ size, drop, ...props }: TClickable) {
   return (
-    <button
-      id="dropdownBgHoverButton"
+    <div
+      {...props}
       data-dropdown-toggle="dropdownBgHover"
-      className={[
-        "group/btn bg-transparent border-gray-300 dark:focus:border-violet-500 border font-medium rounded-lg text-sm px-1 h-8 text-center inline-flex items-center justify-between",
-        "text-black dark:text-white dark:border-gray-600",
-        "focus:ring-violet-500 focus:ring-1",
-      ].join(" ")}
-      type="button"
-      onClick={handler as MouseEventHandler<HTMLButtonElement> | undefined}
+      className={twMerge(clickable({ size, drop }), props.className)}
     >
       <span
         className={[
-          "block px-1 py-1 rounded-lg cursor-pointer",
+          "block px-2 py-1 rounded-lg cursor-pointer",
           "inline-flex items-center gap-2",
         ].join(" ")}
       >
-        {props.title as string}
+        {props.title}
       </span>
-      <span className="shrink-0 transition duration-300 group-focus/btn:-rotate-180">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </span>
-    </button>
+      <FontAwesomeIcon
+        icon={faChevronDown}
+        className={`transition-transform duration-300 ${
+          drop
+            ? "transform rotate-180 text-light-primary dark:text-dark-primary"
+            : ""
+        }`}
+      />
+    </div>
   );
 }

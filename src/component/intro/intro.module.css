@@ -9,7 +9,7 @@
   top: 0;
 }
 .image {
-  background-image: url("https://doggycatty.s3.amazonaws.com/app/work.jpg");
+  background-image: url("work.jpg");
   background-size: 100%;
   background-position: center center;
   animation: blob 10s ease-in-out infinite;
