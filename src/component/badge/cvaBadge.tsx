@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
@@ -24,7 +25,7 @@ const badge = cva(
         false: [
           "px-1",
           "h-6",
-          "min-w-[24px]",
+          "min-w-[20px]",
           "text-xs",
           "font-bold",
           "text-white",
@@ -65,12 +66,21 @@ export const Badge = ({ intent, isDot, isAnimated, ...props }: TBadgeProps) => {
     <div className="relative w-fit">
       {props.children}
       {isDot ? (
-        <div
-          className={twMerge(
-            badge({ intent, isDot: true, isAnimated }),
-            props.className,
-          )}
-        ></div>
+        <>
+          <span
+            className={twMerge(
+              badge({ intent, isDot: true, isAnimated }),
+              props.className,
+            )}
+          >
+            <span
+              className={twMerge(
+                "animate-ping absolute h-full w-full rounded-full opacity-75 -z-10",
+                `${intent === "primary" ? "bg-light-primary-light-variant dark:bg-dark-primary-light-variant" : intent === "success" ? "bg-light-success dark:bg-dark-success" : intent === "error" ? "bg-light-error dark:bg-dark-error" : intent === "secondary" ? "bg-light-secondary-light-variant dark:bg-dark-secondary-light-variant" : ""}`,
+              )}
+            ></span>
+          </span>
+        </>
       ) : props.num ||
         (typeof props.num === "number" ? props.num > 0 : true) ? (
         <div

@@ -1,0 +1,22 @@
+.cycle {
+  --translate-width: 0;
+}
+.sm {
+  will-change: transform;
+  animation: marquee 5s linear infinite;
+}
+.md {
+  will-change: transform;
+  animation: marquee 20s linear infinite;
+}
+.cycle:hover p {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0% {
+    transform: translate(var(--translate-width), 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}

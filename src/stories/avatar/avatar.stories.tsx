@@ -19,5 +19,6 @@ export const AvatarDefault: Story = {
     shape: "circular",
     size: "md",
     isLocal: true,
+    onClick: () => window.alert("avatar"),
   },
 };

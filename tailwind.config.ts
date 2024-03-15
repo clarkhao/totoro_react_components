@@ -66,6 +66,21 @@ const config: Config = {
         sans: ["var(--font-inter)"],
         mono: ["var(--font-roboto-mono)"],
       },
+      animation: {
+        "ping-once": "ping 300ms ease-out 1",
+        ripple: "ripple 1s linear infinite",
+        smripple: "ripple sm",
+      },
+      keyframes: {
+        ripple: {
+          "0%": { width: "0px", height: "0px", opacity: "0.5 " },
+          "100%": { width: "500px", height: "500px", opacity: "0" },
+        },
+        smripple: {
+          "0%": { width: "0px", height: "0px", opacity: "0.5 " },
+          "100%": { width: "30px", height: "30px", opacity: "0" },
+        },
+      },
     },
     screens: {
       xs: "475px",

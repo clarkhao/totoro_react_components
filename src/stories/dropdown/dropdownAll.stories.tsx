@@ -19,8 +19,9 @@ function Showcase() {
                 size={"base"}
               />
             )}
-            autoPos={{ auto: true, popupHeight: 320, popupWidth: 320 }}
+            autoPos={{ auto: false, popupHeight: 320, popupWidth: 320 }}
             isByHover={false}
+            className="top-20"
           >
             <p className="w-80 h-80 bg-gray-500"></p>
           </NextDropdown>
@@ -99,7 +100,9 @@ function Showcase() {
       <div className="flex flex-col gap-y-4 dark:text-dark-on-surface">
         <h3>Dropdown with Hamberger and Avatar</h3>
         <div className="flex flex-row justify-around items-center">
-          <HambergerDrop color={"blue"} isLeft />
+          <HambergerDrop size="base" color={"blue"} isLeft>
+            <p className="h-80 w-80 bg-gray-400"></p>
+          </HambergerDrop>
           <AvatarDropdown size={"md"} shape={"square"} isLocal={false}>
             <p className="w-80 h-80 bg-light-secondary-dark-variant dark:bg-dark-secondary-dark-variant"></p>
           </AvatarDropdown>

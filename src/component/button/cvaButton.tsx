@@ -1,3 +1,4 @@
+"use client";
 import React, { ButtonHTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
@@ -9,7 +10,6 @@ import "../styles/transition.css";
 const button = cva(
   [
     "relative",
-    "block",
     "transition-all",
     "duration-150",
     "focus:outline-none",
@@ -53,8 +53,8 @@ const button = cva(
         disabled: false,
         state: ["pre", "pending"],
         className: [
-          "bg-light-primary hover:bg-light-primary-light-variant active:bg-light-primary-dark-variant",
-          "dark:bg-dark-primary-dark-variant dark:hover:bg-dark-primary dark:active:bg-dark-primary-darker-variant",
+          "bg-light-primary hover:bg-light-primary-dark-variant active:bg-light-primary-dark-variant",
+          "dark:bg-dark-primary-dark-variant dark:hover:bg-dark-primary-darker-variant dark:active:bg-dark-primary-darker-variant",
         ],
       },
       {
@@ -123,8 +123,8 @@ const button = cva(
         disabled: false,
         state: ["pre", "pending"],
         className: [
-          "bg-light-secondary hover:bg-light-secondary-light-variant active:bg-light-secondary-dark-variant",
-          "dark:bg-dark-secondary-dark-variant dark:hover:bg-dark-secondary dark:active:bg-dark-secondary-darker-variant",
+          "bg-light-secondary hover:bg-light-secondary-dark-variant active:bg-light-secondary-dark-variant",
+          "dark:bg-dark-secondary-dark-variant dark:hover:bg-dark-secondary-darker-variant dark:active:bg-dark-secondary-darker-variant",
         ],
       },
       {
@@ -266,6 +266,21 @@ export const Button = ({
         return withIcon ? props.icon : children;
     }
   };
+  const btnRef = React.useRef<HTMLButtonElement>(null);
+  React.useEffect(() => {
+    const addRipple = () => {
+      const ripple = document.createElement("span");
+      ripple.className = twMerge(
+        "absolute left-1/2 top-1/2 rounded-full -translate-x-1/2 -translate-y-1/2",
+        "animate-ripple",
+        `${state === "pre" ? (intent === "primary" ? "bg-light-primary-light-variant" : "bg-light-secondary-light-variant") : ""}`,
+      );
+      btnRef.current?.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 1000);
+    };
+    btnRef.current?.addEventListener("click", addRipple);
+    return () => btnRef.current?.removeEventListener("click", addRipple);
+  }, []);
   return (
     <button
       {...props}
@@ -274,6 +289,7 @@ export const Button = ({
         props.className,
       )}
       disabled={disabled}
+      ref={btnRef}
     >
       {withIcon ? (
         <span className="z-[2] text-center inline-flex flex-row justify-center items-center gap-2">
@@ -281,7 +297,7 @@ export const Button = ({
             <CSSTransition
               key={state}
               timeout={{ exit: 150, enter: 150 }}
-              classNames={"btn"}
+              classNames={"ymotion"}
             >
               <span className="w-4 inline-flex flex-row justify-center items-center">
                 {!disabled ? child(state) : props.icon}
@@ -295,7 +311,7 @@ export const Button = ({
           <CSSTransition
             key={state}
             timeout={{ exit: 150, enter: 150 }}
-            classNames={"btn"}
+            classNames={"ymotion"}
           >
             <div className="z-[2] text-center inline-flex flex-row justify-center items-center gap-2">
               {!disabled ? child(state) : children}

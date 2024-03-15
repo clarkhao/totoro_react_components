@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Check from "../../component/group-rive/check";
 
 const meta: Meta<typeof Check> = {
-  title: "Rive/Check",
+  title: "UI/Rive/Check",
   component: Check,
   tags: ["autodocs"],
   parameters: {

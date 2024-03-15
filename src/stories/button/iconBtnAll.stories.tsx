@@ -19,6 +19,7 @@ function Showcase() {
           fill={"contained"}
           shape={"circular"}
           disabled={false}
+          onClick={() => window.alert("hello")}
         >
           <FontAwesomeIcon icon={faPlus} className="h-6" />
         </IconButton>

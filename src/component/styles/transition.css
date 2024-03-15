@@ -75,25 +75,71 @@
     opacity 150ms,
     transform 150ms;
 }
-/* btn css */
-.btn-enter {
+/* ymotion css */
+.ymotion-enter {
   opacity: 0;
   transform: translateY(-15px);
 }
-.btn-enter-active {
+.ymotion-enter-active {
   opacity: 1;
   transform: translateY(0px);
   transition:
     opacity 150ms,
     transform 150ms;
 }
-.btn-exit {
+.ymotion-exit {
   opacity: 1;
   transform: translateY(0px);
 }
-.btn-exit-active {
+.ymotion-exit-active {
   opacity: 0;
   transform: translateY(15px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+/* xmotion css */
+.xmotion-enter {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+.xmotion-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+.xmotion-exit {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.xmotion-exit-active {
+  opacity: 0;
+  transform: translateX(15px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+/* scale css */
+.scale-enter {
+  opacity: 0;
+  transform: scale(0.1);
+}
+.scale-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+.scale-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.scale-exit-active {
+  opacity: 0;
+  transform: scale(0.1);
   transition:
     opacity 150ms,
     transform 150ms;

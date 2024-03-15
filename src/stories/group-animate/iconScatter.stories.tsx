@@ -6,7 +6,7 @@ import { faCode, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faCss3Alt } from "@fortawesome/free-brands-svg-icons";
 
 const meta: Meta<typeof IconScatter> = {
-  title: "UI/Animate/IconScatter",
+  title: "UI/Animate",
   component: IconScatter,
   parameters: {
     layout: "padded",

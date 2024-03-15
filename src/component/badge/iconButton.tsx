@@ -3,7 +3,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const iconBtn = cva(
-  ["flex", "justify-center", "items-center", "focus:outline-none"],
+  [
+    "flex",
+    "justify-center",
+    "items-center",
+    "focus:outline-none",
+    "relative overflow-hidden",
+  ],
   {
     variants: {
       intent: {

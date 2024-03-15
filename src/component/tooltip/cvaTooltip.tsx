@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, useState } from "react";
+import React, { ButtonHTMLAttributes, FC, useState } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
@@ -26,12 +26,12 @@ const tooltip = cva(
           "after:border-t-[5px] after:border-t-transparent after:border-r-[6px] after:border-b-[5px] after:border-b-transparent",
         ],
         top: [
-          "bottom-[115%]",
+          "bottom-[115%] translate-x-1/2",
           "after:top-full after:right-1/2 after:translate-x-1/2",
           "after:border-l-[5px] after:border-l-transparent after:border-t-[6px] after:border-r-[5px] after:border-r-transparent",
         ],
         bottom: [
-          "top-[115%]",
+          "top-[115%] translate-x-1/2",
           "after:bottom-full after:right-1/2 after:translate-x-1/2",
           "after:border-l-[5px] after:border-l-transparent after:border-b-[6px] after:border-r-[5px] after:border-r-transparent",
         ],
@@ -229,26 +229,29 @@ type TTooltip = {
   tips: FC;
   isAuto?: boolean;
 } & VariantProps<typeof tooltip> &
-  HTMLAttributes<HTMLDivElement>;
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function Tooltip({ pos, bgColor, isAuto = true, ...props }: TTooltip) {
   const [showTooltip, setShowTooltip] = useState(isAuto);
+
   return (
     <>
-      <div
+      <button
         {...props}
-        className={isAuto ? "peer" : ""}
-        onClick={() => {
-          setShowTooltip(true);
+        onClick={(e) => {
+          e.preventDefault();
+          if (!isAuto) setShowTooltip(true);
         }}
+        className="peer"
       >
         {props.children}
-      </div>
+      </button>
       {showTooltip ? (
         <div
           className={twMerge(
             tooltip({ pos, bgColor }),
-            `${isAuto ? "opacity-0 peer-hover:opacity-100" : ""}`,
+            `${isAuto ? "opacity-0 peer-hover:opacity-100 peer-focus:opacity-100" : ""}`,
+            `${pos === "top" || pos === "bottom" ? "translate-x-1/2 right-1/2" : ""}`,
             props.className,
           )}
         >

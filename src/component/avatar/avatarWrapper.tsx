@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, HTMLAttributes } from "react";
+import React, { AnchorHTMLAttributes, HTMLAttributes } from "react";
 import { CvaAvatar } from "./cvaAvatar";
 
 type TAvatarWrapper = {
@@ -6,7 +6,7 @@ type TAvatarWrapper = {
   size: "xs" | "sm" | "md" | "lg" | "xl";
   shape: "circular" | "square";
 } & HTMLAttributes<HTMLDivElement> &
-  ButtonHTMLAttributes<HTMLButtonElement>;
+  AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const AvatarWrapper = ({
   size,

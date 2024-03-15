@@ -3,6 +3,8 @@ import { Input } from "../../component/next-input/cvaInput";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { Provider } from "react-redux";
+import { makeStore } from "../../store";
 
 function Showcase() {
   return (
@@ -11,48 +13,48 @@ function Showcase() {
         <div className="flex flex-col gap-y-6">
           <h3>All 3 Variants with Primary</h3>
           <Input
-            labelText={"Standard Primary"}
+            labeltext={"Standard Primary"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
           <Input
-            labelText={"Outlined Primary"}
+            labeltext={"Outlined Primary"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
           <Input
-            labelText={"Filled Primary"}
+            labeltext={"Filled Primary"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
         </div>
         <div className="flex flex-col gap-y-6">
           <h3>All 3 Variants with Secondary</h3>
           <Input
-            labelText={"Standard Secondary"}
+            labeltext={"Standard Secondary"}
             variant={"standard"}
             intent={"secondary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
           <Input
-            labelText={"Outlined Secondary"}
+            labeltext={"Outlined Secondary"}
             variant={"outlined"}
             intent={"secondary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
           <Input
-            labelText={"Filled Secondary"}
+            labeltext={"Filled Secondary"}
             variant={"filled"}
             intent={"secondary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
         </div>
@@ -60,228 +62,228 @@ function Showcase() {
           <hr />
           <h3>Text Input Standard</h3>
           <Input
-            labelText={"Standard"}
+            labeltext={"Standard"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
           <Input
-            labelText={"With Icon"}
+            labeltext={"With Icon"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
           />
           <Input
-            labelText={"Disabled"}
+            labeltext={"Disabled"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
             disabled
           />
           <Input
-            labelText={"With Validation"}
+            labeltext={"With Validation"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
+            name="name"
           />
         </div>
         <div className="flex flex-col gap-y-6">
           <hr />
           <h3>Text Input Standard with Small Size</h3>
           <Input
-            labelText={"Standard"}
+            labeltext={"Standard"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
             height="sm"
+            name="name"
           />
           <Input
-            labelText={"With Icon"}
+            labeltext={"With Icon"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
           />
           <Input
-            labelText={"Diabled"}
+            labeltext={"Diabled"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
             disabled
+            name="name"
           />
           <Input
-            labelText={"With Validation"}
+            labeltext={"With Validation"}
             variant={"standard"}
             intent={"primary"}
-            label={"normal"}
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
+            name="name"
           />
         </div>
         <div className="flex flex-col gap-y-6">
           <hr />
           <h3>Text Input Outlined</h3>
           <Input
-            labelText={"Outlined"}
+            labeltext={"Outlined"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
             height="md"
+            name="name"
           />
           <Input
-            labelText={"With Icon"}
+            labeltext={"With Icon"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
           />
           <Input
-            labelText={"Disabled"}
+            labeltext={"Disabled"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            name="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
             disabled
           />
           <Input
-            labelText={"With Validation"}
+            labeltext={"With Validation"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            name="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
           />
         </div>
         <div className="flex flex-col gap-y-6">
           <hr />
           <h3>Text Input Outlined with Smaller Size</h3>
           <Input
-            labelText={"Outlined"}
+            labeltext={"Outlined"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
             height="sm"
+            name="name"
           />
           <Input
-            labelText={"With Icon"}
+            labeltext={"With Icon"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            name="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
           />
           <Input
-            labelText={"Disabled"}
+            labeltext={"Disabled"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
+            name="name"
             disabled
           />
           <Input
-            labelText={"With Validation"}
+            labeltext={"With Validation"}
             variant={"outlined"}
             intent={"primary"}
-            label={"normal"}
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
+            name="name"
           />
         </div>
         <div className="flex flex-col gap-y-6">
           <hr />
           <h3>Text Input Filled</h3>
           <Input
-            labelText={"Filled"}
+            labeltext={"Filled"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
           />
           <Input
-            labelText={"With Icon"}
+            labeltext={"With Icon"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
           />
           <Input
-            labelText={"Disabled"}
+            labeltext={"Disabled"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
             disabled
           />
           <Input
-            labelText={"With Validation"}
+            labeltext={"With Validation"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="md"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
           />
         </div>
         <div className="flex flex-col gap-y-6">
           <hr />
           <h3>Text Input Filled</h3>
           <Input
-            labelText={"Filled"}
+            labeltext={"Filled"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="sm"
           />
           <Input
-            labelText={"With Icon"}
+            labeltext={"With Icon"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
           />
           <Input
-            labelText={"Disabled"}
+            labeltext={"Disabled"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
             disabled
           />
           <Input
-            labelText={"With Validation"}
+            labeltext={"With Validation"}
             variant={"filled"}
             intent={"primary"}
-            label={"normal"}
+            name="name"
             height="sm"
-            leftIcon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
-            verify="name"
+            lefticon={<FontAwesomeIcon icon={faUser} className="w-3 h-auto" />}
+            verify={true}
           />
         </div>
       </div>
@@ -302,5 +304,13 @@ type Story = StoryObj<typeof meta>;
 
 export const TextInputAll: Story = {
   args: {},
+  decorators: [
+    (Story) => {
+      return (
+        <Provider store={makeStore()}>
+          <Story />
+        </Provider>
+      );
+    },
+  ],
 };
-

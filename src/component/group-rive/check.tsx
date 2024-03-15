@@ -22,4 +22,3 @@ function Check({ bingo = false }: TCheck) {
 }
 
 export default Check;
-

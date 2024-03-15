@@ -1,0 +1,297 @@
+.confetti {
+  --confetti-color: var(--confetti-color);
+}
+.md.order::before,
+.md.order::after {
+  background-size:
+    10% 10%,
+    15% 15%,
+    16% 16%,
+    18% 18%,
+    20% 20%,
+    18% 18%,
+    16% 16%,
+    15% 15%,
+    10% 10%;
+}
+.lg.order::before,
+.lg.order::after {
+  background-size:
+    20% 20%,
+    30% 30%,
+    32% 32%,
+    36% 36%,
+    40% 40%,
+    36% 36%,
+    32% 32%,
+    30% 30%,
+    20% 20%;
+}
+.confetti.md.order::before,
+.confetti.lg.order::before {
+  background-image: radial-gradient(
+      circle,
+      var(--confetti-color) 20%,
+      transparent 20%
+    ),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%);
+  background-position:
+    15% 90%,
+    15% 80%,
+    20% 80%,
+    35% 80%,
+    50% 80%,
+    65% 80%,
+    80% 80%,
+    85% 80%,
+    85% 90%;
+  animation: topBubble 0.6s ease-in-out infinite;
+}
+@keyframes topBubble {
+  50% {
+    background-position:
+      0% 80%,
+      5% 40%,
+      15% 15%,
+      30% 5%,
+      50% 2%,
+      70% 5%,
+      85% 15%,
+      95% 40%,
+      100% 80%;
+  }
+  100% {
+    background-position:
+      0% 70%,
+      0% 40%,
+      15% 5%,
+      28% 0%,
+      50% 0%,
+      72% 0%,
+      85% 5%,
+      100% 40%,
+      100% 70%;
+    background-size: 0% 0%;
+  }
+}
+.confetti.md.order::after,
+.confetti.lg.order::after {
+  background-image: radial-gradient(
+      circle,
+      var(--confetti-color) 20%,
+      transparent 20%
+    ),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%);
+  background-position:
+    15% 10%,
+    15% 20%,
+    20% 20%,
+    35% 20%,
+    50% 20%,
+    65% 20%,
+    80% 20%,
+    85% 20%,
+    85% 10%;
+  animation: bottomBubble 0.6s ease-in-out infinite;
+}
+@keyframes bottomBubble {
+  50% {
+    background-position:
+      0% 20%,
+      5% 60%,
+      15% 85%,
+      30% 95%,
+      50% 98%,
+      70% 95%,
+      85% 85%,
+      95% 60%,
+      100% 20%;
+  }
+  100% {
+    background-position:
+      0% 30%,
+      0% 60%,
+      15% 95%,
+      28% 100%,
+      50% 105%,
+      72% 100%,
+      85% 95%,
+      100% 60%,
+      100% 30%;
+    background-size: 0% 0%;
+  }
+}
+/*********************************************************************************/
+.md.chaos::before {
+  background-size:
+    10% 10%,
+    20% 20%,
+    15% 15%,
+    20% 20%,
+    18% 18%,
+    10% 10%,
+    15% 15%,
+    10% 10%,
+    20% 20%;
+}
+.md.chaos::after {
+  background-size:
+    15% 15%,
+    20% 20%,
+    18% 18%,
+    20% 20%,
+    15% 15%,
+    20% 20%,
+    18% 18%;
+}
+.lg.chaos::before {
+  background-size:
+    20% 20%,
+    40% 40%,
+    30% 30%,
+    40% 40%,
+    36% 36%,
+    20% 20%,
+    30% 30%,
+    20% 20%,
+    30% 30%;
+}
+.lg.chaos::after {
+  background-size:
+    30% 30%,
+    40% 40%,
+    36% 36%,
+    40% 40%,
+    30% 30%,
+    40% 40%,
+    36% 36%;
+}
+.confetti.md.chaos::before,
+.confetti.lg.chaos::before {
+  background-image: radial-gradient(
+      circle,
+      var(--confetti-color) 20%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle,
+      transparent 10%,
+      var(--confetti-color) 15%,
+      transparent 20%
+    ),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(
+      circle,
+      transparent 10%,
+      var(--confetti-color) 15%,
+      transparent 20%
+    ),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%);
+  background-position:
+    5% 90%,
+    10% 90%,
+    10% 90%,
+    15% 90%,
+    25% 90%,
+    25% 90%,
+    40% 90%,
+    50% 80%,
+    65% 90%;
+  animation: topChaos 0.6s ease-in-out infinite;
+}
+@keyframes topChaos {
+  50% {
+    background-position:
+      0% 80%,
+      0% 20%,
+      10% 40%,
+      20% 0%,
+      30% 30%,
+      22% 50%,
+      50% 50%,
+      65% 20%,
+      90% 10%;
+  }
+  100% {
+    background-position:
+      0% 70%,
+      0% 10%,
+      10% 30%,
+      20% -10%,
+      30% 20%,
+      22% 40%,
+      50% 40%,
+      65% 10%,
+      90% 0%;
+    background-size: 0% 0%;
+  }
+}
+.confetti.md.chaos::after,
+.confetti.lg.chaos::after {
+  background-image: radial-gradient(
+      circle,
+      var(--confetti-color) 20%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle,
+      transparent 10%,
+      var(--confetti-color) 15%,
+      transparent 20%
+    ),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--confetti-color) 20%, transparent 20%);
+  background-position:
+    10% 0%,
+    30% 10%,
+    55% 0%,
+    70% 0%,
+    85% 0%,
+    70% 0%,
+    70% 0%;
+  animation: bottomChaos 0.6s ease-in-out infinite;
+}
+@keyframes bottomChaos {
+  50% {
+    background-position:
+      0% 80%,
+      20% 80%,
+      45% 60%,
+      60% 100%,
+      75% 70%,
+      95% 60%,
+      105% 0%;
+  }
+  100% {
+    background-position:
+      0% 90%,
+      20% 90%,
+      45% 70%,
+      60% 110%,
+      75% 80%,
+      95% 70%,
+      110% 10%;
+    background-size: 0% 0%;
+  }
+}

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Tooltip } from "../../component/tooltip/cvaTooltip";
-import React from "react";
-import { Button } from "../../component/button/button";
+import React, { MouseEvent } from "react";
+import { Button } from "../../component/button/cvaButton";
 import { Chip } from "../../component/chip/chip";
 
 const meta: Meta<typeof Tooltip> = {
@@ -19,7 +19,18 @@ type Story = StoryObj<typeof meta>;
 export const BtnTooltip: Story = {
   args: {
     tips: () => <p className="text-sm">Hello World</p>,
-    children: <Button size="base">Hover me</Button>,
+    children: (
+      <Button
+        intent={"primary"}
+        fill={"contained"}
+        disabled={false}
+        size={"base"}
+        state={"pre"}
+        className="w-48 peer"
+      >
+        Primary Base
+      </Button>
+    ),
   },
   decorators: [
     (Story) => {
@@ -37,8 +48,15 @@ export const ChipTooltip: Story = {
     tips: (
       data: Record<string, React.Dispatch<React.SetStateAction<boolean>>>,
     ) => {
+      console.log(data);
       return (
-        <p className="text-sm" onClick={() => data.setShowTooltip(false)}>
+        <p
+          className="text-sm"
+          onClick={(e: MouseEvent) => {
+            e.preventDefault();
+            data.setShowTooltip((prev) => !prev);
+          }}
+        >
           Hello World
         </p>
       );

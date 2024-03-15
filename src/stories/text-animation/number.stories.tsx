@@ -15,7 +15,8 @@ type Story = StoryObj<typeof Number>;
 
 export const NumberDefault: Story = {
   args: {
-    numbers: { start: "0.00", end: "1000.00" },
+    start: 0.0,
+    end: 1000.0,
     size: "large",
   },
   decorators: [],

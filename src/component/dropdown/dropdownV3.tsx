@@ -1,7 +1,8 @@
-//latest version
+"use client";
 import React, { FC } from "react";
 import { CSSTransition } from "react-transition-group";
 import "../styles/transition.css";
+import { twMerge } from "tailwind-merge";
 
 type ICustomAbsDrop = {
   /**
@@ -19,6 +20,8 @@ type ICustomAbsDrop = {
     popupWidth: number;
   };
   isByHover: boolean;
+  btnClass?: string;
+  clickClose?: boolean;
 };
 
 export function NextDropdown({
@@ -31,15 +34,17 @@ export function NextDropdown({
     popupWidth: 0,
   },
   isByHover = false,
+  ...props
 }: ICustomAbsDrop) {
+  const inputId = React.useId();
   const [active, setActive] = React.useState(false);
   const [style, setStyle] = React.useState("");
   //main content of item
-  const divRef = React.useRef<HTMLDivElement>(null);
+  const btnRef = React.useRef<HTMLButtonElement>(null);
   const popupRef = React.useRef<HTMLDivElement>(null);
-  const labelRef = React.useRef<HTMLLabelElement>(null);
+  const inputRef = React.useRef<HTMLLabelElement>(null);
   const calculateAbsPosInClick = () => {
-    const position = labelRef.current?.getBoundingClientRect();
+    const position = btnRef.current?.getBoundingClientRect();
     const spaceAbove = position?.top;
     const spaceBelowBottom = window.innerHeight - (position?.bottom ?? 0);
     const spaceRight = window.innerWidth - (position?.right ?? 0);
@@ -62,13 +67,19 @@ export function NextDropdown({
   React.useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (popupRef.current?.contains(event.target as Node)) {
-        return;
-      } else if (!labelRef.current?.contains(event.target as Node)) {
+        console.log("1");
+        if (props.clickClose) {
+          setActive(false);
+        } else {
+          return;
+        }
+      } else if (!btnRef.current?.contains(event.target as Node) && active) {
+        console.log("2");
         setActive(false);
       }
     };
     const handleMouseover = () => {
-      calculateAbsPosInClick();
+      if (autoPos.auto) calculateAbsPosInClick();
       setActive(true);
     };
     const handleMouseout = () => {
@@ -76,32 +87,43 @@ export function NextDropdown({
     };
 
     if (isByHover) {
-      divRef.current?.addEventListener("mouseover", handleMouseover);
-      divRef.current?.addEventListener("mouseout", handleMouseout);
-    } else {
-      document.addEventListener("click", handleOutsideClick);
+      btnRef.current?.addEventListener("mouseover", handleMouseover);
+      btnRef.current?.addEventListener("mouseout", handleMouseout);
     }
-
+    document.addEventListener("click", handleOutsideClick);
     return () => {
       if (isByHover) {
-        divRef.current?.removeEventListener("mouseover", handleMouseover);
-        divRef.current?.removeEventListener("mouseout", handleMouseout);
-      } else {
-        document.removeEventListener("click", handleOutsideClick);
+        btnRef.current?.removeEventListener("mouseover", handleMouseover);
+        btnRef.current?.removeEventListener("mouseout", handleMouseout);
       }
+      document.removeEventListener("click", handleOutsideClick);
     };
   }, [active, autoPos.popupHeight, autoPos.popupWidth, isByHover]);
 
   return (
-    <div className="w-fit h-fit relative" ref={divRef}>
+    <button
+      className={twMerge(
+        "w-fit h-fit relative focus:ring-0 focus:ring-light-primary-light-variant",
+        "hover:border-0 ",
+        props.btnClass,
+      )}
+      ref={btnRef}
+      onKeyUp={(e: React.KeyboardEvent) => {
+        e.preventDefault();
+        if (e.key === "Enter") {
+          setActive(!active);
+        }
+      }}
+    >
       <label
+        htmlFor={inputId}
+        ref={inputRef}
         className="inline-flex items-end cursor-pointer w-full"
-        ref={labelRef}
       >
         <input
           type="checkbox"
+          id={inputId}
           checked={active}
-          onChange={console.log}
           className="sr-only peer"
           onClick={() => {
             if (autoPos.auto) {
@@ -109,8 +131,13 @@ export function NextDropdown({
             }
             setActive(!active);
           }}
+          readOnly
         />
-        <span className="z-20 w-fit text-sm font-medium text-gray-900 dark:text-gray-300 flex flex-row justify-center items-center gap-2">
+        <span
+          className={twMerge(
+            "z-20 w-fit text-sm flex flex-row justify-center items-center gap-2",
+          )}
+        >
           {clickable({ active })}
         </span>
       </label>
@@ -131,6 +158,6 @@ export function NextDropdown({
           {children}
         </CSSTransition>
       </div>
-    </div>
+    </button>
   );
 }

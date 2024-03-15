@@ -2,17 +2,13 @@ import * as d3 from "d3";
 import React from "react";
 
 type TNumber = {
-  /**
-   * numbers
-   */
-  numbers: { start: string; end: string };
-  /**
-   * size
-   */
+  start: number;
+  end: number;
   size: "small" | "base" | "large";
+  fixed: number;
 };
 
-export function Number({ numbers, ...props }: TNumber) {
+export function Number({ start, end, fixed = 2, ...props }: TNumber) {
   const numberRef = React.useRef<HTMLDivElement>(null);
   const getSize = React.useCallback(() => {
     switch (props.size) {
@@ -32,15 +28,15 @@ export function Number({ numbers, ...props }: TNumber) {
     el.transition()
       .tween("text", () => {
         const interpolator = d3.interpolateString(
-          parseFloat(numbers.start).toFixed(2) ?? 0.0,
-          parseFloat(numbers.end).toFixed(2)
+          parseFloat(`${start}`).toFixed(fixed) ?? 0.0,
+          parseFloat(`${end}`).toFixed(fixed)
         );
         return function (t) {
-          d3.select(this).text(parseFloat(interpolator(t)).toFixed(2));
+          d3.select(this).text(parseFloat(interpolator(t)).toFixed(fixed));
         };
       })
       .duration(1000);
-  }, [numberRef, numbers]);
+  }, [numberRef, start, end]);
   return (
     <span
       className={["text-black dark:text-white w-full", getSize()].join(" ")}

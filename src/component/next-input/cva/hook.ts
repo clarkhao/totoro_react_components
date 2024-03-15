@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
-import { ErrorContext } from "../../error/errorContext";
-import { TCompare, Validate } from "../../../utils/zod";
+import React, { useEffect } from "react";
+import { PswValidate, TCompare, Validate } from "../../../utils/zod";
 import json from "../../../../data/zod.json";
+import { useDispatch, useSelector } from "react-redux";
+import { add, del } from "../../../store/slices/error";
+import { RootState } from "../../../store";
 
 export type TValue = string | number | readonly string[] | undefined;
 export type TInputState = {
@@ -12,18 +14,20 @@ export type TInputState = {
    * error is the error message from validating
    */
   error: Array<string>;
-  visible: boolean;
   result: string;
   compare: Array<TCompare>;
+  requestErr: string | undefined;
 };
 type TInputPayload = {
-  "reset": undefined;
+  reset: undefined;
   "set-blur": boolean;
   "set-value": string | undefined;
-  "set-error": { err: Array<string>; compare: Array<TCompare> };
-  "clear-error": undefined;
-  "toggle-visible": boolean;
+  "add-error": { err: Array<string>; compare: Array<TCompare> };
+  "clear-error": Array<TCompare>;
   "set-result": string;
+  "add-requestErr": string;
+  "clear-requestErr": undefined;
+  "set-compare": Array<TCompare>;
 };
 export type IInputAction = {
   type: keyof TInputPayload;
@@ -32,123 +36,145 @@ export type IInputAction = {
 
 function useInput(
   value: TValue,
-  requestErr?: string | undefined,
-  validateName?: string,
+  requestErr?: string,
+  name?: string,
+  validated?: boolean,
 ) {
+  const dispatch = useDispatch();
+  const errState = useSelector((state: RootState) => state.error.errors);
   const debounceTimer = React.useRef<number>(0);
   const initInputState: TInputState = {
     isBlured: false,
-    inputValue: value ?? undefined,
+    inputValue: value ?? "",
     error: [],
-    visible: false,
     result: "prev",
     compare: [],
+    requestErr: undefined,
   };
   const inputReducer = (state: TInputState, action: IInputAction) => {
     switch (action.type) {
-      case "reset": 
+      case "reset":
         return initInputState;
       case "set-blur":
         return {
           ...state,
           isBlured: action.payload as boolean,
         };
-      case "set-value":
+      case "set-value": {
         return {
           ...state,
           inputValue: action.payload as TValue,
         };
-      case "set-error":
+      }
+      case "add-error": {
         return {
           ...state,
-          error: (action.payload as TInputPayload["set-error"]).err,
+          error: (action.payload as TInputPayload["add-error"]).err,
           result: "error",
-          compare: (action.payload as TInputPayload["set-error"]).compare,
+          compare: (action.payload as TInputPayload["add-error"]).compare,
         };
-      case "clear-error":
+      }
+      case "clear-error": {
         return {
           ...state,
           error: [],
-          result: "success",
+          result: state.requestErr ? "error" : "success",
+          compare: action.payload as TInputPayload["clear-error"],
         };
-      case "toggle-visible":
-        return {
-          ...state,
-          visible: !state.visible,
-        };
+      }
       case "set-result":
         return {
           ...state,
           result: action.payload as string,
+        };
+      case "add-requestErr":
+        return {
+          ...state,
+          requestErr: action.payload as string,
+          result: "error",
+        };
+      case "clear-requestErr": {
+        return {
+          ...state,
+          requestErr: undefined,
+        };
+      }
+      case "set-compare":
+        return {
+          ...state,
+          compare: action.payload as Array<TCompare>,
           error: [],
+          result: "success",
         };
       default:
         return state;
     }
   };
-  
+
   const [inputState, inputDispatch] = React.useReducer(
     inputReducer,
     initInputState,
   );
-  const err = React.useContext(ErrorContext);
   React.useEffect(() => {
     if (requestErr) {
       inputDispatch({
-        type: "set-error",
-        payload: { err: [requestErr], compare: [] },
+        type: "add-requestErr",
+        payload: requestErr,
       });
     }
   }, [requestErr]);
   React.useEffect(() => {
-    if (validateName) {
+    if (validated) {
       const verifyData = () => {
         const data = JSON.stringify(json);
-        const key = JSON.parse(data)[`${validateName}`];
-        const validate = new Validate(key, validateName);
+        const key = JSON.parse(data)[`${name}`];
+        const validate =
+          name === "password"
+            ? new PswValidate(
+                key,
+                name as string,
+                (inputState.inputValue as string).length,
+              )
+            : new Validate(key, name as string);
         const errors = validate.verify(inputState.inputValue);
-        if (errors !== null) {
-          const msg = errors?.map((el) => {
-            err?.setErrors((prev) => {
-              return {
-                ...prev,
-                [`${validateName}`]: {
-                  isErr: true,
-                  errMsg: el.message,
-                },
-              };
-            });
-            return el.message;
-          });
+
+        const msg = errors?.map((el) => {
+          return el.message;
+        });
+        const { result, pass } = validate.compare(errors);
+        console.log(result, pass);
+        if (errors !== null && !pass) {
+          if (!errState[`${name}-verify`]) {
+            dispatch(
+              add({
+                from: `${name}-verify`,
+                message: inputState.error.join("."),
+              }),
+            );
+          }
           inputDispatch({
-            type: "set-error",
-            payload: { err: msg, compare: validate.compare(errors) },
+            type: "add-error",
+            payload: { err: msg!, compare: result },
+          });
+        } else if (errors !== null && pass) {
+          if (errState[`${name}-verify`]) dispatch(del(`${name}-verify`));
+          inputDispatch({
+            type: "set-compare",
+            payload: result,
           });
         } else {
-          err?.setErrors((prev) => {
-            return {
-              ...prev,
-              [`${validateName}`]: {
-                isErr: false,
-                errMsg: "",
-              },
-            };
-          });
+          if (errState[`${name}-verify`]) dispatch(del(`${name}-verify`));
           inputDispatch({
             type: "clear-error",
-            payload: undefined,
+            payload: result,
           });
         }
       };
-      if (
-        inputState.inputValue &&
-        (Array.isArray(inputState.inputValue)
-          ? inputState.inputValue.length > 0
-          : true) &&
-        validateName
-      ) {
+      if (inputState.inputValue && validated) {
         clearTimeout(debounceTimer.current);
-        debounceTimer.current = window.setTimeout(verifyData, 500);
+        debounceTimer.current = window.setTimeout(() => {
+          verifyData();
+        }, 300);
       } else {
         inputDispatch({
           type: "reset",
@@ -157,7 +183,21 @@ function useInput(
       }
     }
     return () => clearTimeout(debounceTimer.current);
-  }, [inputState.inputValue, inputState.isBlured, validateName, err]);
+  }, [
+    dispatch,
+    inputState.inputValue,
+    inputState.isBlured,
+    inputState.requestErr,
+    name,
+    validated,
+  ]);
+  useEffect(() => {
+    if (errState[`${name}`]) {
+      dispatch(del(name as string));
+      inputDispatch({ type: "clear-requestErr", payload: undefined });
+    }
+  }, [inputState.inputValue]);
+
   return { inputState, inputDispatch };
 }
 

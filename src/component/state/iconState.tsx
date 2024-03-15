@@ -1,3 +1,4 @@
+"use client";
 import React, { HTMLAttributes } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,9 +14,16 @@ type TIconState = {
   width: number;
   state: "prev" | "pending" | "success" | "error";
   prevState?: React.ReactNode;
+  animateEffect?: "ymotion" | "scale";
 } & HTMLAttributes<HTMLDivElement>;
 
-export function IconState({ state, width, prevState, ...props }: TIconState) {
+export function IconState({
+  state,
+  width,
+  prevState,
+  animateEffect = "ymotion",
+  ...props
+}: TIconState) {
   const getChild = (s: string) => {
     switch (s) {
       case "prev":
@@ -54,7 +62,7 @@ export function IconState({ state, width, prevState, ...props }: TIconState) {
             icon={faCircleXmark}
             className={twMerge(
               "text-light-error dark:text-dark-error",
-              "error-glow hover:error-more-glow",
+              "error-glow hover:error-more-glow cursor-pointer",
             )}
             style={{
               width: `${width}px`,
@@ -72,13 +80,12 @@ export function IconState({ state, width, prevState, ...props }: TIconState) {
         <CSSTransition
           key={state}
           timeout={{ exit: 150, enter: 150 }}
-          classNames={"btn"}
+          classNames={animateEffect}
         >
           <div
             {...props}
             className={twMerge(
               "z-[2] w-full h-full text-center inline-flex flex-row justify-center items-center gap-2",
-              "cursor-pointer",
             )}
           >
             {getChild(state)}

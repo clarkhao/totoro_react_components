@@ -21,6 +21,42 @@
     ]
   },
   "password": {
-    "type": "string"
+    "type": "string",
+    "min": {
+      "value": 6,
+      "message": "Must be 6 or more characters long"
+    },
+    "max": {
+      "value": 32,
+      "message": "Must be 32 or fewer characters long"
+    },
+    "regex": [
+      {
+        "value": "^[a-zA-Z0-9-._!\"`'#%&,:;<>=@{}~\\$\\(\\)\\*\\+/\\\\?\\[\\]\\^\\|]+$",
+        "message": "Only contain letter, number and -._!\"`'#%&,:;<>=@{}~$()*+/\\?[]^|"
+      },
+      {
+        "value": "[a-z]",
+        "message": "contains at least one lowercase English character"
+      },
+      {
+        "value": "[A-Z]",
+        "message": "contains at least one uppercase English character"
+      },
+      {
+        "value": "[0-9]",
+        "message": "contains at least one number"
+      },
+      {
+        "value": "[-._!\"`'#%&,:;<>=@{}~\\$\\(\\)\\*\\+/\\\\?\\[\\]\\^\\|]",
+        "message": "contains at least one special character"
+      }
+    ]
+  },
+  "email": {
+    "type": "string",
+    "email": {
+      "message": "Invalid email"
+    }
   }
 }

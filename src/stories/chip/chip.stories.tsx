@@ -9,7 +9,7 @@ const meta: Meta<typeof Chip> = {
   component: Chip,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
 };
 
@@ -23,6 +23,6 @@ export const ChipDefault: Story = {
     bgColor: "blue",
     btnColor: "blue",
     size: "xs",
-    children: <FontAwesomeIcon icon={faHome} className="w-[14px] h-auto" />,
+    children: null,
   },
 };

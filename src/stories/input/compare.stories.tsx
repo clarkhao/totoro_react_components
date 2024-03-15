@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { CompareList } from "../../component/next-input/compare";
+import { CompareList } from "../../component/next-input/cva/compare";
 import React from "react";
 
 const meta: Meta<typeof CompareList> = {

@@ -1,0 +1,22 @@
+.sm {
+  animation: longer 500ms ease-in-out forwards;
+}
+.md {
+  animation: longer 2500ms ease-in-out forwards;
+}
+.lg {
+  animation: longer 5000ms ease-in-out forwards;
+}
+.container:hover .sm,
+.container:hover .md,
+.container:hover .lg {
+  animation-play-state: paused;
+}
+@keyframes longer {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

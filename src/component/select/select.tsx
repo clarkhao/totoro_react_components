@@ -59,7 +59,7 @@ export function Select({ items, ...rest }: ISelect) {
         {rest.title && <option>{rest.title}</option>}
         {items.map((item, index) => (
           <option
-            key={`${rest.title}-${index}`}
+            key={`${rest.title}-${item.id}`}
             value={index}
             className="text-sm"
             selected={

@@ -1,5 +1,5 @@
 import { NextDropdown } from "../../component/dropdown/dropdownV3";
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import { CvaAvatar } from "./cvaAvatar";
 import { twMerge } from "tailwind-merge";
 
@@ -8,45 +8,27 @@ type TAvatarDropdown = {
   size: "xs" | "sm" | "md" | "lg" | "xl";
   shape: "circular" | "square";
   isLocal: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+  className?: string;
+  avatarClass?: string;
+};
 
 export function AvatarDropdown({ isLocal, ...props }: TAvatarDropdown) {
-  const size: () => {
-    size: "xs" | "sm" | "md" | "lg" | "xl" | null | undefined;
-    className: string;
-  } = () => {
-    switch (props.size) {
-      case "xs":
-        return { size: "xs", className: "w-6 h-6" };
-      case "sm":
-        return { size: "sm", className: "w-8 h-8" };
-      case "md":
-        return { size: "md", className: "w-10 h-10" };
-      case "lg":
-        return { size: "lg", className: "w-20 h-20" };
-      case "xl":
-        return { size: "xl", className: "w-36 h-36" };
-      default:
-        return { size: "md", className: "w-10 h-10" };
-    }
-  };
   return (
-    <div {...props} className={twMerge(props.className)}>
-      <NextDropdown
-        clickable={() =>
-          CvaAvatar({
-            innerSize: size().size,
-            outerSize: size().size,
-            shape: props.shape,
-            isLocal,
-          })
-        }
-        className="right-0"
-        autoPos={{ auto: false, popupHeight: 0, popupWidth: 0 }}
-        isByHover={false}
-      >
-        {props.children}
-      </NextDropdown>
-    </div>
+    <NextDropdown
+      clickable={() =>
+        CvaAvatar({
+          innerSize: props.size,
+          outerSize: props.size,
+          shape: props.shape,
+          isLocal,
+          className: props.avatarClass,
+        })
+      }
+      className={twMerge("right-0", props.className)}
+      autoPos={{ auto: false, popupHeight: 320, popupWidth: 320 }}
+      isByHover={false}
+    >
+      {props.children}
+    </NextDropdown>
   );
 }
