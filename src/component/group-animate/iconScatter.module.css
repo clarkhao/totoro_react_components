@@ -1,0 +1,7 @@
+.animate {
+  --x-position: var(--from-x-position, "10px");
+  --y-position: var(--from-y-position, "10px");
+  position: absolute;
+  left: var(--x-position);
+  top: var(--y-position);
+}

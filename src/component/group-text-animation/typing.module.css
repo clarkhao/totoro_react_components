@@ -1,0 +1,12 @@
+.back::after {
+  content: "_";
+  animation: shining 500ms infinite;
+}
+.back {
+  position: relative;
+}
+@keyframes shining {
+  50% {
+    color: transparent;
+  }
+}

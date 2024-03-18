@@ -37,9 +37,6 @@ yarn-error.log*
 next-env.d.ts
 
 # group
-src/component/group-chart/
-src/component/group-rive/
-src/component/group-*/
 
 #storybook-static
 storybook-static/

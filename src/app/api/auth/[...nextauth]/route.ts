@@ -70,6 +70,7 @@ const getProvider: (provider: TProvider) => Provider = (
         name: profile.name,
         accessToken: tokens.access_token,
         image: profile.picture,
+        userlevel: profile["custom:userlevel"]
       };
     },
   };
@@ -102,6 +103,7 @@ const credentialProvider: Provider = CredentialsProvider({
               id: session.getIdToken().payload.sub,
               email: session.getIdToken().payload.email,
               name: session.getIdToken().payload.name,
+              userlevel: session.getIdToken().payload["custom:userlevel"],
               idToken: session.getIdToken().getJwtToken(),
               accessToken: session.getAccessToken().getJwtToken(),
               refreshToken: session.getRefreshToken().getToken(),
@@ -136,6 +138,7 @@ export const authOptions: AuthOptions = {
           account?.provider === "credentials"
             ? user.name
             : (profile as Profile & { given_name: string }).given_name;
+        token.userlevel = user["userlevel"];
         logger.log("account:", JSON.stringify(account));
         logger.log("user:", JSON.stringify(user));
         logger.log("returned token:", JSON.stringify(token));
@@ -144,10 +147,12 @@ export const authOptions: AuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
+      console.log(`session: ${JSON.stringify(session)}`);
       if (token) {
         // Send properties to the client, like an access_token and user id from a provider.
         session.accessToken = token.accessToken as string;
         session.sub = token.sub as string;
+        session.userlevel = token["userlevel"];
         logger.log(`token: ${JSON.stringify(token)}`);
         logger.log(`session: ${JSON.stringify(session)}`);
         return session;
